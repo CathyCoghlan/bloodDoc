@@ -21,3 +21,11 @@ exports.getRegister = (req, res, next) => {
       isAuthenticated: false
     });
   };
+
+  exports.postRegister = (req, res, next) => {
+    res.render('auth/register', {
+      path: '/register',
+      pageTitle: 'Register',
+      isAuthenticated: false
+    });
+  };
