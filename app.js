@@ -53,7 +53,11 @@ mongoose.connect(
         if(!doctor) {
           const user = new Doctor({
             name: 'Cathy',
-            email: 'cathy@test.com'
+            email: 'cathy@test.com',
+            phone: '087 7804955',
+            address: '123 Road Road',
+            code: '3005',
+            tel: '01 8208888'
 
           });
           user.save();

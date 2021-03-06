@@ -10,7 +10,24 @@ const doctorSchema = new Schema({
     email: {
         type: String,
         required: true
+        },
+    phone: {
+        type: String,
+        required: true
     },
+    address: {
+        type: String,
+        required: true
+    },
+    code: {
+        type: String,
+        required: true
+    },
+    tel: {
+        type: String,
+        required: true
+    }
+
 
 });
 

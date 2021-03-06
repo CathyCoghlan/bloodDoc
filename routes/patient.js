@@ -10,6 +10,8 @@ router.get('/add-patient', patientController.getAddPatient);
 
 router.post('/add-patient', patientController.postAddPatient);
 
+router.get('/patients', patientController.getPatients);
+
 
 
 module.exports = router;

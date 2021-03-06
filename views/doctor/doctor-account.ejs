@@ -23,7 +23,7 @@
                                       <h4>Name</h4>
                                       <p><%= product.name %></p>
                                       <h4>Mobile</h4>
-                                      <p>087 1234567</p>
+                                      <p><%= product.phone %></p>
                                     
                                     </div>
                                     <div class="data">
@@ -37,13 +37,13 @@
                                   <div class="practice_info">
                                     <div class="data">
                                       <h4>Address</h4>
-                                      <p>42 Road Road Dublin</p>
+                                      <p><%= product.address %></p>
                                       <h4>Telephone</h4>
-                                      <p>01 8202292</p>
+                                      <p><%= product.tel %></p>
                                     </div>
                                     <div class="data">
                                       <h4>GP Code</h4>
-                                      <p>3005</p>              
+                                      <p><%= product.code %></p>              
                                     </div>
                                     
                                   </div>
@@ -54,9 +54,30 @@
                                   </form>
                                 </div>
                               </div>
+                                    <!-- <h1 class="product__title">
+                                        <%= product.name %>
+                                    </h1>
+                                </header>
+                                <div class="card__image">
+                                    <img src="<%= product.name %>" alt="<%= product.title %>">
+                                </div>
+                                <div class="card__content">
+                                    <h2 class="product__price">$
+                                        <%= product.name %>
+                                    </h2>
+                                    <p class="product__description">
+                                        <%= product.name %>
+                                    </p>
+                                </div>
+                                <div class="card__actions">
+                                    <a href="/products/<%= product._id %>" class="btn">Details</a>
 
+                                </div>
+                            </article> -->
                              <% } %>
                     </div>
-
+                    <!-- <% } else { %>
+                        <h1>No Products Found!</h1>
+                        <% } %> --> -->
             </main>
             <%- include('../includes/end.ejs') %>

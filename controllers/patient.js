@@ -38,4 +38,12 @@ exports.postAddPatient = (req, res, next) => {
         console.log(err);
       });
   };
+
+  
+exports.getPatients= (req, res, next) => {
+    res.render('patient/patients', {
+        pageTitle: 'All Patients',
+        path: '/patients'
+    });
+};
   
