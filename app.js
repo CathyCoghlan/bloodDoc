@@ -21,6 +21,7 @@ const authRoutes = require('./routes/auth');
 const doctorRoutes = require('./routes/doctor');
 const patientRoutes = require('./routes/patient');
 
+
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
@@ -43,6 +44,7 @@ app.use(authRoutes);
 app.use(doctorRoutes);
 app.use(patientRoutes);
 app.use(errorController.get404);
+
 
 
 mongoose.connect(

@@ -1,5 +1,6 @@
-const patient = require('../models/patient');
+const Product = require('../models/product');
 const Patient = require('../models/patient');
+const patient = require('../models/patient');
 
 exports.getAddPatient = (req, res, next) => {
     res.render('patient/add-patient', {
@@ -53,7 +54,7 @@ exports.getEditPatient = (req, res, next) => {
     if (!patient) {
       return res.redirect('/')
     }
-    res.render('/patient/add-patient', {
+    res.render('patient/add-patient', {
         pageTitle: 'Edit Patient',
         path: '/add-patient',
         editing: editMode,
@@ -78,3 +79,19 @@ exports.getPatients = (req, res, next) => {
     });
 };
   
+
+exports.getPatient = (req, res, next) => {
+  const patientId = req.params.patientId;
+  Patient.findById(patientId)
+  .then(patient => {
+    console.log(patient);
+    res.render('patient/patient', {
+      patient: patient,
+      pageTitle: 'Patient Details',
+      path: '/patient'
+    });
+  })
+  .catch(err => {
+    console.log(err);
+  });
+};

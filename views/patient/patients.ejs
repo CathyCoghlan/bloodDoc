@@ -42,8 +42,9 @@
           </div>
           <div class="table_body">
             <% if (patient.length > 0) { %>
-            <ul>
               <% for (let pat of patient) { %>
+            <ul>
+              
               <li>
                 <div class="item">
                   <div class="name">
@@ -56,19 +57,25 @@
                     <span><%= pat.gender%></span>
                   </div>
                   <div class="issue">
-                    <span><%= pat._eircode %></span>
+                    <span><%= pat._id %></span>
                   </div>
                   <div class="status">
-                    <a href="/edit-patient/<%=?edit=true pat._id %>"><i class="fas fa-pencil-alt"></i> </a>
-                    <i class="fas fa-pencil-alt"></i>                    
+                    <a href="/edit-patient">Edit</a>
+                    <a href="/patient/<%= pat._id %>"><i class="fas fa-pencil-alt"></i></a>
+                    <form action="/delete-patient" method="POST">
+                    <button type="submit">Delete</button>
+                  </form>
+
+                    <!-- <i class="fas fa-pencil-alt"></i>                    
                     <i class="fas fa-times"></i>
-                    <i class="fas fa-user"></i>
+                    <i class="fas fa-user"></i> -->
                   </div>
                 </div>
               </li>
              
-              <% } %>
+              
             </ul>
+            <% } %>
             <% } %>
           </div>
           <div class="table_footer"></div>
