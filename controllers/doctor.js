@@ -9,29 +9,14 @@ exports.getIndex = (req, res, next) => {
     });
 };
 
-exports.getMyAccount = (req, res, next) => {
-    Doctor.find()
-      .then(doctor => {
-        console.log(doctor);
-        res.render('doctor/my-account', {
-          docs: doctor,
-          pageTitle: 'All Products',
-          path: '/my-account'
-        });
-      })
-      .catch(err => {
-        console.log(err);
-      });
-  };
-
-  exports.getDoctor = (req, res, next) => {
+ exports.getDoctor = (req, res, next) => {
     Doctor.find()
       .then(products => {
         console.log(products);
-        res.render('doctor/doctor-account', {
+        res.render('doctor/my-account', {
           doctor: products,
-          pageTitle: 'All Products',
-          path: '/doctor-account'
+          pageTitle: 'My Account',
+          path: '/my-account'
         });
       })
       .catch(err => {

@@ -9,10 +9,10 @@
             <main>
                 <% if (doctor.length > 0) { %>
                     <div class="wrapper">
-                        <% for (let product of doctor) { %>
+                        <% for (let dr of doctor) { %>
                             <div class="left">
                                 <div class="userIcon"><i class="flaticon-user-3"></i></div>
-                                <h4><%= product.name %></h4>
+                                <h4><%= dr.name %></h4>
                                 <p>General Practitioner</p>
                               </div>
                               <div class="right">
@@ -21,14 +21,14 @@
                                   <div class="user_info">
                                     <div class="data">
                                       <h4>Name</h4>
-                                      <p><%= product.name %></p>
+                                      <p><%= dr.name %></p>
                                       <h4>Mobile</h4>
-                                      <p>087 1234567</p>
+                                      <p><%= dr.phone %></p>
                                     
                                     </div>
                                     <div class="data">
                                       <h4>Email</h4>
-                                      <p><%= product.email %></p>
+                                      <p><%= dr.email %></p>
                                     </div>
                                   </div>
                                 </div>
@@ -37,13 +37,13 @@
                                   <div class="practice_info">
                                     <div class="data">
                                       <h4>Address</h4>
-                                      <p>42 Road Road Dublin</p>
+                                      <p><%= dr.address %></p>
                                       <h4>Telephone</h4>
-                                      <p>01 8202292</p>
+                                      <p><%= dr.tel %></p>
                                     </div>
                                     <div class="data">
                                       <h4>GP Code</h4>
-                                      <p>3005</p>              
+                                      <p><%= dr.code %></p>              
                                     </div>
                                     
                                   </div>
@@ -54,9 +54,11 @@
                                   </form>
                                 </div>
                               </div>
-
-                             <% } %>
+                                    
+                             <% } %> <!-- Close if -->
                     </div>
-
+                    
+                        
+                        <% } %> <!-- Close Loop-->
             </main>
             <%- include('../includes/end.ejs') %>

@@ -11,26 +11,26 @@
                 Patient Registration Form
             </div>
     
-            <form action="add-patient" method="POST">
+            <form action="<% if (editing) { %>edit-patient<% } else { %>add-patient<% } %>" method="POST">
                 <div class="form_wrap">
                     <div class="input_grp">
                         <div class="input_wrap">
                             <label for="firstName">First Name</label>
-                            <input type="text" name="firstName" id="firstName" value="">
+                            <input type="text" name="firstName" id="firstName" value="<% if (editing) { %><%= patient.firstName %><% } %>">
                         </div>
                         <div class="input_wrap">
                             <label for="lastName">Last Name</label>
-                            <input type="text" name="lastName" id="lastName" value="">
+                            <input type="text" name="lastName" id="lastName" value="<% if (editing) { %><%= patient.lastName %><% } %>">
                         </div>
                         
                     </div>
                     <div class="input_wrap">
                             <label for="dateOfBirth">Date of Birth</label>
-                            <input type="text" name="dateOfBirth" id="dateOfBirth" value="">
+                            <input type="text" name="dateOfBirth" id="dateOfBirth" value="<% if (editing) { %><%= patient.dateOfBirth %><% } %>">
                     </div>                    
                     <div class="input_wrap">
                             <label for="email">Email Address</label>
-                            <input type="text" name="email" id="email" value="">
+                            <input type="text" name="email" id="email" value="<% if (editing) { %><%= patient.email %><% } %>">
                     </div>
                     <div class="input_wrap">
                         <label>Gender</label>
@@ -51,19 +51,19 @@
                     </div>
                     <div class="input_wrap">
                             <label for="address">Address</label>
-                            <input type="text" name="address" id="address" value="">
+                            <input type="text" name="address" id="address" value="<% if (editing) { %><%= patient.address %><% } %>">
                     </div>                    
                     <div class="input_wrap">
                             <label for="county">County</label>
-                            <input type="text" name="county" id="county" value="">
+                            <input type="text" name="county" id="county" value="<% if (editing) { %><%= patient.county %><% } %>">
                     </div>
                     <div class="input_wrap">
                             <label for="eircode">Eircode</label>
-                            <input type="text" name="eircode" id="eircode" value="">
+                            <input type="text" name="eircode" id="eircode" value="<% if (editing) { %><%= patient.eircode %><% } %>">
                     </div>
                     <div class="input_wrap">
                         <input type="hidden" value="" name="patientId">
-                        <button class="submit_btn" type="submit">Register</button>
+                        <button class="submit_btn" type="submit"><% if (editing) { %>Update Patient<% } else { %>Register<% } %></button>
                         
                     </div>
                 </div>

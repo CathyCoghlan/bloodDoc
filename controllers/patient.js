@@ -1,9 +1,11 @@
+const patient = require('../models/patient');
 const Patient = require('../models/patient');
 
 exports.getAddPatient = (req, res, next) => {
     res.render('patient/add-patient', {
         pageTitle: 'Add Patient',
-        path: '/add-patient'
+        path: '/add-patient',
+        editing: false
     });
 };
 
@@ -32,18 +34,47 @@ exports.postAddPatient = (req, res, next) => {
       .then(result => {
          console.log(result);
         console.log('Patient Created');
-        res.redirect('/');
+        res.redirect('/patients');
       })
       .catch(err => {
         console.log(err);
       });
   };
+  
+exports.getEditPatient = (req, res, next) => {
+  const editMode = req.query.edit;
+  if(!editMode) {
+    return res.redirect('/');
+  }
+
+  const patientId = req.params.patientId
+  Patient.findById(patientId)
+  .then(patient => {
+    if (!patient) {
+      return res.redirect('/')
+    }
+    res.render('/patient/add-patient', {
+        pageTitle: 'Edit Patient',
+        path: '/add-patient',
+        editing: editMode,
+        patient: patient
+    })
+  })
+}
 
   
-exports.getPatients= (req, res, next) => {
-    res.render('patient/patients', {
-        pageTitle: 'All Patients',
+exports.getPatients = (req, res, next) => {
+  Patient.find()
+    .then(patients => {
+      console.log(patients);
+      res.render('patient/patients', {
+        patient: patients,
+        pageTitle: 'Patients',
         path: '/patients'
+      });
+    })
+    .catch(err => {
+      console.log(err);
     });
 };
   
