@@ -43,21 +43,17 @@ exports.postAddPatient = (req, res, next) => {
   };
   
 exports.getEditPatient = (req, res, next) => {
-  const editMode = req.query.edit;
-  if(!editMode) {
-    return res.redirect('/');
-  }
-
+ 
   const patientId = req.params.patientId
   Patient.findById(patientId)
-  .then(patient => {
+    .then(patient => {
     if (!patient) {
       return res.redirect('/')
     }
-    res.render('patient/add-patient', {
+    res.render('patient/edit-patient', {
         pageTitle: 'Edit Patient',
-        path: '/add-patient',
-        editing: editMode,
+        path: '/edit-patient',
+        //editing: editMode,
         patient: patient
     })
   })
@@ -67,7 +63,7 @@ exports.getEditPatient = (req, res, next) => {
 exports.getPatients = (req, res, next) => {
   Patient.find()
     .then(patients => {
-      console.log(patients);
+      //console.log(patients);
       res.render('patient/patients', {
         patient: patients,
         pageTitle: 'Patients',
@@ -94,4 +90,15 @@ exports.getPatient = (req, res, next) => {
   .catch(err => {
     console.log(err);
   });
+};
+
+exports.postDeletePatient = (req, res, next) => {
+  const patientId = req.body.patientId;
+  console.log(patientId);
+  Patient.findByIdAndDelete(patientId)
+    .then(() => {
+      console.log('DESTROYED PATIENT');
+      res.redirect('/patients');
+    })
+    .catch(err => console.log(err));
 };

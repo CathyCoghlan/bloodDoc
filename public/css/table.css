@@ -62,6 +62,7 @@
     background: #fff;
     padding: 15px 0;
     height: 50px;
+    font-size: 13px;
   }
 
   .table_wrap ul li .item .name,
@@ -71,7 +72,7 @@
 }
 
 .table_wrap ul li .item .status {
-    width: 15%;
+    width: 25%;
     padding: 0 15px;
   }
 
@@ -93,9 +94,9 @@
 
 .table_header ul li .item {
     border-bottom: 2px solid #eaeaea;
-    color:rgb(223, 223, 223);
+    color:rgb(255, 255, 255);
     font-weight: 600;
-    font-size: 11px;
+    font-size: 13px;
     background-color: rgb(87, 158, 163);
   }
 
@@ -114,40 +115,16 @@
     max-width: 115px;
     display: inline-block;
   }
-  .table_body ul li .item .open {
-    background: #e5edfa;
-    color: #5a8ee4;
-  }
-  
-  .table_body ul li .item .fixed {
-    background: #cff1f0;
-    color: #0dbeb6;
-  }
-  
-  .table_body ul li .item .closed {
-    background: #fedfe5;
-    color: #ff89a0;
-  }
-  
-  .table_body ul li .item .hold {
-    background: #fff0db;
-    color: #f59d39;
-  }
-  
-  .table_body ul li .item .reopened {
-    background: #d6f2ff;
-    color: #29a5d8;
-  }
-  
-  .table_body ul li .item .canceled {
-    background: #ffdbd6;
-    color: #e87060;
+  .delete_btn {
+    border: none;
+    background-color: transparent;
   }
 
   i {
       font-size: 15px;
       padding:7px;
       color: rgb(76, 128, 138);
+      cursor: pointer;
   }
   
   

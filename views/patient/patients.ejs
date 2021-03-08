@@ -34,7 +34,7 @@
                     <span>EIRCODE</span>
                   </div>
                   <div class="status">
-                    <span>BLOOD ORDER</span>
+                    <span></span>
                   </div>
                 </div>
               </li>
@@ -57,18 +57,22 @@
                     <span><%= pat.gender%></span>
                   </div>
                   <div class="issue">
-                    <span><%= pat._id %></span>
+                    <span><%= pat.address %></span>
                   </div>
                   <div class="status">
-                    <a href="/edit-patient">Edit</a>
-                    <a href="/patient/<%= pat._id %>"><i class="fas fa-pencil-alt"></i></a>
+                    <a href="/edit-patient/<%= pat._id %>"><i class="fas fa-pencil-alt"></i></a>
+                    <a href="/edit-patient"><i class="fas fa-plus"></i></a>
+                    <a href="/patient/<%= pat._id %>"><i class="fas fa-user"></i></a>
+                    
                     <form action="/delete-patient" method="POST">
-                    <button type="submit">Delete</button>
+                      <input type="hidden" value="<%= pat._id %>" name="patientId"  id="patientId">
+                      <button class="delete_btn" type="submit"><i class="far fa-trash-alt"></i></button>
                   </form>
 
                     <!-- <i class="fas fa-pencil-alt"></i>                    
                     <i class="fas fa-times"></i>
-                    <i class="fas fa-user"></i> -->
+                    <i class="fas fa-user"></i>
+                  <i class="far fa-trash-alt"></i> -->
                   </div>
                 </div>
               </li>
