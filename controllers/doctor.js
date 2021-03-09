@@ -33,6 +33,14 @@ exports.getSampleQuality = (req, res, next) => {
 };
 
 
+exports.getTests= (req, res, next) => {
+  res.render('doctor/tests', {
+      pageTitle: 'All Tests',
+      path: '/tests'
+  });
+};
+
+
 
 
 

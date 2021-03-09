@@ -1,0 +1,96 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/table.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+
+    <div class="wrapper">
+        <div class="header">
+          <div class="title">
+            Tests
+          </div>
+      
+          <div class="search_box">
+            <input type="text" id="search_input" placeholder="Fliter Table Using Names">
+          </div>
+        </div>
+      
+        <div class="table_wrap">
+          <div class="table_header">
+            <ul>
+              <li>
+                <div class="item">
+                  <div class="name">
+                    <span>NAME</span>
+                  </div>
+                  <div class="phone">
+                    <span>DEPARTMENT</span>
+                  </div>
+                  <div class="phone">
+                    <span>TURN AROUND</span>
+                  </div>
+                  <div class="issue">
+                    <span>SPECIMEN TYPE</span>
+                  </div>
+                  <div class="status">
+                    <span>DETAILS</span>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="table_body">
+
+            <ul>
+              
+              <li>
+                <div class="item">
+                  <div class="name">
+                    <span><p>blah</p></span>
+                  </div>
+                  <div class="phone">
+                    <span><p>blah</p></span>
+                  </div>
+                  <div class="phone">
+                    <span><p>blah</p></span>
+                  </div>
+                  <div class="issue">
+                    <span><p>blah</p></span>
+                  </div>
+                  <div class="status">
+
+                  </div>
+                </div>
+              </li>
+             
+              
+            </ul>
+
+          </div>
+          <div class="table_footer"></div>
+        </div>
+      
+      </div>
+
+      <script>
+        var search_input = document.querySelector("#search_input");
+
+search_input.addEventListener("keyup", function(e){
+  var span_items = document.querySelectorAll(".table_body ul li .item .name span");
+  var search_item = e.target.value.toLowerCase();
+ 
+ span_items.forEach(function(item){
+   if(item.textContent.toLowerCase().indexOf(search_item) != -1){
+      item.closest("li").style.display = "block"
+   }
+   else{
+     item.closest("li").style.display = "none";
+   }
+ })
+  
+});
+
+      </script>
+
+<%- include('../includes/end.ejs') %>

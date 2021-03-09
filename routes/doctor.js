@@ -12,6 +12,8 @@ router.get('/my-account', doctorController.getDoctor);
 
 router.get('/sample-quality', doctorController.getSampleQuality);
 
+router.get('/tests', doctorController.getTests);
+
 
 
 module.exports = router;

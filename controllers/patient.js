@@ -64,45 +64,35 @@ exports.postAddPatient = (req, res, next) => {
   };
   
  
-
 exports.postEditPatient = (req, res, next) => {
+    const patientId = req.body.patientId;
+  const updatedFirstName= req.body.firstName;
+  const updatedLastName= req.body.lastName;
+  const updateDateOfBirth = req.body.dateOfBirth;
+  const updatedEmail = req.body.email;
+  const updatedGender = req.body.gender;
+  const updatedAddress = req.body.address;
+  const updatedCounty = req.body.county;
+  const updatedeEircode= req.body.eircode; 
+  console.log(patientId);
 
-  res.render('patient/add-patient', {
-    pageTitle: 'Add Patient',
-    path: '/add-patient',
-    editing: false
-});
-
-
-
-  // const patientId = req.body.patientId;
-  // const updatedFirstName= req.body.firstName;
-  // const updatedLastName= req.body.lastName;
-  // const updateDateOfBirth = req.body.dateOfBirth;
-  // const updatedEmail = req.body.email;
-  // const updatedGender = req.body.gender;
-  // const updatedAddress = req.body.address;
-  // const updatedCounty = req.body.county;
-  // const updatedeEircode= req.body.eircode; 
-  // console.log(patientId)
-
-  // Patient.findById(patientId)
-  // .then(patient => {
-  //   patient.lastName = updatedLastName;
-  //   patient.firstName = updatedFirstName;
-  //   patient.dateOfBirth = updateDateOfBirth;
-  //   patient.updatedEmail = updatedEmail;
-  //   patient.gender = updatedGender;
-  //   patient.address = updatedAddress;
-  //   patient.updatedCounty = updatedCounty;
-  //   patient.eircode = updatedeEircode
-  //   return patient.save();
-  // })
-  //   .then(result => {
-  //     console.log('UPDATED Patient!');
-  //     res.redirect('/patients');
-  //   })
-  //   .catch(err => console.log(err));
+  Patient.findById(patientId)
+  .then(patient => {
+    patient.lastName = updatedLastName;
+    patient.firstName = updatedFirstName;
+    patient.dateOfBirth = updateDateOfBirth;
+    patient.updatedEmail = updatedEmail;
+    patient.gender = updatedGender;
+    patient.address = updatedAddress;
+    patient.updatedCounty = updatedCounty;
+    patient.eircode = updatedeEircode
+    return patient.save();
+  })
+    .then(result => {
+      console.log('UPDATED Patient!');
+      res.redirect('/patients');
+    })
+    .catch(err => console.log(err));
 };
   
 exports.getPatients = (req, res, next) => {
