@@ -1,0 +1,74 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/test-form.css">
+    
+</head>
+
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <form class="product-form" action="/add-test" method="POST">
+            <div class="form-control">
+                <label for="name">Name</label>
+                <input type="text" name="name" id="name" value="">
+            </div>
+            <div class="form-control">
+                <label for="department">department</label>
+                <input type="text" name="department" id="department" value="">
+            </div>
+            <div class="form-control">
+                <label for="group">group</label>
+                <input type="text" name="group" id="group" value="">
+            </div>
+            <div class="form-control">
+                <label for="specimenType">specimenType</label>
+                <input type="text" name="specimenType" id="specimenType" value="">
+            </div>
+            <!-- <div class="form-control">
+                <label for="department">Department</label>
+                <input list="department">
+                <datalist id="department">
+                <option value="Biochemistry">
+                <option value="Haematology">
+                <option value="Immunology">               
+                
+                </datalist>
+            </div> -->
+            <div class="form-control">
+                <label for="turnAroundTime">Turn Around Time</label>
+                <input type="text" name="turnAroundTime" id="turnAroundTime" value="">
+            </div>
+            <!-- <div class="form-control">
+                <label for="group">Group</label>
+                <input list="group">
+                <datalist id="group">
+                <option value="1">
+                <option value="2">
+                <option value="3">
+                <option value="4">
+                <option value="5">
+                </datalist>
+            </div>
+            <div class="form-control">
+                <label for="specimenType">Specimen Type</label>
+                <input list="specimenType">
+                <datalist id="specimenType">
+                <option value="Serum">
+                <option value="EDTA">
+                <option value="Sodium Citrate">
+                <option value="Fluoride EDTA">
+                </datalist>
+            </div> -->
+            
+            <div class="form-control">
+                <label for="details">Details</label>
+                <textarea name="details" id="details" rows="5"></textarea>
+            </div>
+            
+                <input type="hidden" value="" name="productId">
+           
+
+            <button class="btn" type="submit">Add Test</button>
+        </form>
+    </main>
+<%- include('../includes/end.ejs') %>

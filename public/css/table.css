@@ -55,6 +55,7 @@
     width: 1000px;
     margin: 50px auto 0;
     
+    
   }
 
   .table_wrap ul li .item {
@@ -101,7 +102,7 @@
   }
 
   .table_body {
-    height: 300px;
+    height: 500px;
     overflow: auto;
   }
 
@@ -118,6 +119,14 @@
   .delete_btn {
     border: none;
     background-color: transparent;
+  }
+
+  .info_btn{
+    border-radius: 20px;
+    font-size: 13px;
+    width: 100%;
+    background-color: rgb(223, 233, 235);
+    border: none;
   }
 
   i {

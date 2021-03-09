@@ -14,6 +14,9 @@ router.get('/sample-quality', doctorController.getSampleQuality);
 
 router.get('/tests', doctorController.getTests);
 
+router.get('/add-test', doctorController.getAddTest);
+
+router.post('/add-test', doctorController.postAddTest);
 
 
 module.exports = router;

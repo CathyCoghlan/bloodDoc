@@ -41,31 +41,39 @@
             </ul>
           </div>
           <div class="table_body">
+            <% if (test.length > 0) { %>
+              <% for (let t of test) { %>
 
             <ul>
               
               <li>
                 <div class="item">
                   <div class="name">
-                    <span><p>blah</p></span>
+                    <span><p><%= t.name %></p></span>
                   </div>
                   <div class="phone">
-                    <span><p>blah</p></span>
+                    <span><p><%= t.department %></p></span>
                   </div>
                   <div class="phone">
-                    <span><p>blah</p></span>
+                    <span><p><%= t.specimenType %></p></span>
                   </div>
                   <div class="issue">
-                    <span><p>blah</p></span>
+                    <span><p><%= t.turnAroundTime %></p></span>
                   </div>
                   <div class="status">
-
+                    <form action="/test-details" method="POST">
+                      <input type="hidden" value="<%= t._id %>" name="testId"  id="testId">
+                      <button class="info_btn" type="submit">More Information</button>
+                  </form>
                   </div>
                 </div>
               </li>
              
               
             </ul>
+
+            <% } %>
+            <% } %>
 
           </div>
           <div class="table_footer"></div>
