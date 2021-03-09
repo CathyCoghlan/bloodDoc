@@ -14,6 +14,8 @@ router.get('/patients', patientController.getPatients);
 
 router.get('/edit-patient/:patientId', patientController.getEditPatient);
 
+router.post('/edit-patient', patientController.postEditPatient);
+
 // Get individual patient details
 router.get('/patient/:patientId', patientController.getPatient); 
 
