@@ -29,5 +29,43 @@
 .wrapper .patient_details .header{
     height: 100px;
     background-color: teal;
-    color:white
+    color:white;
+    border-bottom: solid yellow;
 }
+
+.wrapper .patient_details .header h4{
+    font-size: 30px;
+    padding: 33px 0px 0px 20px;
+    
+}
+
+.wrapper .patient_details .patient_info{
+    margin-top: 40px;
+    margin-left: 20px;
+    background-color: wheat;
+    
+}
+
+.wrapper .patient_details .info_item{
+    margin-top: 40px;
+    background-color: wheat;
+    border-bottom: solid red;
+    border-top:solid red ;    
+}
+.wrapper .patient_details  .info_item h3{
+    font-size: 25px;
+    margin-bottom: 10px;
+    
+    text-transform: uppercase; 
+    text-align: center;
+    
+}
+.wrapper .patient_details  .info_item p{
+    font-size: 20px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    text-align: center;
+  
+    
+}
+
