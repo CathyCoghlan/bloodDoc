@@ -136,3 +136,30 @@ exports.postDeletePatient = (req, res, next) => {
     })
     .catch(err => console.log(err));
 };
+
+exports.getSelectPatient = (req, res, next) => {
+  res.render('patient/select-patient', {
+    pageTitle: 'Select Patient',
+    path: '/select-patient'
+    
+});
+}
+
+exports.getOrderEntry = (req, res, next) => {
+  const patientId = req.params.patientId
+  Patient.findById(patientId)
+  .then(patient => {
+    console.log(patient);
+    res.render('patient/order-entry', {
+      pageTitle: 'Add Patient',
+      path: '/Order Entry',
+      patient: patient,      
+    });
+  })
+  .catch(err => {
+    console.log(err);
+  });
+};
+
+
+  

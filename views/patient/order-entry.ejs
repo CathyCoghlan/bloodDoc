@@ -1,0 +1,20 @@
+<%- include('../includes/head.ejs') %>
+    
+<link rel="stylesheet" href="/css/order-entry.css">
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+
+        <div class="wrapper">
+                <div class="patient_details">
+                        <div class="header">
+                            <h4><%= patient.lastName %>, <%= patient.firstName %></h4> 
+                        </div>
+                        <div><p><%= patient.address %></p></div>
+
+                    </div>
+
+        </div>
+
+        <%- include('../includes/end.ejs') %>

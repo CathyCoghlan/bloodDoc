@@ -21,6 +21,10 @@ router.get('/patient/:patientId', patientController.getPatient);
 
 router.post('/delete-patient', patientController.postDeletePatient);
 
+router.get('/select-patient', patientController.getSelectPatient);
+
+router.get('/order-entry/:patientId', patientController.getOrderEntry);
+
 
 
 
