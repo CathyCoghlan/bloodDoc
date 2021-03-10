@@ -48,6 +48,22 @@ exports.getTests = (req, res, next) => {
     });
 };
 
+exports.getTest= (req, res, next) => {
+  const testId = req.params.testId;
+  Test.findById(testId)
+  .then(test => {
+    console.log(test);
+    res.render('doctor/test-details', {
+      test: test,
+      pageTitle: 'test Details',
+      path: '/test-details'
+    });
+  })
+  .catch(err => {
+    console.log(err);
+  });
+};
+
 
 exports.getAddTest= (req, res, next) => {
   res.render('admin/add-test', {
@@ -62,6 +78,7 @@ exports.postAddTest = (req, res, next) => {
   const turnAroundTime= req.body.turnAroundTime;
   const group = req.body.group;
   const specimenType = req.body.specimenType;
+  const image = req.body.image;
   const details = req.body.details;
   const test = new Test({
     name: name,                         // Value on right is data rec'd, left refers to keys you define in your schema
@@ -69,6 +86,7 @@ exports.postAddTest = (req, res, next) => {
     turnAroundTime: turnAroundTime,
     group: group,
     specimenType: specimenType,
+    image: image,
     details: details    
   });
   test

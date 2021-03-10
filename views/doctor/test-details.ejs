@@ -1,0 +1,46 @@
+<%- include('../includes/head.ejs') %>
+    
+<link rel="stylesheet" href="/css/test-detail.css">
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+
+        <div class="wrapper">
+                <div class="top">
+
+                    <!-- <i class="flaticon-tube"></i> -->
+                    
+                        <h4><%= test.name %></h4>
+                        <div class="bottle_wrap">
+                            <img class="bottle"src="<%= test.image %>" alt="">
+                        </div>
+                    
+                </div>
+                    <div class="bottom">
+                        <div class="info">
+                            
+                                <div class="user_info">
+                                    <div class="data">
+                                        <h4>Department</h4>
+                                        <p><%= test.department %></p>
+                                    </div>
+
+                                    <div class="data">
+                                        <h4>Turn Around Time</h4>
+                                        <p><%= test.turnAroundTime %></p>
+                                    </div>
+                                    <div class="data">
+                                        <h4>Specimen Type</h4>
+                                        <p><%= test.specimenType %></p>
+                                    </div>
+                                    <div class="data">
+                                        <h4>Details</h4>
+                                        <p><%= test.details %></p>
+                                    </div>
+                                </div>
+                        </div>
+
+                    </div>
+
+        </div>

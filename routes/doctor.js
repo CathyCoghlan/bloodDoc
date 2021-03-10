@@ -18,5 +18,7 @@ router.get('/add-test', doctorController.getAddTest);
 
 router.post('/add-test', doctorController.postAddTest);
 
+router.get('/test/:testId', doctorController.getTest); 
+
 
 module.exports = router;

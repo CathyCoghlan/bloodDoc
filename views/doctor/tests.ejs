@@ -61,10 +61,9 @@
                     <span><p><%= t.turnAroundTime %></p></span>
                   </div>
                   <div class="status">
-                    <form action="/test-details" method="POST">
-                      <input type="hidden" value="<%= t._id %>" name="testId"  id="testId">
-                      <button class="info_btn" type="submit">More Information</button>
-                  </form>
+                    
+                    <a href="/test/<%= t._id %>"><button class="info_btn" type="submit">More Information</button></a>
+                  
                   </div>
                 </div>
               </li>
