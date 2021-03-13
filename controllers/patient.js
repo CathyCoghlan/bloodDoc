@@ -147,33 +147,85 @@ exports.getSelectPatient = (req, res, next) => {
 }
 
 exports.getOrderEntry = (req, res, next) => {
-  var tests = {};
+  var bioTests = {};
+  var immTests = {};
+  var haemTests = {};
   var patient = {};
   const patientId = req.params.patientId
+
   Patient.findById((patientId), function(err, pat){
     if(err){
       console.log(err)
     } else {
-      patient = pat;
+      Test.find({department: 'Biochemistry'}, function(err, biot){
+        if(err){
+          console.log(err)
+        } else {
+          Test.find({department: 'Immunology'}, function(err, immt){
+            if(err){
+              console.log(err)
+            } else {
+              Test.find({department: 'Haematology'}, function(err, haemt){
+                if(err){
+                  console.log(err)
+                } else {
+                  haemTests = haemt;
+                  res.render('patient/order-entry', {
+                    pageTitle: 'Order Entry',
+                    path: '/order-entry',
+                    bioTests: biot,
+                    immTests: immt,
+                    haemTests: haemTests,
+                    patient: pat
+                  })
+                }
+              })
+            }
+          })
+
+        }
+      })
     }
-  });
-  Test.find({}, function(err, t){
-    if(err){
-      console.log(err)
-    } else {
-      tests = t;
-      res.render('patient/order-entry', {
-        pageTitle: 'Order Entry',
-        path: '/order-entry',
-        patient: patient,
-        tests: tests
-        
-    });
-
-    }
-  });
-};
-
-
-
+  })
   
+}
+
+  // Patient.findById((patientId), function(err, pat){
+  //   if(err){
+  //     console.log(err)
+  //   } else {
+  //     patient = pat;
+  //   }
+  // });
+  // Test.find(({department: 'Biochemistry'}), function(err, biot){
+  //   if(err){
+  //     console.log(err)
+  //   } else {
+  //     bioTests = biot;
+  //   }
+  // });
+  // Test.find(({department: 'Haematology'}), function(err, haemt){
+  //   if(err){
+  //     console.log(err)
+  //   } else {
+  //     haemTests = haemt;
+  //   }
+  // });
+  // Test.find(({department: 'Immunology'}), function(err, immt){
+  //   if(err){
+  //     console.log(err)
+  //   } else {
+  //     immTests = immt;
+  //     res.render('patient/order-entry', {
+  //       pageTitle: 'Order Entry',
+  //       path: '/order-entry',
+  //       patient: patient,
+  //       bioTests: bioTests,
+  //       immTests: immTests,
+  //       haemTests: haemTests
+        
+  //   });
+
+  //   }
+  // });
+// };

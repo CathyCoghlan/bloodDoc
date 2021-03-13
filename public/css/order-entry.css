@@ -8,8 +8,8 @@
   }
 
 
-  .box1{
-    background-color: aqua;
+.box1{
+    background-color: rgb(58,105,124);
 }
 
 .box2{
@@ -46,7 +46,7 @@
 }
 
 .box1 .header{
-    background-color: orangered;
+    background-color: rgb(58,105,124);
     height: 50px;
 }
 
@@ -54,6 +54,8 @@
     /* text-align: center; */
     padding: 10px;
     font-size: 20px;
+
+    color: white;
 }
 
 
@@ -122,7 +124,7 @@
 
   /* Style the tab content */
 .tabcontent {
-    display: none;
+    /* display: none; */
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;

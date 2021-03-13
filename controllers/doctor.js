@@ -104,23 +104,6 @@ exports.postAddTest = (req, res, next) => {
 
 
 
-exports.getTestsBio = (req, res, next) => {
-  Test.find({ department: 'Biochemistry'})
-    .then(tests => {
-      //console.log(patients);
-      res.render('includes/tests-select', {
-        test: tests,
-        pageTitle: 'Tests',
-        path: '/tests-select'
-      });
-    })
-    .catch(err => {
-      console.log(err);
-    });
-};
-
-
-
 
 
 
