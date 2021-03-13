@@ -2,6 +2,7 @@ const doctor = require('../models/doctor');
 const Doctor = require('../models/doctor');
 const Test = require('../models/test');
 const Patient = require('../models/patient');
+const { get } = require('../routes/patient');
 
 exports.getIndex = (req, res, next) => {
     res.render('doctor/index', {
@@ -103,6 +104,20 @@ exports.postAddTest = (req, res, next) => {
 
 
 
+exports.getTestsBio = (req, res, next) => {
+  Test.find({ department: 'Biochemistry'})
+    .then(tests => {
+      //console.log(patients);
+      res.render('includes/tests-select', {
+        test: tests,
+        pageTitle: 'Tests',
+        path: '/tests-select'
+      });
+    })
+    .catch(err => {
+      console.log(err);
+    });
+};
 
 
 

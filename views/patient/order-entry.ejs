@@ -6,40 +6,242 @@
     <body>
         <%- include('../includes/navigation.ejs') %>
 
-        <div class="wrapper">
-                <div class="patient_details">
-                        <div class="header">
-                            <h4><%= patient.lastName %>, <%= patient.firstName %></h4> 
-                        </div>
 
-                        <!-- <div class="patient_info"> -->
-                            <div class="info_item">
-                                <h3>Gender</h3>
-                                <p><%= patient.gender%></p>
-                                
-                            </div>
-                            <div class="info_item">
-                                <h3>D.O.B</h3>
-                                <p><%= patient.dateOfBirth%></p>
-                            </div>
-                            <div class="info_item">
-                                <h3>Email</h3>
-                                <p><%= patient.email%></p>
-                            </div>
-                            <div class="info_item">
-                                <h3>Weight</h3>
-                                <p><%= patient.dateOfBirth%></p>
-                            </div>
-                            <div class="info_item">
-                                <h3>Address</h3>
-                                <p><%= patient.address%></p>
-                            </div>
-                            
-                        <!-- </div> -->
+
+        <h4><%= patient.lastName %>, <%= patient.firstName %></h4>  
+
+        <div class="table_body">
+            <% if (tests.length > 0) { %>
+              <% for (let t of tests) { %>
+
+            <ul>
+              
+              <li>
+                <div class="item">
+                  <div class="name">
+                    <span><p><%= t.name %></p></span>
+                  </div>
+                  <div class="phone">
+                    <span><p><%= t.department %></p></span>
+                  </div>
+                  <div class="phone">
+                    <span><p><%= t.specimenType %></p></span>
+                  </div>
+                  <div class="issue">
+                    <span><p><%= t.turnAroundTime %></p></span>
+                  </div>
+                  <div class="status">
+                    
+                    <a href="/test/<%= t._id %>"><button class="info_btn" type="submit">More Information</button></a>
+                  
+                  </div>
+                </div>
+              </li>
+             
+              
+            </ul>
+
+            <% } %>
+            <% } %>
+
+          </div>
+        
+        
+        
+
+        <!-- <div class="wrapper">
+            <div class="grid-container">
+                <div class="box1">
+                    <div class="header">
+                        <h4><%= patient.lastName %>, <%= patient.firstName %></h4> 
+                    </div>
+                    <div class="inner">
+                        <div class="info">
+                            <h2>Box1</h2>
+                            <p>Something</p>
+                        </div>
+                        <div class="info">
+                            <h2>Box1</h2>
+                            <p>Something</p>
+                        </div>
+                        <div class="info">
+                            <h2>Box1</h2>
+                            <p>Something</p>
+                        </div>
+                    </div>
+        
+                </div>
+                
+                <div class="box2">
+                    <div class="tab">
+                        <button class="tablinks" onclick="openTests(event, 'Bio1')">Biochemistry</button>
+                        <button class="tablinks" onclick="openTests(event, 'Bio2')">Biochemistry</button>
+                        <button class="tablinks" onclick="openTests(event, 'Haematology')">Haematology</button>
+                        <button class="tablinks" onclick="openTests(event, 'Immunology')">Immunology</button>
+                    </div>
+                    <!-- Tab Content-->
+                    <!-- <div class="tabcontent" id="Bio1">
+                        <button>Renal Profile</button>
+                        <button>Liver Profile</button>
+                        <button>Bone Profile</button>
+                        <button>Amylase</button>
+                        <button>Magnesium</button>
+                        <button>Urate</button>
+                        <button>CRP</button>
+                        <button>Lipid</button>
+                        <button>Iron</button>
+                        <button>LH</button>
+                        <button>FSH</button>
+                        <button>Creatinine</button>
+                        <button>LDH</button>
+                        <button>PSA</button>
+                        <button>Prolactin</button>
+                        <button>SHBG</button>
+                        <button>PRG</button>
+                        <button>E2</button>
+
+                    </div>
+                    <div class="tabcontent" id="Bio2">
+
+                        <button>Cortisol</button>
+                        <button>HCG</button>
+                        <button>TFT</button>
+                        <button>Lithium</button>
+                        <button>Digoxin</button>
+                        <button>Phenytoin</button>
+                        <button>Val</button>
+                        <button>Theo</button>
+                        <button>Phenytoin</button>
+                        <button>Carb</button>
+                        <button>AFP</button>
+                        <button>CEA</button>
+                        <button>C125</button>
+                        <button>C15.3</button>
+                        <button>C19.9</button>
+                        <button>HbA1c</button>
+                        <button>Glucose Fast</button>
+                        <button>Glucose Random</button>
                         
 
                     </div>
+                    <div class="tabcontent" id="Haematology">
+                        <button>Coag</button>
+                        <button>INR</button>
+                        <button>FBC</button>
+                        <button>ESR</button>
+                        <button>IM</button>
+                        <button>Malaria</button>
+                        <button>Vitamin B12</button>
+                        <button>Ferritin</button>
+                    </div>
+                    <div class="tabcontent" id="Immunology">
+                        <button>CTD</button>
+                        <button>RFA</button>
+                        <button>GAM</button>
+                        <button>TPO</button>
+                    </div>
+                    <h2>Box2</h2>
+                </div>
+                <div class="box3">
+                    <h2>Box3</h2>
+                </div>
+                <div class="box4">
+                    <h2>Box4</h2>
+                </div>
+            </div>
 
-        </div>
+        </div> --> -->
+
+    </main>
+    
+</body>
+</html>
+
+<script>
+    function openTests(evt, testName) {
+      var i, tabcontent, tablinks;
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+      }
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      document.getElementById(testName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- <div class="wrapper"> -->
+                    <!-- <div class="patient_details"> -->
+                            <!-- <div class="header">
+                                <h4><%= patient.lastName %>, <%= patient.firstName %></h4> 
+                            </div>
+                            
+                                <div class="info_item">
+                                    <h3>Gender</h3>
+                                    <p><%= patient.gender%></p>
+                                    
+                                </div>
+                                <div class="info_item">
+                                    <h3>D.O.B</h3>
+                                    <p><%= patient.dateOfBirth%></p>
+                                </div>
+                                <div class="info_item">
+                                    <h3>Email</h3>
+                                    <p><%= patient.email%></p>
+                                </div>
+                                <div class="info_item">
+                                    <h3>Weight</h3>
+                                    <p><%= patient.dateOfBirth%></p>
+                                </div>
+                                <div class="info_item">
+                                    <h3>Address</h3>
+                                    <p><%= patient.address%></p>
+                                </div>                         
+                                              
+                        </div>
+
+                    <div class="tests">
+                            <li data-li="biochemistry">
+                                <p>Biochemistry</p>
+                            </li>
+                            <li data-li="haematology">
+                                <p>Haematology</p>
+                            </li>
+                            <li data-li="immunology">
+                                <p>Immunology</p>
+                            </li>
+
+                    </div>
+                    
+        </div> -->
 
         <%- include('../includes/end.ejs') %>

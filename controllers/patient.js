@@ -1,5 +1,6 @@
 const patient = require('../models/patient');
 const Patient = require('../models/patient');
+const Test = require('../models/test');
 
 
 exports.getAddPatient = (req, res, next) => {
@@ -146,20 +147,33 @@ exports.getSelectPatient = (req, res, next) => {
 }
 
 exports.getOrderEntry = (req, res, next) => {
+  var tests = {};
+  var patient = {};
   const patientId = req.params.patientId
-  Patient.findById(patientId)
-  .then(patient => {
-    console.log(patient);
-    res.render('patient/order-entry', {
-      pageTitle: 'Add Patient',
-      path: '/Order Entry',
-      patient: patient,      
+  Patient.findById((patientId), function(err, pat){
+    if(err){
+      console.log(err)
+    } else {
+      patient = pat;
+    }
+  });
+  Test.find({}, function(err, t){
+    if(err){
+      console.log(err)
+    } else {
+      tests = t;
+      res.render('patient/order-entry', {
+        pageTitle: 'Order Entry',
+        path: '/order-entry',
+        patient: patient,
+        tests: tests
+        
     });
-  })
-  .catch(err => {
-    console.log(err);
+
+    }
   });
 };
+
 
 
   
