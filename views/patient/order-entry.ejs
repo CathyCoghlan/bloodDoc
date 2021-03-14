@@ -11,22 +11,41 @@
             <div class="grid-container">
                 <div class="box1">
                     <div class="header">
-                        <h4><%= patient.lastName %>, <%= patient.firstName %></h4> 
+                        <h3><%= patient.lastName %>, <%= patient.firstName %></h3> 
                          
                     </div>
                     <div class="inner">
                         <div class="info">
-                            <h2>First Name</h2>
+                            <h2 class="title">First Name : </h2>
                             <p><%= patient.firstName %></p>
                         </div>
                         <div class="info">
-                            <h2>First Name</h2>
+                            <h2 class="title">Last Name: </h2>
                             <p><%= patient.lastName %></p>
                         </div>
                         <div class="info">
-                            <h2>D.O.B</h2>
+                            <h2 class="title">Address: </h2>
+                            <p><%= patient.address %></p>
+                        </div>
+                        <div class="info">
+                            <h2 class="title">D. O. B     : </h2>
                             <p><%= patient.dateOfBirth %></p>
                         </div>
+                        <div class="info">
+                            <h2 class="title">Email    : </h2>
+                            <p><%= patient.email %></p>
+                        </div>
+                        <div class="info">
+                            <h2 class="title">Gender  : </h2>
+                            <p><%= patient.gender %></p>
+                        </div>
+                        <div class="btnBox">
+                            <button class="editBtn"> 
+                                <a href="/edit-patient/<%= patient._id %>?edit=true">Update Details</a>
+                            </button>
+                            
+                        </div>
+
                     </div>
         
                 </div>
@@ -34,7 +53,8 @@
                 <div class="box2">
                     <div class="tab">
                         <button class="tablinks" onclick="openTests(event, 'Bio1')">Biochemistry</button>
-                        <button class="tablinks" onclick="openTests(event, 'Bio2')">Haematology</button>
+                        <button class="tablinks" onclick="openTests(event, 'Drugs')">Drugs/Steroids</button>
+                        <button class="tablinks" onclick="openTests(event, 'Haem')">Haematology</button>
                         <button class="tablinks" onclick="openTests(event, 'Immunology')">Immunology</button>
                     </div>
                     <!-- Tab Content-->
@@ -46,7 +66,16 @@
                         <% } %>                        
 
                     </div>
-                    <div class="tabcontent" id="Bio2" style="display: none;">
+                    <div class="tabcontent" id="Drugs" style="display: none;">
+                        <% if (drugsTests.length > 0) { %>
+                            <% for (let t of drugsTests) { %>
+                        <button class= "test"><%= t.name %></button>
+                        <% } %>
+                        <% } %>                        
+
+                       
+                    </div>
+                    <div class="tabcontent" id="Haem" style="display: none;">
                         <% if (haemTests.length > 0) { %>
                             <% for (let t of haemTests) { %>
                         <button class= "test"><%= t.name %></button>
@@ -68,9 +97,9 @@
                 <div class="box3">
                     <h2>Box3</h2>
                 </div>
-                <div class="box4">
+                <!-- <div class="box4">
                     <h2>Box4</h2>
-                </div>
+                </div> -->
             </div>
 
         </div>
@@ -94,6 +123,14 @@
       document.getElementById(testName).style.display = "block";
       evt.currentTarget.className += " active";
     }
+
+    $(document).ready(function(){ 
+    $('.test').click(function() { 
+        $(this).toggleClass('activeBtn');
+    });
+});
+
+
     </script>
 
 

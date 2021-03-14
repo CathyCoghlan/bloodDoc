@@ -147,48 +147,117 @@ exports.getSelectPatient = (req, res, next) => {
 }
 
 exports.getOrderEntry = (req, res, next) => {
-  var bioTests = {};
+
+  var drugsTests = {};
   var immTests = {};
   var haemTests = {};
   var patient = {};
   const patientId = req.params.patientId
 
   Patient.findById((patientId), function(err, pat){
-    if(err){
-      console.log(err)
-    } else {
-      Test.find({department: 'Biochemistry'}, function(err, biot){
-        if(err){
+      if(err){
           console.log(err)
-        } else {
-          Test.find({department: 'Immunology'}, function(err, immt){
-            if(err){
-              console.log(err)
-            } else {
-              Test.find({department: 'Haematology'}, function(err, haemt){
-                if(err){
+      } else {
+          Test.find({$or:[{group: '1'}, {group:'7'}]}, function(err, biot){
+              if(err) {
                   console.log(err)
-                } else {
-                  haemTests = haemt;
-                  res.render('patient/order-entry', {
-                    pageTitle: 'Order Entry',
-                    path: '/order-entry',
-                    bioTests: biot,
-                    immTests: immt,
-                    haemTests: haemTests,
-                    patient: pat
-                  })
-                }
-              })
-            }
+              } else {
+                Test.find({department:'Immunology'}, function(err, immt){
+                    if(err) {
+                        console.log(err)
+                    } else {
+                        Test.find({department: 'Haematology'},function(err, haemt){
+                            if(err) {
+                                console.log(err)
+                            } else {
+                                Test.find({group: '2'}, function(err, drugst){
+                                    if(err) {
+                                        console.log(err)
+                                    } else {
+                                        drugsTests= drugst;
+                                        res.render('patient/order-entry', {
+                                            pageTitle:'Order Entry',
+                                            path: '/order-entry',
+                                            bioTests: biot,
+                                            immTests: immt,
+                                            haemTests: haemt,
+                                            drugsTests: drugsTests,
+                                            patient: pat
+                                        })
+                                    }
+                                })
+                            }
+                        })
+                    }
+                })
+              }
           })
-
-        }
-      })
-    }
+      } 
   })
   
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//   var bioTests = {};
+//   var immTests = {};
+//   var haemTests = {};
+//   var patient = {};
+//   const patientId = req.params.patientId
+
+//   Patient.findById((patientId), function(err, pat){
+//     if(err){
+//       console.log(err)
+//     } else {
+//       Test.find({department: 'Biochemistry'}, function(err, biot){
+//         if(err){
+//           console.log(err)
+//         } else {
+//           Test.find({department: 'Immunology'}, function(err, immt){
+//             if(err){
+//               console.log(err)
+//             } else {
+//               Test.find({department: 'Haematology'}, function(err, haemt){
+//                 if(err){
+//                   console.log(err)
+//                 } else {
+//                   haemTests = haemt;
+//                   res.render('patient/order-entry', {
+//                     pageTitle: 'Order Entry',
+//                     path: '/order-entry',
+//                     bioTests: biot,
+//                     immTests: immt,
+//                     haemTests: haemTests,
+//                     patient: pat
+//                   })
+//                 }
+//               })
+//             }
+//           })
+
+//         }
+//       })
+//     }
+//   })
+  
+// }
 
   // Patient.findById((patientId), function(err, pat){
   //   if(err){

@@ -9,11 +9,11 @@
 
 
 .box1{
-    background-color: rgb(58,105,124);
+    background-color: rgb(166, 197, 209);
 }
 
 .box2{
-    background-color: blueviolet;
+    background-color: rgb(166, 197, 209);
 }
 
 .box3{
@@ -36,21 +36,21 @@
 .grid-container{
     height: 100vh;
     display: grid;
-    grid-template-columns: 250px 600px 200px 200px;
-    grid-template-rows: 500px 1fr 1fr 1fr;
+    grid-template-columns: 250px 550px 250px ;
+    grid-template-rows: 500px 1fr 1fr;
     grid-gap: 40px;
     grid-template-areas: 
     "box1 box2 box3"
-    "box1 box4 box4";
+    "box1 box2 box3";
 
 }
 
 .box1 .header{
     background-color: rgb(58,105,124);
-    height: 50px;
+    height: 70px;
 }
 
-.box1 .header h4{
+.box1 .header h3{
     /* text-align: center; */
     padding: 10px;
     font-size: 20px;
@@ -77,49 +77,123 @@
 }
 
 
-.inner {
+.grid-container .box1 .inner {
     align-items: center;
     display: block;
-    padding:20px
+    padding:0px
 }
 
-.info{
+.grid-container .box1 .inner .info{
     display: flex;
     align-items: center;
-    padding: 20px;
+    padding: 15px;
+    border: 1px solid white;
+    overflow: auto;
+}
+/* 
+.grid-container .box1 .inner .info .title{
+    padding-right: 15px;
+    text-align: center;
+    background-color: transparent;
+    padding: 15px;
+    
+} */
+
+.grid-container .box1 .inner .info h2{
+    color: rgb(16, 82, 82);
+    font-size: 13px;
+    text-transform: uppercase;
+    
+    
 }
 
-.info p {
-    padding: 10px;
+.grid-container .box1 .inner .info p{
+    font-size: 13px;
+    padding: 15px;
+    color: rgb(255, 255, 255);
+    font-weight: 500;
+}
+
+.grid-container .box1 .inner .btnBox{
+    border: none;
+    background-color: transparent;
+    padding: 20px;
+    align-items:center;
+}
+
+.grid-container .box1 .inner .btnBox .editBtn{
+    width: 70%;
+    color:rgb(133,172,187);
+    margin: 20px 38px 0;
+    border: 2px solid rgb(133,172,187);
+    background-color: white;
+    font-size: 15px;
+    letter-spacing: 2px;
+    padding: 7px 7px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-block;
+    margin: 15px 30px;
+  }
+
+  .grid-container .box1 .inner .btnBox .editBtn:hover{
+    background-color:  rgb(133,172,187);
+    color: white;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    
+    
+  }
+
+.grid-container .box1 .inner .btnBox a{
+    text-decoration: none;
+    color:rgb(16, 82, 82);
+
+        
 }
 
 /* Create buttons to open specific tab content*/
-.tab{
-    overflow: hidden;
-    border: 1px solid #ccc;
-}
-
-
 /* Style the buttons that are used in the tab content*/
-.tab{
-    background-color: white;
-    float: left;
-    border: none;
+
+.tab {
+    overflow: hidden;
+    padding: 0;
+	border-bottom: 1px solid #ccc;
+    display: flex;
+	align-items: stretch;
+    
+  }
+.tab button {
+    background: #eee;
+    border: 1px solid #ccc;
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
+    font-size: 14px;
+    color: #666;
+    font-size: 12px; 
+	font-weight: 600;
     width:100%;
-}
+    text-transform: uppercase;
+    transition: all 0.3s;
+	
+    
+  }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-    background-color: #ddd;
+    border-top-color: #333;
+	color: #333;
   }
 
   /* Create an active/current tablink class */
-.tab button.active {
-    background-color: #ccc;
+.tab button:active, button:focus {
+    border-bottom-color: #fff;
+	border-top-color: #B721FF;
+	background:white;
+	color: #222;
   }
 
   /* Style the tab content */
@@ -128,7 +202,41 @@
     padding: 6px 12px;
     border: 1px solid #ccc;
     border-top: none;
+    /* position:relative;
+    animation:animatebottom 0.4s */
   }
+
+  .tabcontent .test {
+      border: none;
+      padding: 9px;
+      margin: 10px;
+      width: 150px;
+      border-radius: 10px;
+  }
+
+  /* .tabcontent .test:focus, .test:active, .test:visited {
+    background-color: rgb(43, 156, 184);
+    color:white;
+} */
+
+
+  .test:hover {
+    background-color: rgba(52, 152, 219,0.6);
+  }
+  
+  .test:focus {
+    background-color: rgba(52, 152, 219,0.6);
+  } 
+  
+  .test:active, .test:visited {
+    background-color: rgba(52, 152, 219,0.6);
+  }
+  
+  .activeBtn {
+    background: rgba(52, 152, 219,0.6); 
+  }
+
+   
 
 
 
