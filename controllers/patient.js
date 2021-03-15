@@ -1,6 +1,7 @@
 const patient = require('../models/patient');
 const Patient = require('../models/patient');
 const Test = require('../models/test');
+const httpMsgs = require('http-msgs');
 
 
 exports.getAddPatient = (req, res, next) => {
@@ -195,9 +196,13 @@ exports.getOrderEntry = (req, res, next) => {
 
 
 exports.postAddTest= (req, res, next) => {
-  console.log(req.body);
-  var testId = req.body.testId;
-  
+  //var data = req.body.toString();
+  const obj = JSON.parse(JSON.stringify(req.body));
+  console.log(obj);
+
+  httpMsgs.sendJSON(req, res, {
+    from: "Server"
+  })
 }
   
 

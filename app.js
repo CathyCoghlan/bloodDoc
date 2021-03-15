@@ -3,6 +3,7 @@ const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const httpMsgs = require("http-msgs");
 //onst session = require('express-session');
 //const MongoDBStore = require('connect-mongodb-session')(session);
 
@@ -23,7 +24,7 @@ const patientRoutes = require('./routes/patient');
 
 
 
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 

@@ -82,7 +82,7 @@
                     <div class="tabcontent" id="Drugs" style="display: none;">
                         <% if (drugsTests.length > 0) { %>
                             <% for (let t of drugsTests) { %>
-                                <input type="hidden" value="<%= t.name %>" name="testId">
+                                <input type="hidden" value="<%= t.name %>" name="testName">
                                 <button class="btn" type="button" onclick="addTest(this)"><%= t.name %></button>
                         <% } %>
                         <% } %>                        
@@ -92,7 +92,10 @@
                     <div class="tabcontent" id="Haem" style="display: none;">
                         <% if (haemTests.length > 0) { %>
                             <% for (let t of haemTests) { %>
-                        <button class= "test"><%= t.name %></button>
+                                <form class="form1" action="">
+                                    <input type="hidden" name="mytest" id="mytest1" value="<%= t.name%>">
+                                   <button class="test" type="submit"><%= t.name %></button>
+                                </form>   
                         <% } %>
                         <% } %>                        
 
@@ -102,7 +105,11 @@
                     <div class="tabcontent" id="Immunology" style="display: none;">
                         <% if (immTests.length > 0) { %>
                             <% for (let t of immTests) { %>
-                        <button class= "test"><%= t.name %></button>
+                         <form class="form2" action="">
+                             <input type="hidden" name="mytest" id="mytest2" value="<%= t.name%>">
+                            <button class="test" type="submit"><%= t.name %></button>
+                         </form>       
+                        
                         <% } %>
                         <% } %>                        
   
