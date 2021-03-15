@@ -59,17 +59,31 @@
                     </div>
                     <!-- Tab Content-->
                     <div class="tabcontent" id="Bio1" >
+                        <div class="radio-toolbar">
                         <% if (bioTests.length > 0) { %>
                             <% for (let t of bioTests) { %>
-                        <button class= "test"><%= t.name %></button>
+                                <input type="radio" id="radio<%= t.name %>" name="radio<%= t.name %>" value="<%= t._id %>">
+                                <label for="radio<%= t.name %>"><%= t.name %></label>
                         <% } %>
-                        <% } %>                        
+                        <% } %>   
+                    </div>
+
+
+                        <!-- <form action="/cart" method="post">
+                            <% if (bioTests.length > 0) { %>
+                                <% for (let t of bioTests) { %>
+                            <button class= "test" type="submit"><%= t.name %></button>
+                            <input type="hidden" name="testId" value="<%= t._id %>">
+                            <% } %>
+                            <% } %>      
+                        </form>                     -->
 
                     </div>
                     <div class="tabcontent" id="Drugs" style="display: none;">
                         <% if (drugsTests.length > 0) { %>
                             <% for (let t of drugsTests) { %>
-                        <button class= "test"><%= t.name %></button>
+                                <input type="hidden" value="<%= t.name %>" name="testId">
+                                <button class="btn" type="button" onclick="addTest(this)"><%= t.name %></button>
                         <% } %>
                         <% } %>                        
 
@@ -95,7 +109,15 @@
                     </div>
                 </div>
                 <div class="box3">
-                    <h2>Box3</h2>
+                    <h2>Samples Required</h2>
+                    <div class="samples">
+                        <img src="/img/serum2.png" alt="">
+                        <img src="/img/serum2.png" alt="">
+                        <img src="/img/serum2.png" alt="">
+                        <img src="/img/edta.png" alt="">
+                        <img src="/img/edta.png" alt="">
+                        <img src="/img/glucose.png" alt="">
+                    </div>
                 </div>
                 <!-- <div class="box4">
                     <h2>Box4</h2>
@@ -110,53 +132,9 @@
 </html>
 
 <script>
-    function openTests(evt, testName) {
-      var i, tabcontent, tablinks;
-      tabcontent = document.getElementsByClassName("tabcontent");
-      for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-      }
-      tablinks = document.getElementsByClassName("tablinks");
-      for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace(" active", "");
-      }
-      document.getElementById(testName).style.display = "block";
-      evt.currentTarget.className += " active";
-    }
-
-    $(document).ready(function(){ 
-    $('.test').click(function() { 
-        $(this).toggleClass('activeBtn');
-    });
-});
 
 
     </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
         <!-- <div class="wrapper"> -->
@@ -205,3 +183,4 @@
         </div> -->
 
         <%- include('../includes/end.ejs') %>
+        <script src="/js/add-test.js"></script>

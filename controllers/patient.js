@@ -147,11 +147,7 @@ exports.getSelectPatient = (req, res, next) => {
 }
 
 exports.getOrderEntry = (req, res, next) => {
-
   var drugsTests = {};
-  var immTests = {};
-  var haemTests = {};
-  var patient = {};
   const patientId = req.params.patientId
 
   Patient.findById((patientId), function(err, pat){
@@ -198,9 +194,12 @@ exports.getOrderEntry = (req, res, next) => {
 }
 
 
-
-
-
+exports.postAddTest= (req, res, next) => {
+  console.log(req.body);
+  var testId = req.body.testId;
+  
+}
+  
 
 
 

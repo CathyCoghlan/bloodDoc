@@ -27,7 +27,7 @@
 .wrapper{
     position: absolute;
     top: 20%;
-    left: 20%; 
+    left: 18%; 
     /* margin-top: -50px;
     margin-left: -50px; */
     
@@ -48,6 +48,8 @@
 .box1 .header{
     background-color: rgb(58,105,124);
     height: 70px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 
 .box1 .header h3{
@@ -61,15 +63,18 @@
 
 .box1 {
     grid-area:box1;
+    border-radius: 20px;
     
 }
 
 .box2{
     grid-area:box2;
+    border-radius: 20px;
 }
 
 .box3{
     grid-area:box3;
+    border-radius: 20px;
 }
 
 .box4{
@@ -80,7 +85,8 @@
 .grid-container .box1 .inner {
     align-items: center;
     display: block;
-    padding:0px
+    padding:0px;
+   
 }
 
 .grid-container .box1 .inner .info{
@@ -162,6 +168,8 @@
 	border-bottom: 1px solid #ccc;
     display: flex;
 	align-items: stretch;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
     
   }
 .tab button {
@@ -200,7 +208,6 @@
 .tabcontent {
     /* display: none; */
     padding: 6px 12px;
-    border: 1px solid #ccc;
     border-top: none;
     /* position:relative;
     animation:animatebottom 0.4s */
@@ -214,29 +221,80 @@
       border-radius: 10px;
   }
 
+  .tabcontent .radio-toolbar{
+      margin:10px;
+  }
+
+  .tabcontent .radio-toolbar input[type="radio"] {
+    opacity: 0;
+    position: fixed;
+    width: 0;
+  }
+
+  .tabcontent .radio-toolbar label {
+    display: inline-block;
+    background-color: #ddd;
+    font-size: 13px;
+    border: 2px solid #444;
+    margin: 10px;
+    border: none;
+    padding: 9px;
+    margin: 10px;
+    width: 130px;
+    border-radius: 10px;
+}
+
+.tabcontent .radio-toolbar label:hover {
+  background-color: #dfd;
+}
+
+.tabcontent .radio-toolbar input[type="radio"]:focus + label {
+    border: 2px dashed #444;
+}
+
+.tabcontent .radio-toolbar input[type="radio"]:checked + label {
+    background-color: #bfb;
+    border-color: #4c4;
+}
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   /* .tabcontent .test:focus, .test:active, .test:visited {
     background-color: rgb(43, 156, 184);
     color:white;
 } */
 
 
+/* 
   .test:hover {
-    background-color: rgba(52, 152, 219,0.6);
+    background-color: rgba(92, 177, 180, 0.6);
   }
   
   .test:focus {
-    background-color: rgba(52, 152, 219,0.6);
+    background-color: rgba(92, 177, 180, 0.6);
   } 
   
   .test:active, .test:visited {
-    background-color: rgba(52, 152, 219,0.6);
+    background-color: rgba(92, 177, 180, 0.6);
   }
   
   .activeBtn {
-    background: rgba(52, 152, 219,0.6); 
+    background: rgba(92, 177, 180, 0.6); 
   }
 
-   
+    */
 
 
 
