@@ -61,7 +61,9 @@ function openTests(evt, testName) {
     }
       $.ajax({
         url: "/addTest/" + val,
-        data: val,
+        data: {
+          name: val
+        },
         method: "POST",
         dataType:'json',
         success: function(res){

@@ -198,7 +198,16 @@ exports.getOrderEntry = (req, res, next) => {
 exports.postAddTest= (req, res, next) => {
   //var data = req.body.toString();
   const obj = JSON.parse(JSON.stringify(req.body));
-  console.log(obj);
+  // console.log(obj);
+  // console.log(obj.name);
+  const test = obj.name;
+  console.log(test);
+
+  Test.find({name: test})
+  .then((testId) => {
+    const tester = testId.group;
+    console.log(tester);
+  })
 
   httpMsgs.sendJSON(req, res, {
     from: "Server"
