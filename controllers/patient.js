@@ -198,14 +198,23 @@ exports.getOrderEntry = (req, res, next) => {
 exports.postAddTest= (req, res, next) => {
   const obj = JSON.parse(JSON.stringify(req.body));
   const test = obj.name;
- 
+  const docCart = req.doctor.cart.items
+
+  console.log(docCart);
+  
   Test.findOne({name: test})
-  .then(result => {
-    var testId = result._id
-    console.log(testId);
-  })
-  .catch(err => {
-    console.log(err);
+  .then(testi => {
+      console.log(testi);
+      const testName = testi.name;
+      console.log(testName);
+
+      docCart.push({
+        testId: testName
+      });
+
+      req.doctor.save();
+
+      console.log(docCart);
   })
 
   httpMsgs.sendJSON(req, res, {

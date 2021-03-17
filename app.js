@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
-    Doctor.findById('60439caa91f0547c783d8ff5')
+    Doctor.findById('605226f10ec54b397428831d')
       .then(doctor => {
         req.doctor = doctor
         next();
