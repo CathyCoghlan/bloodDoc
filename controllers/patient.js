@@ -240,21 +240,32 @@ exports.getCart = (req, res, next) => {
   const patientId = req.params.patientId;
   console.log(patientId);
 
-  Doctor.findOne()
-  .then(doctor => {
-    const doctorItems = doctor.cart.items;
-    res.render('patient/cart', {
-      tests: doctorItems,
-      pageTitle: 'Cart',
-      path: '/cart'
-
+  Patient.findById(patientId)
+  .then(patient => {
+    Doctor.findOne()
+    .then(doctor => {
+      const doctorItems = doctor.cart.items;
+      res.render('patient/cart', {
+        tests: doctorItems,
+        patient: patient,
+        pageTitle: 'Cart',
+        path: '/cart'
+      })
     })
   })
-    
-    
-    
- 
 }
+
+  // Doctor.findOne()
+  // .then(doctor => {
+  //   const doctorItems = doctor.cart.items;
+  //   res.render('patient/cart', {
+  //     tests: doctorItems,
+  //     pageTitle: 'Cart',
+  //     path: '/cart'
+
+  //   })
+  // })
+    
 
 
 
