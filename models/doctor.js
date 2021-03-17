@@ -26,10 +26,25 @@ const doctorSchema = new Schema({
     tel: {
         type: String,
         required: true
+    },
+    cart: {
+        patientId: {type: Schema.Types.ObjectId, ref: 'Patient', required: false},
+        tests: [
+            {
+                testId: {type: Schema.Types.ObjectId, ref: 'Test', required: false}
+            }
+        ]
     }
 
 
 });
+
+doctorSchema.methods.addToCart = function(test) {
+    
+                                                               // Set the updatedCart to Cart
+                                                                  // Call the mongoose method save()
+}
+
 
 module.exports = mongoose.model('Doctor', doctorSchema);
 

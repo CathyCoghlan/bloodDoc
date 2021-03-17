@@ -1,4 +1,4 @@
-const patient = require('../models/patient');
+const Doctor = require('../models/doctor');
 const Patient = require('../models/patient');
 const Test = require('../models/test');
 const httpMsgs = require('http-msgs');
@@ -196,17 +196,16 @@ exports.getOrderEntry = (req, res, next) => {
 
 
 exports.postAddTest= (req, res, next) => {
-  //var data = req.body.toString();
   const obj = JSON.parse(JSON.stringify(req.body));
-  // console.log(obj);
-  // console.log(obj.name);
   const test = obj.name;
-  console.log(test);
-
-  Test.find({name: test})
-  .then((testId) => {
-    const tester = testId.group;
-    console.log(tester);
+ 
+  Test.findOne({name: test})
+  .then(result => {
+    var testId = result._id
+    console.log(testId);
+  })
+  .catch(err => {
+    console.log(err);
   })
 
   httpMsgs.sendJSON(req, res, {
