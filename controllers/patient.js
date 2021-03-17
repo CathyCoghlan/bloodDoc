@@ -196,35 +196,44 @@ exports.getOrderEntry = (req, res, next) => {
 
 
 exports.postAddTest= (req, res, next) => {
+  // get data from $ajax request
   const obj = JSON.parse(JSON.stringify(req.body));
+  // get the test name
   const test = obj.name;
   const docCart = req.doctor.cart.items
 
   console.log(docCart);
   
   Test.findOne({name: test})
-  .then(testi => {
-      console.log(testi);
-      const testName = testi.name;
-      console.log(testName);
-
+  .then(test => {
+      console.log(test);
+      const testN = test.name;
+      console.log(testN);
       docCart.push({
-        testName: testName
-      });
-
-      req.doctor.save();
-
-      console.log(docCart);
+        testName: testN
+      })
+      return req.doctor.save();
   })
-
-  httpMsgs.sendJSON(req, res, {
-    // from: "Server"
+  .then(result => {
+    console.log('Added test')
   })
+  .catch(err => console.log(err));
+
+  // httpMsgs.sendJSON(req, res, {
+  //   // from: "Server"
+  // })
 }
   
 
 
 
+      // docCart.push({
+      //   testName: testName
+      // });
+
+      // req.doctor.save();
+
+      // console.log(docCart);
 
 
 

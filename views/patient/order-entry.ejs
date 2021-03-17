@@ -62,8 +62,8 @@
                         <div class="radio-toolbar">
                         <% if (bioTests.length > 0) { %>
                             <% for (let t of bioTests) { %>
-                                <input type="radio" id="radio<%= t.name %>" name="radio<%= t.name %>" value="<%= t._id %>">
-                                <label for="radio<%= t.name %>"><%= t.name %></label>
+                                <input type="hidden" value="<%= t.name %>" name="testName">
+                                <button class="btn" type="button" onclick="addTest(this)"><%= t.name %></button>
                         <% } %>
                         <% } %>   
                     </div>
@@ -92,10 +92,8 @@
                     <div class="tabcontent" id="Haem" style="display: none;">
                         <% if (haemTests.length > 0) { %>
                             <% for (let t of haemTests) { %>
-                                <form class="form1" action="">
-                                    <input type="hidden" name="mytest" id="mytest1" value="<%= t.name%>">
-                                   <button class="test" type="submit"><%= t.name %></button>
-                                </form>   
+                                <input type="hidden" value="<%= t.name %>" name="testName">
+                                <button class="btn" type="button" onclick="addTest(this)"><%= t.name %></button>
                         <% } %>
                         <% } %>                        
 
@@ -105,11 +103,8 @@
                     <div class="tabcontent" id="Immunology" style="display: none;">
                         <% if (immTests.length > 0) { %>
                             <% for (let t of immTests) { %>
-                         <form class="form2" action="">
-                             <input type="hidden" name="mytest" id="mytest2" value="<%= t.name%>">
-                            <button class="test" type="submit"><%= t.name %></button>
-                         </form>       
-                        
+                                <input type="hidden" value="<%= t.name %>" name="testName">
+                                <button class="btn" type="button" onclick="addTest(this)"><%= t.name %></button>
                         <% } %>
                         <% } %>                        
   
