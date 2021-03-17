@@ -30,7 +30,8 @@ const doctorSchema = new Schema({
     cart: {
         items: [
             {
-                testId: {type: String}
+                _id: false,
+                testName: {type: String}
                 
             }
         ]

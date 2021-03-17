@@ -209,7 +209,7 @@ exports.postAddTest= (req, res, next) => {
       console.log(testName);
 
       docCart.push({
-        testId: testName
+        testName: testName
       });
 
       req.doctor.save();
@@ -218,7 +218,7 @@ exports.postAddTest= (req, res, next) => {
   })
 
   httpMsgs.sendJSON(req, res, {
-    from: "Server"
+    // from: "Server"
   })
 }
   
