@@ -27,6 +27,8 @@ router.get('/order-entry/:patientId', patientController.getOrderEntry);
 
 router.post('/addTest/:testId', patientController.postAddTest);
 
+router.get('/cart/:patientId', patientController.getCart);
+
 
 
 

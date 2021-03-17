@@ -200,7 +200,8 @@ exports.postAddTest= (req, res, next) => {
   const obj = JSON.parse(JSON.stringify(req.body));
   // get the test name
   const test = obj.name;
-  const docCart = req.doctor.cart.items
+  const docCart = req.doctor.cart.items;
+
 
   console.log(docCart);
   
@@ -235,8 +236,25 @@ exports.postAddTest= (req, res, next) => {
 
       // console.log(docCart);
 
+exports.getCart = (req, res, next) => {
+  const patientId = req.params.patientId;
+  console.log(patientId);
 
+  Doctor.findOne()
+  .then(doctor => {
+    const doctorItems = doctor.cart.items;
+    res.render('patient/cart', {
+      tests: doctorItems,
+      pageTitle: 'Cart',
+      path: '/cart'
 
+    })
+  })
+    
+    
+    
+ 
+}
 
 
 
