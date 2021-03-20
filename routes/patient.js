@@ -29,6 +29,10 @@ router.post('/addTest/:testId', patientController.postAddTest);
 
 router.get('/cart/:patientId', patientController.getCart);
 
+router.post('/cart-delete-item', patientController.postCartDeleteTest);
+
+router.post('/create-order', patientController.postOrder);
+
 
 
 

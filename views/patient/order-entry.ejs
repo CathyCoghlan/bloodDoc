@@ -62,7 +62,7 @@
                         <div class="radio-toolbar">
                         <% if (bioTests.length > 0) { %>
                             <% for (let t of bioTests) { %>
-                                <input type="hidden" value="<%= t.name %>" name="testName">
+                                <input type="hidden" value="<%= t._id %>" name="testName">
                                 <button class="btn" type="button" onclick="addTest(this)"><%= t.name %></button>
                         <% } %>
                         <% } %>   
@@ -82,7 +82,7 @@
                     <div class="tabcontent" id="Drugs" style="display: none;">
                         <% if (drugsTests.length > 0) { %>
                             <% for (let t of drugsTests) { %>
-                                <input type="hidden" value="<%= t.name %>" name="testName">
+                                <input type="hidden" value="<%= t._id %>" name="testName">
                                 <button class="btn" type="button" onclick="addTest(this)"><%= t.name %></button>
                         <% } %>
                         <% } %>                        
@@ -92,7 +92,7 @@
                     <div class="tabcontent" id="Haem" style="display: none;">
                         <% if (haemTests.length > 0) { %>
                             <% for (let t of haemTests) { %>
-                                <input type="hidden" value="<%= t.name %>" name="testName">
+                                <input type="hidden" value="<%= t._id %>" name="testName">
                                 <button class="btn" type="button" onclick="addTest(this)"><%= t.name %></button>
                         <% } %>
                         <% } %>                        
@@ -103,7 +103,7 @@
                     <div class="tabcontent" id="Immunology" style="display: none;">
                         <% if (immTests.length > 0) { %>
                             <% for (let t of immTests) { %>
-                                <input type="hidden" value="<%= t.name %>" name="testName">
+                                <input type="hidden" value="<%= t._id %>" name="testName">
                                 <button class="btn" type="button" onclick="addTest(this)"><%= t.name %></button>
                         <% } %>
                         <% } %>                        

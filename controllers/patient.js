@@ -1,7 +1,11 @@
 const Doctor = require('../models/doctor');
 const Patient = require('../models/patient');
+const Order = require('../models/order');
 const Test = require('../models/test');
 const httpMsgs = require('http-msgs');
+const mongoose = require('mongoose');
+const { ObjectId } = require('mongodb');
+const doctor = require('../models/doctor');
 
 
 exports.getAddPatient = (req, res, next) => {
@@ -195,79 +199,103 @@ exports.getOrderEntry = (req, res, next) => {
 }
 
 
+
+
+
+exports.getCart = (req, res, next) => {
+  const patientId = req.params.patientId;
+  const docCart = req.doctor.cart
+
+
+  req.doctor
+  .populate('cart.items.testId')
+  .execPopulate()
+  .then(doctor => {                       // this returns the full doctor object => {cart: {items: [_id: etc]}}
+    const tests = doctor.cart.items;   // this will just get us an array where the productId field is populated with the product information, so now in views structure is differnet. Product data is nested i porductId field so p.productId.title
+    console.log(tests);
+    res.render('patient/cart', {
+      path: '/cart',
+      pageTitle: 'Your Cart',
+      tests: tests,
+
+    });
+  })
+  .catch(err => console.log(err));
+};
+
+//   console.log(patientId);
+
+//   Patient.findById(patientId)
+//   .then(patient => {
+//     Doctor.findOne()
+//     .then(doctor => {
+//       const doctorItems = doctor.cart.items;
+//       res.render('patient/cart', {
+//         tests: doctorItems,
+//         patient: patient,
+//         pageTitle: 'Cart',
+//         path: '/cart'
+//       })
+//     })
+//   })
+// }
+
+exports.postOrder = (req, res, next) => {
+
+
+   Doctor.findOne()
+  .then(doctor => {
+    const tests = doctor.cart.items.map(i => {
+      return {testName : i.testName};
+    });
+    const order = new Order({
+      doctor:{
+        email: req.doctor.email,
+        doctorId: req.doctor
+      },
+      tests: tests
+    });
+    return order.save();
+  })
+  .then(result => {
+    console.log("it worked")
+  })
+  .catch(err => {
+    console.log(err)
+  });
+};
+  
+
 exports.postAddTest= (req, res, next) => {
   // get data from $ajax request
   const obj = JSON.parse(JSON.stringify(req.body));
   // get the test name
-  const test = obj.name;
+  const testId = obj.name;
   const docCart = req.doctor.cart.items;
+  console.log(testId);
 
-
-  console.log(docCart);
-  
-  Test.findOne({name: test})
+  Test.findById(testId)
   .then(test => {
-      console.log(test);
-      const testN = test.name;
-      console.log(testN);
-      docCart.push({
-        testName: testN
-      })
-      return req.doctor.save();
+    console.log(test);
+    return req.doctor.addToCart(test);
   })
   .then(result => {
-    console.log('Added test')
-  })
-  .catch(err => console.log(err));
-
-  // httpMsgs.sendJSON(req, res, {
-  //   // from: "Server"
-  // })
-}
-  
-
-
-
-      // docCart.push({
-      //   testName: testName
-      // });
-
-      // req.doctor.save();
-
-      // console.log(docCart);
-
-exports.getCart = (req, res, next) => {
-  const patientId = req.params.patientId;
-  console.log(patientId);
-
-  Patient.findById(patientId)
-  .then(patient => {
-    Doctor.findOne()
-    .then(doctor => {
-      const doctorItems = doctor.cart.items;
-      res.render('patient/cart', {
-        tests: doctorItems,
-        patient: patient,
-        pageTitle: 'Cart',
-        path: '/cart'
-      })
-    })
-  })
-}
-
-  // Doctor.findOne()
-  // .then(doctor => {
-  //   const doctorItems = doctor.cart.items;
-  //   res.render('patient/cart', {
-  //     tests: doctorItems,
-  //     pageTitle: 'Cart',
-  //     path: '/cart'
-
-  //   })
-  // })
+    console.log(result);
     
+  });
 
+}
 
+exports.postCartDeleteTest = (req, res, next) => {
+  const testId = req.body.testId;
+  req.doctor
+    .removeFromCart(testId)
+    .then(result => {
+      console.log("deleted bitch");
+    })
+    .catch(err => console.log(err));
+};
+  
 
 
 
@@ -357,3 +385,35 @@ exports.getCart = (req, res, next) => {
   //   }
   // });
 // };
+
+
+// exports.postAddTest= (req, res, next) => {
+//   // get data from $ajax request
+//   const obj = JSON.parse(JSON.stringify(req.body));
+//   // get the test name
+//   const test = obj.name;
+//   const docCart = req.doctor.cart.items;
+
+
+//   console.log(docCart);
+  
+//   Test.findOne({name: test})
+//   .then(test => {
+//       console.log(test);
+//       const testN = test.name;
+//       console.log(testN);
+//       docCart.push({
+//         testName: testN
+//       })
+//       return req.doctor.save();
+//   })
+//   .then(result => {
+//     console.log('Added test')
+//   })
+//   .catch(err => console.log(err));
+
+//   // httpMsgs.sendJSON(req, res, {
+//   //   // from: "Server"
+//   // })
+// }
+  
