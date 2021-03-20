@@ -6,7 +6,7 @@
 <body>
     <%- include('../includes/navigation.ejs') %>
     <main>
-
+        
         <% if (tests.length > 0) { %>
             <ul class="cart__item-list">
                 <% tests.forEach(t => { %>
@@ -14,7 +14,7 @@
                         <h1><%= t.testId.name %></h1>
                         <h2></h2>
                         <form action="/cart-delete-item" method="POST">
-                            <input type="hidden" value="<%= t.testId.name %>" name="testId">                          
+                            <input type="hidden" value="<%= t.testId._id %>" name="testId">                          
                             <button class="btn danger" type="submit">Delete</button>
                         </form>
                     </li>

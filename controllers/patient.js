@@ -204,41 +204,38 @@ exports.getOrderEntry = (req, res, next) => {
 
 exports.getCart = (req, res, next) => {
   const patientId = req.params.patientId;
-  const docCart = req.doctor.cart
-
-
   req.doctor
   .populate('cart.items.testId')
   .execPopulate()
   .then(doctor => {                       // this returns the full doctor object => {cart: {items: [_id: etc]}}
     const tests = doctor.cart.items;   // this will just get us an array where the productId field is populated with the product information, so now in views structure is differnet. Product data is nested i porductId field so p.productId.title
-    console.log(tests);
-    res.render('patient/cart', {
-      path: '/cart',
-      pageTitle: 'Your Cart',
-      tests: tests,
+    Patient.findById(patientId)
+    .then(patient => {
+      console.log(tests);
+      res.render('patient/cart', {
+        path: '/cart',
+        pageTitle: 'Your Cart',
+        tests: tests,
+        patient: patient
+      });
+    })
 
-    });
   })
   .catch(err => console.log(err));
 };
 
-//   console.log(patientId);
+exports.postCartDeleteTest = (req, res, next) => {
+  const prodId = req.body.testId;
+  req.doctor
+    .removeFromCart(prodId)
+    .then(result => {
+      
+      res.redirect('/cart');
+    })
+    .catch(err => console.log(err));
+};
 
-//   Patient.findById(patientId)
-//   .then(patient => {
-//     Doctor.findOne()
-//     .then(doctor => {
-//       const doctorItems = doctor.cart.items;
-//       res.render('patient/cart', {
-//         tests: doctorItems,
-//         patient: patient,
-//         pageTitle: 'Cart',
-//         path: '/cart'
-//       })
-//     })
-//   })
-// }
+
 
 exports.postOrder = (req, res, next) => {
 
@@ -285,17 +282,6 @@ exports.postAddTest= (req, res, next) => {
   });
 
 }
-
-exports.postCartDeleteTest = (req, res, next) => {
-  const testId = req.body.testId;
-  req.doctor
-    .removeFromCart(testId)
-    .then(result => {
-      console.log("deleted bitch");
-    })
-    .catch(err => console.log(err));
-};
-  
 
 
 

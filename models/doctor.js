@@ -66,13 +66,12 @@ doctorSchema.methods.addToCart = function(test) {
 }
 
 doctorSchema.methods.removeFromCart = function(testId) {                               // Get the prodId as an argument
-    const updatedCartItems = this.cart.items.filter(test => {                           // create an UpdatedCartItems array where were map everything again, only filter out the product with the ID given
+    const updatedCartItems = this.cart.items.filter(item => {                           // create an UpdatedCartItems array where were map everything again, only filter out the product with the ID given
         return item.testId.toString() !== testId.toString();
     });
     this.cart.items = updatedCartItems;                                                 // Save that new cartItems array to cart.items
     return this.save();                                                                 // call mongoose method save(), to save to the collection
 }
-
 
 
 

@@ -25,9 +25,9 @@ router.get('/select-patient', patientController.getSelectPatient);
 
 router.get('/order-entry/:patientId', patientController.getOrderEntry);
 
-router.post('/addTest/:testId', patientController.postAddTest);
-
 router.get('/cart/:patientId', patientController.getCart);
+
+router.post('/addTest/:testId', patientController.postAddTest);
 
 router.post('/cart-delete-item', patientController.postCartDeleteTest);
 
