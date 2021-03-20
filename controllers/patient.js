@@ -238,29 +238,34 @@ exports.postCartDeleteTest = (req, res, next) => {
 
 
 exports.postOrder = (req, res, next) => {
-
-
-   Doctor.findOne()
+  const patientId = req.body.patientId;
+  console.log(patientId);
+  req.doctor
+  .populate('cart.items.testId')
+  .execPopulate()
   .then(doctor => {
-    const tests = doctor.cart.items.map(i => {
-      return {testName : i.testName};
-    });
-    const order = new Order({
-      doctor:{
-        email: req.doctor.email,
-        doctorId: req.doctor
-      },
-      tests: tests
-    });
-    return order.save();
+    Patient.findById(patientId)
+    .then(patient => {
+      const tests = doctor.cart.items.map(i => {
+        return { quantity: i.quantity, test: {...i.testId._doc } };
+      });
+      const order = new Order({
+        doctor: {
+          email: req.doctor.email,
+          doctorId: req.doctor
+        },
+        tests: tests,
+        patient: patient._id
+      });
+      return order.save();
+    })
+    .then(result => {
+      console.log("Worked?")
+    })
   })
-  .then(result => {
-    console.log("it worked")
-  })
-  .catch(err => {
-    console.log(err)
-  });
-};
+    
+
+   };
   
 
 exports.postAddTest= (req, res, next) => {

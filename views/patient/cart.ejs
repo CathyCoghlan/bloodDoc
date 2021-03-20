@@ -6,7 +6,7 @@
 <body>
     <%- include('../includes/navigation.ejs') %>
     <main>
-        
+        <p><%= patient._id %></p>
         <% if (tests.length > 0) { %>
             <ul class="cart__item-list">
                 <% tests.forEach(t => { %>
@@ -23,7 +23,7 @@
             <hr>
             <div class="centered">
                 <form action="/create-order" method="POST">
-                    
+                    <input type="hidden" value="<%= patient._id %>" name="patientId"> 
                     <button type="submit" class="btn">Order Now!</button>
                 </form>
             </div>
