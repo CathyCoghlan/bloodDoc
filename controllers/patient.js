@@ -225,12 +225,12 @@ exports.getCart = (req, res, next) => {
 };
 
 exports.postCartDeleteTest = (req, res, next) => {
-  const prodId = req.body.testId;
+  const testId = req.body.testId;
   req.doctor
-    .removeFromCart(prodId)
+    .removeFromCart(testId)
     .then(result => {
-      
-      res.redirect('/cart');
+      console.log('delete')
+      // res.redirect('/cart');
     })
     .catch(err => console.log(err));
 };
@@ -260,8 +260,13 @@ exports.postOrder = (req, res, next) => {
       return order.save();
     })
     .then(result => {
-      console.log("Worked?")
+      return req.doctor.clearCart()
     })
+    .then(result => {
+      console.log("Cart Cleared & Order Made")
+      res.redirect('/');
+    })
+    .catch(err => console.log(err));
   })
     
 

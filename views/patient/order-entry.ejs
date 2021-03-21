@@ -63,7 +63,7 @@
                         <% if (bioTests.length > 0) { %>
                             <% for (let t of bioTests) { %>
                                 <input type="hidden" value="<%= t._id %>" name="testName">
-                                <button class="btn" type="button" onclick="addTest(this)"><%= t.name %></button>
+                                <button class="testBtn" type="button" onclick="addTest(this)"><%= t.name %></button>
                         <% } %>
                         <% } %>   
                     </div>
@@ -83,7 +83,7 @@
                         <% if (drugsTests.length > 0) { %>
                             <% for (let t of drugsTests) { %>
                                 <input type="hidden" value="<%= t._id %>" name="testName">
-                                <button class="btn" type="button" onclick="addTest(this)"><%= t.name %></button>
+                                <button class="testBtn" type="button" onclick="addTest(this)"><%= t.name %></button>
                         <% } %>
                         <% } %>                        
 
@@ -93,7 +93,7 @@
                         <% if (haemTests.length > 0) { %>
                             <% for (let t of haemTests) { %>
                                 <input type="hidden" value="<%= t._id %>" name="testName">
-                                <button class="btn" type="button" onclick="addTest(this)"><%= t.name %></button>
+                                <button class="testBtn" type="button" onclick="addTest(this)"><%= t.name %></button>
                         <% } %>
                         <% } %>                        
 
@@ -104,7 +104,7 @@
                         <% if (immTests.length > 0) { %>
                             <% for (let t of immTests) { %>
                                 <input type="hidden" value="<%= t._id %>" name="testName">
-                                <button class="btn" type="button" onclick="addTest(this)"><%= t.name %></button>
+                                <button class="testBtn" type="button" onclick="addTest(this)"><%= t.name %></button>
                         <% } %>
                         <% } %>                        
   

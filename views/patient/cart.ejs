@@ -15,7 +15,7 @@
                         <h2></h2>
                         <form action="/cart-delete-item" method="POST">
                             <input type="hidden" value="<%= t.testId._id %>" name="testId">                          
-                            <button class="btn danger" type="submit">Delete</button>
+                            <button class="deleteBtn" type="submit">Delete</button>
                         </form>
                     </li>
                 <% }) %>
@@ -33,3 +33,12 @@
         <% } %>
     </main>
     <%- include('../includes/end.ejs') %>
+
+
+<script>
+    $(document).ready(function(){ 
+  $('.deleteBtn').on('submit', function(){ 
+        location.reload(true);
+  });
+})
+</script>

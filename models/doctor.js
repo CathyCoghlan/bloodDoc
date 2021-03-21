@@ -73,6 +73,11 @@ doctorSchema.methods.removeFromCart = function(testId) {                        
     return this.save();                                                                 // call mongoose method save(), to save to the collection
 }
 
+doctorSchema.methods.clearCart = function(){
+    this.cart = { items: [] };
+    return this.save();
+}  
+
 
 
 

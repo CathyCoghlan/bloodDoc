@@ -42,7 +42,7 @@ function openTests(evt, testName) {
 
 
   $(document).ready(function(){ 
-  $('.test').click(function() { 
+  $('.testBtn').click(function() { 
       $(this).toggleClass('activeBtn');
   });
 });

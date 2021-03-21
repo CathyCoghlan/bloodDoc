@@ -262,31 +262,22 @@
 
 
 
-
-
-
-
-
-
-
-
-
   /* .tabcontent .test:focus, .test:active, .test:visited {
     background-color: rgb(43, 156, 184);
     color:white;
 } */
 
 
-/* 
-  .test:hover {
+
+  .testBtn:hover {
     background-color: rgba(92, 177, 180, 0.6);
   }
   
-  .test:focus {
+  .testBtn:focus {
     background-color: rgba(92, 177, 180, 0.6);
   } 
   
-  .test:active, .test:visited {
+  .testBtn:active, .testBtn:visited {
     background-color: rgba(92, 177, 180, 0.6);
   }
   
@@ -294,7 +285,7 @@
     background: rgba(92, 177, 180, 0.6); 
   }
 
-    */
+   
 
 
 
