@@ -52,6 +52,25 @@
                     </div>
                   </div>
 
+                  
+        </div>
+        <div class="orders">
+          <% if (orders.length <= 0) { %>
+            <h1>Nothing there!</h1>
+        <% } else { %>
+            <ul class="orders">
+                <% orders.forEach(order => { %>
+                    <li class="orders__item">
+                      <h1>Patient - <%= order.patient.createdAt %></h1>
+                        <ul class="orders__products">
+                            <% order.tests.forEach(p => { %>
+                                <li class="orders__products-item"><%= p.test.name %> .... (<%= p.test.specimenType %>)</li>
+                            <% }); %>
+                        </ul>
+                    </li>
+                <% }); %>
+            </ul>
+        <% } %>
         </div>
 
         

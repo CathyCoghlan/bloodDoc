@@ -15,11 +15,8 @@ exports.getRegister = (req, res, next) => {
   };
 
   exports.postLogin = (req, res, next) => {
-    res.render('auth/login', {
-      path: '/login',
-      pageTitle: 'Login',
-      isAuthenticated: false
-    });
+    req.isLoggedIn = true;
+    res.redirect('/')
   };
 
   exports.postRegister = (req, res, next) => {

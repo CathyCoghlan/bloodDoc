@@ -5,7 +5,7 @@ const Test = require('../models/test');
 const httpMsgs = require('http-msgs');
 const mongoose = require('mongoose');
 const { ObjectId } = require('mongodb');
-const doctor = require('../models/doctor');
+const moment = require('moment');
 
 
 exports.getAddPatient = (req, res, next) => {
@@ -120,12 +120,16 @@ exports.getPatient = (req, res, next) => {
   const patientId = req.params.patientId;
   Patient.findById(patientId)
   .then(patient => {
-    console.log(patient);
-    res.render('patient/patient', {
-      patient: patient,
-      pageTitle: 'Patient Details',
-      path: '/patient'
-    });
+    Order.find({"patient.patientId": patient._id})
+    .then(orders => {
+      console.log(patient);
+      res.render('patient/patient', {
+        patient: patient,
+        orders: orders,
+        pageTitle: 'Patient Details',
+        path: '/patient'
+      });
+    })
   })
   .catch(err => {
     console.log(err);
@@ -225,14 +229,18 @@ exports.getCart = (req, res, next) => {
 };
 
 exports.postCartDeleteTest = (req, res, next) => {
-  const testId = req.body.testId;
+  const testId = req.params.testId;
   req.doctor
     .removeFromCart(testId)
     .then(result => {
       console.log('delete')
-      // res.redirect('/cart');
+      res.status(200).json({
+        message: 'Success'
+      })
     })
-    .catch(err => console.log(err));
+    .catch(err => {
+      res.status(500).json({message: 'failed'});
+    });
 };
 
 
@@ -255,7 +263,15 @@ exports.postOrder = (req, res, next) => {
           doctorId: req.doctor
         },
         tests: tests,
-        patient: patient._id
+        patient: {
+          patientId: patient._id,
+          firstName: patient.firstName,
+          lastName: patient.lastName,
+          dateOfBirth: patient.dateOfBirth,
+          gender: patient.gender,
+          time: new Date()
+
+        } 
       });
       return order.save();
     })
@@ -264,13 +280,14 @@ exports.postOrder = (req, res, next) => {
     })
     .then(result => {
       console.log("Cart Cleared & Order Made")
-      res.redirect('/');
+      res.redirect('/orders');
     })
     .catch(err => console.log(err));
   })
     
 
    };
+  
   
 
 exports.postAddTest= (req, res, next) => {
@@ -294,7 +311,18 @@ exports.postAddTest= (req, res, next) => {
 }
 
 
-
+exports.getOrders = (req, res, next) => {
+    Order.find({"doctor.doctorId": req.doctor._id})
+     .then(orders => {
+       console.log(orders)
+        res.render('patient/orders', {
+        path:'/orders',
+        pageTitle: 'My Orders',
+        orders: orders
+      })
+    })
+    .catch(err => console.log(err)); 
+  }
 
 
 
@@ -412,4 +440,46 @@ exports.postAddTest= (req, res, next) => {
 //   //   // from: "Server"
 //   // })
 // }
+
+
+
+// exports.postOrder = (req, res, next) => {
+//   const patientId = req.body.patientId;
+//   console.log(patientId);
+//   req.doctor
+//   .populate('cart.items.testId')
+//   .execPopulate()
+//   .then(doctor => {
+//     Patient.findById(patientId)
+//     .then(patient => {
+//       const tests = doctor.cart.items.map(i => {
+//         return { quantity: i.quantity, test: {...i.testId._doc } };
+//       });
+//       const order = new Order({
+//         doctor: {
+//           email: req.doctor.email,
+//           doctorId: req.doctor
+//         },
+//         tests: tests,
+//         patient: patient._id
+//       });
+//       return order.save();
+//     })
+//     .populate('patient')
+//     .execPopulate()
+//     .then(result => {
+//       return order.save();
+//     })
+//     .then(result => {
+//       return req.doctor.clearCart()
+//     })
+//     .then(result => {
+//       console.log("Cart Cleared & Order Made")
+//       res.redirect('/');
+//     })
+//     .catch(err => console.log(err));
+//   })
+    
+
+//    };
   

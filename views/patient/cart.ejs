@@ -8,18 +8,23 @@
     <main>
         <p><%= patient._id %></p>
         <% if (tests.length > 0) { %>
-            <ul class="cart__item-list">
-                <% tests.forEach(t => { %>
-                    <li class="cart__item">
-                        <h1><%= t.testId.name %></h1>
-                        <h2></h2>
-                        <form action="/cart-delete-item" method="POST">
-                            <input type="hidden" value="<%= t.testId._id %>" name="testId">                          
-                            <button class="deleteBtn" type="submit">Delete</button>
-                        </form>
-                    </li>
-                <% }) %>
-            </ul>
+            
+                <ul class="cart__item-list">
+                    <% tests.forEach(t => { %>
+                        <article class="card-test-item">
+                        <li class="cart__item">
+                            <h1><%= t.testId.name %></h1>
+                            <h2></h2>
+                            
+                                <input type="hidden" value="<%= t.testId._id %>" name="testId">                          
+                                <button class="deleteBtn" type="button" onclick="deleteTest(this)">Delete</button>
+                            
+                        </li>
+                    </article>
+                    <% }) %>
+                </ul>
+            
+
             <hr>
             <div class="centered">
                 <form action="/create-order" method="POST">
@@ -36,9 +41,22 @@
 
 
 <script>
-    $(document).ready(function(){ 
-  $('.deleteBtn').on('submit', function(){ 
-        location.reload(true);
-  });
-})
+    const deleteTest = (deleteBtn) => {
+       const testId = deleteBtn.parentNode.querySelector('[name=testId]').value;
+       const testElement = deleteBtn.closest('article');
+
+       fetch('/cart-delete-item/' + testId, {
+           method: 'DELETE'
+       })
+       .then(result => {
+           return result.json();
+       })
+       .then(data => {
+           console.log(data);
+           testElement.parentNode.removeChild(testElement);
+       })
+       .catch(err => {
+           console.log(err);
+       })
+    };
 </script>
