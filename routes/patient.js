@@ -3,37 +3,38 @@ const path = require('path');
 const express = require('express');
 
 const patientController = require('../controllers/patient');
+const isAuth = require('../middleware/is-auth');
 
 const router = express.Router();
 
-router.get('/add-patient', patientController.getAddPatient);
+router.get('/add-patient', isAuth, patientController.getAddPatient);
 
-router.get('/patients', patientController.getPatients);
+router.get('/patients', isAuth, patientController.getPatients);
 
 router.post('/add-patient', patientController.postAddPatient);
 
-router.get('/edit-patient/:patientId', patientController.getEditPatient);
+router.get('/edit-patient/:patientId', isAuth, patientController.getEditPatient);
 
-router.post('/edit-patient', patientController.postEditPatient);
+router.post('/edit-patient', isAuth, patientController.postEditPatient);
 
 // Get individual patient details
-router.get('/patient/:patientId', patientController.getPatient); 
+router.get('/patient/:patientId', isAuth, patientController.getPatient); 
 
-router.post('/delete-patient', patientController.postDeletePatient);
+router.post('/delete-patient', isAuth, patientController.postDeletePatient);
 
-router.get('/select-patient', patientController.getSelectPatient);
+router.get('/select-patient', isAuth, patientController.getSelectPatient);
 
-router.get('/order-entry/:patientId', patientController.getOrderEntry);
+router.get('/order-entry/:patientId', isAuth, patientController.getOrderEntry);
 
-router.get('/cart/:patientId', patientController.getCart);
+router.get('/cart/:patientId', isAuth, patientController.getCart);
 
-router.post('/addTest/:testId', patientController.postAddTest);
+router.post('/addTest/:testId', isAuth, patientController.postAddTest);
 
-router.delete('/cart-delete-item/:testId', patientController.postCartDeleteTest);
+router.delete('/cart-delete-item/:testId', isAuth, patientController.postCartDeleteTest);
 
-router.post('/create-order', patientController.postOrder);
+router.post('/create-order', isAuth, patientController.postOrder);
 
-router.get('/orders', patientController.getOrders);
+router.get('/orders', isAuth, patientController.getOrders);
 
 
 

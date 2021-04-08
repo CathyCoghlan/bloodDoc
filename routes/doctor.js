@@ -3,24 +3,23 @@ const path = require('path');
 const express = require('express');
 
 const doctorController = require('../controllers/doctor');
+const isAuth = require('../middleware/is-auth');
 
 const router = express.Router();
 
-router.get('/', doctorController.getIndex);
+router.get('/', isAuth, doctorController.getIndex);
 
-router.get('/my-account', doctorController.getDoctor);
+router.get('/my-account', isAuth,  doctorController.getDoctor);
 
-router.get('/sample-quality', doctorController.getSampleQuality);
+router.get('/sample-quality', isAuth, doctorController.getSampleQuality);
 
-router.get('/tests', doctorController.getTests);
+router.get('/tests', isAuth, doctorController.getTests);
 
-router.get('/add-test', doctorController.getAddTest);
+router.get('/add-test', isAuth, doctorController.getAddTest);
 
-router.post('/add-test', doctorController.postAddTest);
+router.post('/add-test', isAuth, doctorController.postAddTest);
 
-router.get('/test/:testId', doctorController.getTest); 
-
-
+router.get('/test/:testId', isAuth, doctorController.getTest); 
 
 
 module.exports = router;

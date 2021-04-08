@@ -12,7 +12,8 @@ exports.getAddPatient = (req, res, next) => {
     res.render('patient/edit-patient', {
         pageTitle: 'Add Patient',
         path: '/add-patient',
-        editing: false
+        editing: false,
+        isAuthenticated: req.session.isLoggedIn
     });
 };
 
@@ -63,7 +64,8 @@ exports.postAddPatient = (req, res, next) => {
           pageTitle: 'Edit Product',
           path: '/edit-patient',
           editing: editMode,
-          patient: patient
+          patient: patient,
+          isAuthenticated: req.session.isLoggedIn
         });
       })
       .catch(err => console.log(err));
@@ -108,7 +110,8 @@ exports.getPatients = (req, res, next) => {
       res.render('patient/patients', {
         patient: patients,
         pageTitle: 'Patients',
-        path: '/patients'
+        path: '/patients',
+        isAuthenticated: req.session.isLoggedIn
       });
     })
     .catch(err => {
@@ -127,7 +130,8 @@ exports.getPatient = (req, res, next) => {
         patient: patient,
         orders: orders,
         pageTitle: 'Patient Details',
-        path: '/patient'
+        path: '/patient',
+        isAuthenticated: req.session.isLoggedIn
       });
     })
   })
@@ -150,7 +154,8 @@ exports.postDeletePatient = (req, res, next) => {
 exports.getSelectPatient = (req, res, next) => {
   res.render('patient/select-patient', {
     pageTitle: 'Select Patient',
-    path: '/select-patient'
+    path: '/select-patient',
+    isAuthenticated: req.session.isLoggedIn
     
 });
 }
@@ -187,7 +192,8 @@ exports.getOrderEntry = (req, res, next) => {
                                             immTests: immt,
                                             haemTests: haemt,
                                             drugsTests: drugsTests,
-                                            patient: pat
+                                            patient: pat,
+                                            isAuthenticated: req.session.isLoggedIn
                                         })
                                     }
                                 })
@@ -220,7 +226,8 @@ exports.getCart = (req, res, next) => {
         path: '/cart',
         pageTitle: 'Your Cart',
         tests: tests,
-        patient: patient
+        patient: patient,
+        isAuthenticated: req.session.isLoggedIn
       });
     })
 
@@ -318,7 +325,8 @@ exports.getOrders = (req, res, next) => {
         res.render('patient/orders', {
         path:'/orders',
         pageTitle: 'My Orders',
-        orders: orders
+        orders: orders,
+        isAuthenticated: req.session.isLoggedIn
       })
     })
     .catch(err => console.log(err)); 

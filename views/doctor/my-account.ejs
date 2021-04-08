@@ -12,7 +12,7 @@
                         <% for (let dr of doctor) { %>
                             <div class="left">
                                 <div class="userIcon"><i class="flaticon-user-3"></i></div>
-                                <h4><%= dr.name %></h4>
+                                <h4><%= dr.firstName %></h4>
                                 <p>General Practitioner</p>
                               </div>
                               <div class="right">
@@ -21,9 +21,9 @@
                                   <div class="user_info">
                                     <div class="data">
                                       <h4>Name</h4>
-                                      <p><%= dr.name %></p>
+                                      <p><%= dr.firstName %></p>
                                       <h4>Mobile</h4>
-                                      <p><%= dr.phone %></p>
+                                      <p><%= dr.mobile %></p>
                                     
                                     </div>
                                     <div class="data">
@@ -37,7 +37,7 @@
                                   <div class="practice_info">
                                     <div class="data">
                                       <h4>Address</h4>
-                                      <p><%= dr.address %></p>
+                                      <p><%= dr.practice %></p>
                                       <h4>Telephone</h4>
                                       <p><%= dr.tel %></p>
                                     </div>

@@ -17,7 +17,8 @@
 }
 
 .box3{
-    background-color:burlywood;
+    background-color:rgb(166, 197, 209);
+    height:200px;
 
 }
 .box4{
@@ -173,35 +174,36 @@
     
   }
 .tab button {
-    background: #eee;
+    background: rgb(86, 141, 158);
     border: 1px solid #ccc;
     outline: none;
     cursor: pointer;
     padding: 14px 16px;
     transition: 0.3s;
     font-size: 14px;
-    color: #666;
+    color: rgb(188, 222, 231);
     font-size: 12px; 
 	font-weight: 600;
     width:100%;
     text-transform: uppercase;
     transition: all 0.3s;
+    height: 70px;
 	
     
   }
 
 /* Change background color of buttons on hover */
 .tab button:hover {
-    border-top-color: #333;
-	color: #333;
+    border-top-color: rgb(255, 254, 254);
+	color: rgb(255, 254, 254);
   }
 
   /* Create an active/current tablink class */
 .tab button:active, button:focus {
-    border-bottom-color: #fff;
+    border-bottom-color: rgb(36, 107, 148);
 	border-top-color: #B721FF;
-	background:white;
-	color: #222;
+	background:rgb(46, 91, 109);
+	color: rgb(255, 254, 254);
   }
 
   /* Style the tab content */
@@ -266,6 +268,16 @@
     background-color: rgb(43, 156, 184);
     color:white;
 } */
+.testBtn{
+    border-radius: 20px;
+    width: 180px;
+    margin:10px;
+    padding: 3px;
+    border: none;
+    box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
+    font-weight: 500;
+    margin-left: 40px;
+}
 
 
 
@@ -275,17 +287,69 @@
   
   .testBtn:focus {
     background-color: rgba(92, 177, 180, 0.6);
+    border: none;
   } 
   
   .testBtn:active, .testBtn:visited {
     background-color: rgba(92, 177, 180, 0.6);
+    border: none;
   }
   
   .activeBtn {
     background: rgba(92, 177, 180, 0.6); 
   }
 
-   
+  .box3 .samples-header{
+      text-align: center;
+      text-transform: uppercase;
+      margin-top: 10px;
+      padding-top: 10px;
+      font-size: 15px;
+      color: white;
+      
+  }
+
+
+  .box3 .samples {
+      background-color: white;
+      height: 200px;
+      margin-top: 10%;
+      border-radius: 30px;
+      border: dashed rgba(92, 177, 180, 0.6);
+      
+  }
+
+  .box3 .samples .tubes {
+      margin-left: 20px;
+      margin-top: 30px;
+  }
+
+
+
+  .box3 .cartBtn {
+    font: bold 11px Arial;
+  text-decoration: none;
+  background-color: #EEEEEE;
+  color: #333333;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  }
+  
+  .box3 .cartBtn a:hover {
+    text-decoration: underline;
+  }
+  
+  .box3 .cartBtn a:active {
+    color: black;
+  }
+  
+  .box3 .cartBtn a:visited {
+    color: purple;
+  }
+    
 
 
 

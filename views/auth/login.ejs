@@ -13,21 +13,23 @@
       <div class="title">
         Blood Doc
       </div>  
-           
-      <div class="form">
-        <div class="input_field">
-          <input type="text" placeholder="Email" class="input">
-          <i class="far fa-envelope"></i>
-        </div>
-        <div class="input_field">
-          <input type="password" placeholder="Password" class="input">
-          <i class="fas fa-lock"></i>
-        </div>
-        <form action="/login" method="POST">
-            <button class="btn-reg" type="submit">Login</button>
-            <input type="hidden" name="" value="">
-        </form>
-        <a href="/views/auth/register.ejs">Create Account</a>
+        
+      <form action="/login" method="POST">      
+        <div class="form">
+          <div class="input_field">
+            <input type="text" placeholder="email" class="input" name="email" id="email">
+            <i class="fas fa-user"></i>
+          </div>
+          <div class="input_field">
+            <input type="password" placeholder="Password" class="input" name="password" id="password">
+            <i class="fas fa-lock"></i>
+          </div>
+
+          
+              <button class="btn-reg" type="submit">Login</button>
+              <input type="hidden" name="" value="">
+          </form>
+        <a href="register">Create Account</a>
       </div>
     </div>
 

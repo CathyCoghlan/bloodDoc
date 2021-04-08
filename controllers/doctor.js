@@ -7,18 +7,22 @@ const { get } = require('../routes/patient');
 exports.getIndex = (req, res, next) => {
     res.render('doctor/index', {
         pageTitle: 'Homepage',
-        path: '/'
+        path: '/',
+        isAuthenticated: req.session.isLoggedIn
     });
 };
 
  exports.getDoctor = (req, res, next) => {
-    Doctor.find()
-      .then(products => {
-        console.log(products);
+   console.log(req.doctor.email)
+   const email = req.doctor.email;
+   Doctor.find({ email: email })
+      .then(products => {        
         res.render('doctor/my-account', {
           doctor: products,
           pageTitle: 'My Account',
-          path: '/my-account'
+          path: '/my-account',
+          isAuthenticated: req.session.isLoggedIn
+          
         });
       })
       .catch(err => {
@@ -28,9 +32,11 @@ exports.getIndex = (req, res, next) => {
 
 
 exports.getSampleQuality = (req, res, next) => {
+  console.log(req.doctor._id)
     res.render('doctor/sample-quality', {
         pageTitle: 'Sample Quality',
-        path: '/doctor/sampleQuality'
+        path: '/doctor/sampleQuality',
+        isAuthenticated: req.session.isLoggedIn
     });
 };
 
@@ -41,7 +47,8 @@ exports.getTests = (req, res, next) => {
       res.render('doctor/tests', {
         test: tests,
         pageTitle: 'Tests',
-        path: '/tests'
+        path: '/tests',
+        isAuthenticated: req.session.isLoggedIn
       });
     })
     .catch(err => {
@@ -57,7 +64,8 @@ exports.getTest= (req, res, next) => {
     res.render('doctor/test-details', {
       test: test,
       pageTitle: 'test Details',
-      path: '/test-details'
+      path: '/test-details',
+      isAuthenticated: req.session.isLoggedIn
     });
   })
   .catch(err => {
@@ -69,7 +77,8 @@ exports.getTest= (req, res, next) => {
 exports.getAddTest= (req, res, next) => {
   res.render('admin/add-test', {
       pageTitle: 'All Tests',
-      path: '/add-test'
+      path: '/add-test',
+      isAuthenticated: req.session.isLoggedIn
   });
 };
 

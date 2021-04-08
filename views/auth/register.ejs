@@ -12,21 +12,46 @@
             </div> -->
       <div class="title">
         Register Here
-      </div>           
+      </div>   
+      <form action="/register" method="POST">      
       <div class="form">
         <div class="input_field">
-          <input type="text" placeholder="Name" class="input">
+          <input type="text" placeholder="First Name" class="input" name="firstName" id="firstName">
           <i class="fas fa-user"></i>
         </div>
         <div class="input_field">
-          <input type="text" placeholder="Email" class="input">
+          <input  type="text" placeholder="Surname" class="input" name="lastName" id="lastName">
+          <i class="fas fa-user"></i>
+        </div>
+        <div class="input_field">
+          <input type="text" placeholder="Mobile" class="input" name="mobile" id="mobile">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <div class="input_field">
+          <input type="text" placeholder="Practice Address" class="input" name="practice" id="practice">
+          <i class="fas fa-clinic-medical"></i>
+        </div>
+        <div class="input_field">
+          <input type="text" placeholder="GP Code" class="input" name="code" id="code">
+          <i class="fas fa-user-md"></i>
+        </div>
+        <div class="input_field">
+          <input type="text" placeholder="Practice Telephone" class="input" name="tel" id="tel">
+          <i class="fas fa-phone-alt"></i>
+        </div>
+        <div class="input_field">
+          <input type="text" placeholder="Email" class="input" name="email" id="email">
           <i class="far fa-envelope"></i>
         </div>
         <div class="input_field">
-          <input type="password" placeholder="Password" class="input">
+          <input type="password" placeholder="Password" class="input" name="password" id="password">
           <i class="fas fa-lock"></i>
         </div>
-        <form action="#" method="post">
+        <div class="input_field">
+          <input type="password" placeholder="Confirm Password" class="input" name="confirmPassword" id="confirmPassword">
+          <i class="fas fa-lock"></i>
+        </div>
+        
             <button class="btn-reg" type="submit">Register</button>
             <input type="hidden" name="" value="">
         </form>
