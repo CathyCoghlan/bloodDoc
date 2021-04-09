@@ -13,48 +13,52 @@
       <div class="title">
         Register Here
       </div>   
-      <form action="/register" method="POST">      
+      <form action="/register" method="POST" novalidate>      
       <div class="form">
         <div class="input_field">
-          <input type="text" placeholder="First Name" class="input" name="firstName" id="firstName">
+          <input type="text" class="input" placeholder="First Name"name="firstName" id="firstName" value="<%= oldInput.firstName %>">             
           <i class="fas fa-user"></i>
         </div>
         <div class="input_field">
-          <input  type="text" placeholder="Surname" class="input" name="lastName" id="lastName">
+          <input type="text" class="input" placeholder="Surname" name="lastName" id="lastName" value="<%= oldInput.lastName %>">
           <i class="fas fa-user"></i>
         </div>
         <div class="input_field">
-          <input type="text" placeholder="Mobile" class="input" name="mobile" id="mobile">
+          <input type="text" placeholder="Mobile" class="input" name="mobile" id="mobile" value="<%= oldInput.mobile %>">
           <i class="fas fa-mobile-alt"></i>
         </div>
         <div class="input_field">
-          <input type="text" placeholder="Practice Address" class="input" name="practice" id="practice">
+          <input type="text" placeholder="Practice Address" class="input" name="practice" id="practice" value="<%= oldInput.practice %>">
           <i class="fas fa-clinic-medical"></i>
         </div>
         <div class="input_field">
-          <input type="text" placeholder="GP Code" class="input" name="code" id="code">
+          <input type="text" class="<%= validationErrors.find(e => e.param === 'email')  ? 'invalid' : 'input' %>" placeholder="GP Code"name="code" id="code" value="<%= oldInput.code %>">
           <i class="fas fa-user-md"></i>
         </div>
         <div class="input_field">
-          <input type="text" placeholder="Practice Telephone" class="input" name="tel" id="tel">
+          <input type="text" placeholder="Practice Telephone" class="input" name="tel" id="tel" value="<%= oldInput.tel %>">
           <i class="fas fa-phone-alt"></i>
         </div>
         <div class="input_field">
-          <input type="text" placeholder="Email" class="input" name="email" id="email">
+          <input class="<%= validationErrors.find(e => e.param === 'email')  ? 'invalid' : 'input' %>" type="email" placeholder="Email" name="email" id="email" value="<%= oldInput.email %>">
           <i class="far fa-envelope"></i>
         </div>
         <div class="input_field">
-          <input type="password" placeholder="Password" class="input" name="password" id="password">
+          <input class="<%= validationErrors.find(e => e.param === 'password')  ? 'invalid' : 'input' %>" type="password" placeholder="Password"  name="password" id="password" value="<%= oldInput.password %>">
           <i class="fas fa-lock"></i>
         </div>
         <div class="input_field">
-          <input type="password" placeholder="Confirm Password" class="input" name="confirmPassword" id="confirmPassword">
+          <input class="<%= validationErrors.find(e => e.param === 'confirmPassword')  ? 'invalid' : 'input' %>" type="password" placeholder="Confirm Password" name="confirmPassword" id="confirmPassword" value="<%= oldInput.confirmPassword %>">
           <i class="fas fa-lock"></i>
         </div>
+        <% if (errorMessage) { %>
+          <div class="user-message user-message--error"><p><%= errorMessage %></p></div>
+      <% } %>
         
             <button class="btn-reg" type="submit">Register</button>
             <input type="hidden" name="" value="">
         </form>
+        <a href="login">Already have an account? Login Here</a>
       </div>
     </div>
 

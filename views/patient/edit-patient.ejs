@@ -16,21 +16,21 @@
                     <div class="input_grp">
                         <div class="input_wrap">
                             <label for="firstName">First Name</label>
-                            <input type="text" name="firstName" id="firstName" value="<% if (editing) { %><%= patient.firstName %><% } %>">
+                            <input class="<%= validationErrors.find(e => e.param === 'email')  ? 'invalid' : '' %>" type="text" name="firstName" id="firstName" value="<% if (editing || hasError ) { %><%= patient.firstName %><% } %>">
                         </div>
                         <div class="input_wrap">
                             <label for="lastName">Last Name</label>
-                            <input type="text" name="lastName" id="lastName" value="<% if (editing) { %><%= patient.lastName %><% } %>">
+                            <input type="text" name="lastName" id="lastName" value="<% if (editing || hasError) { %><%= patient.lastName %><% } %>">
                         </div>
-                        
+                       
                     </div>
                     <div class="input_wrap">
                             <label for="dateOfBirth">Date of Birth</label>
-                            <input type="text" name="dateOfBirth" id="dateOfBirth" value="<% if (editing) { %><%= patient.dateOfBirth %><% } %>">
+                            <input type="date" name="dateOfBirth" id="dateOfBirth" value="<% if (editing || hasError) { %><%= patient.dateOfBirth %><% } %>">
                     </div>                    
                     <div class="input_wrap">
                             <label for="email">Email Address</label>
-                            <input type="text" name="email" id="email" value="<% if (editing) { %><%= patient.email %><% } %>">
+                            <input type="text" name="email" id="email" value="<% if (editing || hasError) { %><%= patient.email %><% } %>">
                     </div>
                     <div class="input_wrap">
                         <label>Gender</label>
@@ -51,16 +51,19 @@
                     </div>
                     <div class="input_wrap">
                             <label for="address">Address</label>
-                            <input type="text" name="address" id="address" value="<% if (editing) { %><%= patient.address %><% } %>">
+                            <input type="text" name="address" id="address" value="<% if (editing || hasError) { %><%= patient.address %><% } %>">
                     </div>                    
                     <div class="input_wrap">
                             <label for="county">County</label>
-                            <input type="text" name="county" id="county" value="<% if (editing) { %><%= patient.county %><% } %>">
+                            <input type="text" name="county" id="county" value="<% if (editing || hasError) { %><%= patient.county %><% } %>">
                     </div>
                     <div class="input_wrap">
                             <label for="eircode">Eircode</label>
-                            <input type="text" name="eircode" id="eircode" value="<% if (editing) { %><%= patient.eircode %><% } %>">
+                            <input type="text" name="eircode" id="eircode" value="<% if (editing || hasError) { %><%= patient.eircode %><% } %>">
                     </div>
+                    <% if (errorMessage) { %>
+                        <div class="user-message user-message--error"><p><%= errorMessage %></p></div>
+                    <% } %>
 
                     <div class="input_wrap">
 
@@ -68,7 +71,7 @@
                             <input type="hidden" value="<%= patient._id %>" name="patientId">
                         <% } %>
 
-                        <button class="submit_btn" type="submit"><% if (editing) { %>Update Patient<% } else { %>Register<% } %></button>
+                        <button class="submit_btn" type="submit"><% if (editing || hasError) { %>Update Patient<% } else { %>Register<% } %></button>
 
                     </div>
                 </div>

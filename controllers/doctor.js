@@ -5,15 +5,18 @@ const Patient = require('../models/patient');
 const { get } = require('../routes/patient');
 
 exports.getIndex = (req, res, next) => {
+  const name = req.doctor.lastName
+  console.log(name);
     res.render('doctor/index', {
         pageTitle: 'Homepage',
         path: '/',
-        isAuthenticated: req.session.isLoggedIn
+        name: name
     });
 };
 
  exports.getDoctor = (req, res, next) => {
    console.log(req.doctor.email)
+   const name = req.doctor.lastName
    const email = req.doctor.email;
    Doctor.find({ email: email })
       .then(products => {        
@@ -21,7 +24,7 @@ exports.getIndex = (req, res, next) => {
           doctor: products,
           pageTitle: 'My Account',
           path: '/my-account',
-          isAuthenticated: req.session.isLoggedIn
+          name: name
           
         });
       })
@@ -33,14 +36,16 @@ exports.getIndex = (req, res, next) => {
 
 exports.getSampleQuality = (req, res, next) => {
   console.log(req.doctor._id)
+  const name = req.doctor.lastName
     res.render('doctor/sample-quality', {
         pageTitle: 'Sample Quality',
         path: '/doctor/sampleQuality',
-        isAuthenticated: req.session.isLoggedIn
+        name:name
     });
 };
 
 exports.getTests = (req, res, next) => {
+  const name = req.doctor.lastName
   Test.find()
     .then(tests => {
       //console.log(patients);
@@ -48,7 +53,7 @@ exports.getTests = (req, res, next) => {
         test: tests,
         pageTitle: 'Tests',
         path: '/tests',
-        isAuthenticated: req.session.isLoggedIn
+        name:name
       });
     })
     .catch(err => {
@@ -57,6 +62,7 @@ exports.getTests = (req, res, next) => {
 };
 
 exports.getTest= (req, res, next) => {
+  const name = req.doctor.lastName
   const testId = req.params.testId;
   Test.findById(testId)
   .then(test => {
@@ -65,7 +71,7 @@ exports.getTest= (req, res, next) => {
       test: test,
       pageTitle: 'test Details',
       path: '/test-details',
-      isAuthenticated: req.session.isLoggedIn
+      name:name
     });
   })
   .catch(err => {
@@ -75,10 +81,11 @@ exports.getTest= (req, res, next) => {
 
 
 exports.getAddTest= (req, res, next) => {
+  const name = req.doctor.lastName
   res.render('admin/add-test', {
       pageTitle: 'All Tests',
       path: '/add-test',
-      isAuthenticated: req.session.isLoggedIn
+      name:name
   });
 };
 

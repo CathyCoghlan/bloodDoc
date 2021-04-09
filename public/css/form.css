@@ -125,6 +125,23 @@ label {
     font-size: 15px
 }
 
+.user-message--error{
+	border-color: red;
+	background: rgb(255, 176, 176);
+	color: red;
+	text-align: center;
+	font-size: 10px;
+	padding-top: 7px;
+	padding-bottom: 7px;
+	margin-bottom: 10px;
+  }
+
+input.invalid {
+    border-color: red;
+
+    
+  }
+
 
 
 

@@ -126,6 +126,23 @@ body{
       text-align:center;
 
   }
+
+  .user-message--error{
+    margin: auto;
+    width: 90%;
+    color: red;
+    font-size: 12px;
+    text-align: center;
+  }
+
+  .form input.invalid {
+    width: 100%;
+    padding: 12px;
+    padding-left: 30px;
+    border-color: red;
+    background: #eeeeee;
+    
+  }
   
   ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
     color: #1d2120;

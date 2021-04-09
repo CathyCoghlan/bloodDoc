@@ -12,9 +12,11 @@
                     <% orders.forEach(order => { %>
                         <li class="orders__item">
                             <h1>Date : <%= order.time.toDateString()%></h1>
-                            <ul class="orders__products">
-                                <% order.tests.forEach(p => { %>
-                                    <li class="orders__products-item"><%= p.test.name %> .... (<%= p.test.specimenType %>)</li>
+                            <ul class="orders__products">                                                          
+                                <h2><%= order.patient.firstName %> <%= order.patient.lastName %></h2>    
+                                <% order.tests.forEach(p => { %>                                    
+                                    <li class="orders__products-item"><%= p.test.name %> .... Sample Type: <%= p.test.specimenType %> (<%= p.test.group %>)</li>
+                                    
                                 <% }); %>
                             </ul>
                         </li>

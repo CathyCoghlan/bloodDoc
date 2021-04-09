@@ -13,17 +13,20 @@
       <div class="title">
         Blood Doc
       </div>  
-        
+
       <form action="/login" method="POST">      
         <div class="form">
           <div class="input_field">
-            <input type="text" placeholder="email" class="input" name="email" id="email">
+            <input class="<%= validationErrors.find(e => e.param === 'email')  ? 'invalid' : 'input' %>" type="text" placeholder="Email" name="email" id="email" value="<%= oldInput.email %>">
             <i class="fas fa-user"></i>
           </div>
           <div class="input_field">
-            <input type="password" placeholder="Password" class="input" name="password" id="password">
+            <input class="<%= validationErrors.find(e => e.param === 'password')  ? 'invalid' : 'input' %>" type="password" placeholder="Password" name="password" id="password" value="<%= oldInput.password %>">
             <i class="fas fa-lock"></i>
           </div>
+          <% if (errorMessage) { %>
+            <div class="user-message user-message--error"><p><%= errorMessage %></p></div>
+        <% } %>
 
           
               <button class="btn-reg" type="submit">Login</button>
