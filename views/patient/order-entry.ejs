@@ -29,7 +29,7 @@
                         </div>
                         <div class="info">
                             <h2 class="title">D. O. B     : </h2>
-                            <p><%= patient.dateOfBirth %></p>
+                            <p><%= patient.dateOfBirth.toDateString() %></p>
                         </div>
                         <div class="info">
                             <h2 class="title">Email    : </h2>
@@ -82,7 +82,7 @@
                     <div class="tabcontent" id="Drugs" style="display: none;">
                         <% if (drugsTests.length > 0) { %>
                             <% for (let t of drugsTests) { %>
-                                <input type="hidden" value="<%= t._id %>" name="testName" id="<%= t.group %>" class="drugs">
+                                <input type="hidden" value="<%= t._id %>" name="testName" id="<%= t.group %>" >
                                 <button class="testBtn" type="button" onclick="addTest(this)"><%= t.name %></button>
                         <% } %>
                         <% } %>                        
@@ -115,12 +115,15 @@
                     <div class="samples">
                         
                         <div class="tubes">
-                            <img class="tube" src="/img/serum2.png" alt="">
-                            <img class="tube" src="/img/serum2.png" alt="">
-                            <img class="tube" src="/img/serum2.png" alt="">
-                            <img class="tube" src="/img/edta.png" alt="">
-                            <img class="tube" src="/img/edta.png" alt="">
-                            <img class="tube" src="/img/glucose.png" alt="">
+                            <img ondragstart="drag(event)" src="/img/serum2.png"  alt="" id="group1">
+                            <img ondragstart="drag(event)" src="/img/serum2.png" alt="" id="group2">
+                            <img ondragstart="drag(event)" src="/img/serum2.png" alt="" id="group3">
+                            <img ondragstart="drag(event)" src="/img/serum2.png" alt="" id="group6">
+                            <img ondragstart="drag(event)" src="/img/edta.png" alt="" id="group4">
+                            <img ondragstart="drag(event)" src="/img/edta.png" alt="" id="group5">                            
+                            <img ondragstart="drag(event)" src="/img/glucose.png" alt="" id="group7">
+                            <img ondragstart="drag(event)" src="/img/glucose.png" alt="" id="group8">
+                            <img ondragstart="drag(event)" src="/img/coag.png" alt="" id="group9">
                         </div>
 
                     </div>

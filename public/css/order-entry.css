@@ -349,6 +349,15 @@
   .box3 .cartBtn a:visited {
     color: purple;
   }
+
+  .hidden{display:none;}
+  .show{display:block;}
+
+  img {
+    opacity: 0;
+    filter: alpha(opacity=40);
+  }
+  
     
 
 

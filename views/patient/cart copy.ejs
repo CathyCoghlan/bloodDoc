@@ -13,11 +13,15 @@
     </article>
 
         <div class="tubes">
+            <img src="/img/serum2.png" alt="" id="group1"><div id="total1"></div>
 
-            <img draggable="true" ondragstart="drag(event)" src="/img/serum2.png" alt="" id="serum"><div id="totalSerum"></div>
-            <img draggable="true" ondragstart="drag(event)" src="/img/edta.png" alt="" id="EDTA"><div id="totalEDTA"></div>                           
-            <img draggable="true" ondragstart="drag(event)" src="/img/glucose.png" alt="" id="group7"><div id="totalBLF"></div>
-            <img draggable="true" ondragstart="drag(event)" src="/img/coag.png" alt="" id="group8"><div id="totalCoag"></div>
+            <!-- <img draggable="true" ondragstart="drag(event)" src="/img/serum2.png" alt="" id="group2"><div id="totalSerum"></div>
+            <img draggable="true" ondragstart="drag(event)" src="/img/serum2.png" alt="" id="group3">
+            <img draggable="true" ondragstart="drag(event)" src="/img/serum2.png" alt="" id="group6">
+            <img draggable="true" ondragstart="drag(event)" src="/img/edta.png" alt="" id="group4">
+            <img draggable="true" ondragstart="drag(event)" src="/img/edta.png" alt="" id="group5">                            
+            <img draggable="true" ondragstart="drag(event)" src="/img/glucose.png" alt="" id="group7">
+            <img draggable="true" ondragstart="drag(event)" src="/img/coag.png" alt="" id="group8"> -->
 
      <img src="/img/serum2.png" alt="" id="group2"><div id="totalSerum"></div>
 
@@ -96,65 +100,17 @@
 
    var testGroup1 = document.getElementsByClassName("1");
    var testGroup2 = document.getElementsByClassName("2"); 
-   var testGroup3 = document.getElementsByClassName("3");
-   var testGroup4 = document.getElementsByClassName("4");
-   var testGroup5 = document.getElementsByClassName("5");
-   var testGroup6 = document.getElementsByClassName("6");
-   var testGroup7 = document.getElementsByClassName("7");
-   var testGroup7 = document.getElementsByClassName("8");
-    
-   // GET TOTAL SERUM SAMPLES REQUIRED & DISPLAY (Group 1, 2, 3 & 6)
-        var totalSerum1 = 0; 
-        var totalSerum2 = 0;
-        var totalSerum3 = 0;
-        var totalSerum6 = 0;
+   var testGroup2 = document.getElementsByClassName("2");  
+        var total1 = 0; 
     if (!(testGroup1 === undefined || testGroup1.length == 0)) {
-        var group1 = document.getElementById("serum");
-        fadeIn(group1);
-        var totalSerum1 = 1;  
+        var total1 = 1;  
     }
     if (!(testGroup2 === undefined || testGroup2.length == 0)) {
-        var group2 = document.getElementById("serum");
-        fadeIn(group2);
-        var totalSerum2 = 1;  
+        var total2 = 1;  
     }
-    if (!(testGroup3 === undefined || testGroup3.length == 0)) {
-        var group3 = document.getElementById("serum");
-        fadeIn(group3);
-        var totalSerum3 = 1;  
-    }
-    if (!(testGroup6 === undefined || testGroup6.length == 0)) {
-        var group6 = document.getElementById("serum");
-        fadeIn(group6);
-        var totalSerum6 = 1;  
-    }
-    var allSerums = totalSerum1 + totalSerum2 + totalSerum3 + totalSerum6;
-       if(allSerums > 0){
-            document.getElementById('totalSerum').innerHTML = allSerums;  
-       }                                 
-          
+    var allSerums = total1 + total2;
 
-   // GET TOTAL SERUM SAMPLES REQUIRED & DISPLAY (Group 4 & 5)
-        var totalEdta4 = 0;
-        var totalEdta5 = 0;
-        if (!(testGroup4 === undefined || testGroup4.length == 0)) {
-            var group4 = document.getElementById("EDTA");
-            fadeIn(group4);
-            var totalEdta4 = 1;
-        }
-        if (!(testGroup5 === undefined || testGroup5.length == 0)) {
-            var group5 = document.getElementById("EDTA");
-            fadeIn(group5);
-            var totalEdta5 = 1;
-        }
-        var allEDTAs = totalEdta4 + totalEdta5;
-        if(!allEDTAs === 0) {
-
-            document.getElementById('totalEDTA').innerHTML = allEDTAs;
-        }
-
-        
-
+    document.getElementById('totalSerum').innerHTML = allSerums;
 
 
 

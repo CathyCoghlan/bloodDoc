@@ -281,7 +281,6 @@ exports.getCart = (req, res, next) => {
       // this returns the full doctor object => {cart: {items: [_id: etc]}}
       const tests = doctor.cart.items; // this will just get us an array where the productId field is populated with the product information, so now in views structure is differnet. Product data is nested i porductId field so p.productId.title
       Patient.findById(patientId).then((patient) => {
-        console.log(tests);
         res.render("patient/cart", {
           path: "/cart",
           pageTitle: "Your Cart",
@@ -337,6 +336,7 @@ exports.postOrder = (req, res, next) => {
               time: new Date(),
             },
           });
+          console.log(order._id);
           return order.save();
         })
         .then((result) => {
@@ -344,7 +344,7 @@ exports.postOrder = (req, res, next) => {
         })
         .then((result) => {
           console.log("Cart Cleared & Order Made");
-          res.redirect("/orders");
+          res.redirect("/orders/" + patientId);
         })
         .catch((err) => console.log(err));
     });
@@ -370,16 +370,23 @@ exports.postAddTest = (req, res, next) => {
 
 exports.getOrders = (req, res, next) => {
   const name = req.doctor.lastName;
+  const patientId = req.params.patientId;
+  console.log(patientId);
   Order.find({ "doctor.doctorId": req.doctor._id })
     .then((orders) => {
-      console.log(orders);
-      res.render("patient/orders", {
-        path: "/orders",
-        pageTitle: "My Orders",
-        orders: orders,
-        isAuthenticated: req.session.isLoggedIn,
-        name: name,
-      });
+      Order.find({ "patient.patientId": patientId })
+        .sort("-time")
+        .exec()
+        .then((orders) => {
+          //console.log(orders);
+          res.render("patient/orders", {
+            path: "/orders",
+            pageTitle: "My Orders",
+            orders: orders,
+            isAuthenticated: req.session.isLoggedIn,
+            name: name,
+          });
+        });
     })
     .catch((err) => console.log(err));
 };
