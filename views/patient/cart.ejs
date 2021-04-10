@@ -16,8 +16,8 @@
 
             <img draggable="true" ondragstart="drag(event)" src="/img/serum2.png" alt="" id="serum"><div id="totalSerum"></div>
             <img draggable="true" ondragstart="drag(event)" src="/img/edta.png" alt="" id="EDTA"><div id="totalEDTA"></div>                           
-            <img draggable="true" ondragstart="drag(event)" src="/img/glucose.png" alt="" id="group7"><div id="totalBLF"></div>
-            <img draggable="true" ondragstart="drag(event)" src="/img/coag.png" alt="" id="group8"><div id="totalCoag"></div>
+            <img draggable="true" ondragstart="drag(event)" src="/img/glucose.png" alt="" id="BLF"><div id="totalBLF"></div>
+            <img draggable="true" ondragstart="drag(event)" src="/img/coag.png" alt="" id="coag"><div id="totalCoag"></div>
 
      <img src="/img/serum2.png" alt="" id="group2"><div id="totalSerum"></div>
 
@@ -101,7 +101,8 @@
    var testGroup5 = document.getElementsByClassName("5");
    var testGroup6 = document.getElementsByClassName("6");
    var testGroup7 = document.getElementsByClassName("7");
-   var testGroup7 = document.getElementsByClassName("8");
+   var testGroup8 = document.getElementsByClassName("8");
+   var testGroup9 = document.getElementsByClassName("9");
     
    // GET TOTAL SERUM SAMPLES REQUIRED & DISPLAY (Group 1, 2, 3 & 6)
         var totalSerum1 = 0; 
@@ -134,25 +135,57 @@
        }                                 
           
 
-   // GET TOTAL SERUM SAMPLES REQUIRED & DISPLAY (Group 4 & 5)
-        var totalEdta4 = 0;
-        var totalEdta5 = 0;
-        if (!(testGroup4 === undefined || testGroup4.length == 0)) {
-            var group4 = document.getElementById("EDTA");
-            fadeIn(group4);
-            var totalEdta4 = 1;
-        }
-        if (!(testGroup5 === undefined || testGroup5.length == 0)) {
-            var group5 = document.getElementById("EDTA");
-            fadeIn(group5);
-            var totalEdta5 = 1;
-        }
-        var allEDTAs = totalEdta4 + totalEdta5;
-        if(!allEDTAs === 0) {
-
-            document.getElementById('totalEDTA').innerHTML = allEDTAs;
-        }
-
+   // GET TOTAL EDTA SAMPLES REQUIRED & DISPLAY (Group 4 & 5)
+    var totalEdta4 = 0;
+    var totalEdta5 = 0;
+    if (!(testGroup4 === undefined || testGroup4.length == 0)) {
+        var group4 = document.getElementById("EDTA");
+        fadeIn(group4);
+        var totalEdta4 = 1;  
+    }
+    if (!(testGroup5 === undefined || testGroup5.length == 0)) {
+        var group5 = document.getElementById("EDTA");
+        fadeIn(group5);
+        var totalEdta5 = 1;  
+    }
+    var allEDTAs = totalEdta4 + totalEdta5;
+       if(allEDTAs > 0){
+            document.getElementById('totalEDTA').innerHTML = allEDTAs;  
+       } 
+    
+    // GET TOTAL GLUCOSE SAMPLES REQUIRED & DISPLAY (Group 7 & 8)
+    var totalBlf7 = 0;
+    var totalBlf8 = 0;
+    if (!(testGroup7 === undefined || testGroup7.length == 0)) {
+        var group7 = document.getElementById("BLF");
+        fadeIn(group7);
+        var totalBlf7 = 1;  
+    }
+    if (!(testGroup8 === undefined || testGroup8.length == 0)) {
+        var group8 = document.getElementById("BLF");
+        fadeIn(group8);
+        var totalEdta5 = 1;  
+    }
+    var allBLFs =  totalBlf7 +  totalBlf8;
+       if(allBLFs > 0){
+            document.getElementById('totalBLF').innerHTML = allBLFs;  
+       }
+    
+    // GET TOTAL COAG SAMPLES REQUIRED & DISPLAY (Group 9)
+    var totalCoag = 0;
+    if (!(testGroup9 === undefined || testGroup9.length == 0)) {
+        var group9 = document.getElementById("coag");
+        fadeIn(group9);
+        var totalCoag = 1;  
+    }
+    var allCoags =  totalCoag;
+       if(allCoags > 0){
+            document.getElementById('totalCoag').innerHTML = allCoags;  
+       }
+       
+    
+          
+   
         
 
 
