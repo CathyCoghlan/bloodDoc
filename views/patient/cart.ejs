@@ -5,49 +5,89 @@
 
 <body>
     <%- include('../includes/navigation.ejs') %>
+    <%- include('../includes/sub-nav.ejs') %>
+
     <main>
-        <article class="card-test-item">
-        <p><%= patient.firstName %></p>
-        <p><%= patient.lastName %></p>
-        <p><%= patient.gender %></p>
-    </article>
+        <h2 class="heading">BLOOD ORDER</h2>
 
-        <div class="tubes">
+        <div class="patient_details"><h1 class="patient_details">Patient Details</h1></div>
+        <div class="patient_wrapper">
 
-            <img draggable="true" ondragstart="drag(event)" src="/img/serum2.png" alt="" id="serum"><div id="totalSerum"></div>
-            <img draggable="true" ondragstart="drag(event)" src="/img/edta.png" alt="" id="EDTA"><div id="totalEDTA"></div>                           
-            <img draggable="true" ondragstart="drag(event)" src="/img/glucose.png" alt="" id="BLF"><div id="totalBLF"></div>
-            <img draggable="true" ondragstart="drag(event)" src="/img/coag.png" alt="" id="coag"><div id="totalCoag"></div>
+            <div class="patient_info">
+                <h1 class="patient_info_data">Name:</h1> 
+                    <p><%= patient.lastName %> , <%= patient.firstName %></p>
+                <h1 class="patient_info_data">Gender:</h1>
+                    <p><%= patient.gender %></p>
+                    <h1 class="patient_info_data">DOB:</h1>
+                    <p><%= patient.dateOfBirth.toDateString() %></p>                   
+            </div>
 
-     <img src="/img/serum2.png" alt="" id="group2"><div id="totalSerum"></div>
+               <div class="modify_btn">
+                        <a class="modify_patient" href="/edit-patient/<%= patient._id %>?edit=true">Modify Details</a>
+               </div>
 
-            
+        </div>
+        
+        <div class="tests_wrapper_header">
+            <h1 class="selected">Tests Selected</h1>
+            <h1 class="required">Samples Required</h1>
             
         </div>
-        <% if (tests.length > 0) { %>
-            
-                <ul class="cart__item-list">
-                    <% tests.forEach(t => { %>
-                        <article class="card-test-item">
-                        <li class="cart__item">
-                            <h1><%= t.testId.name %></h1>
-                            <p class="<%= t.testId.group %>" id="group"><%= t.testId.group %></p>
+        <div class="tests_wrapper">
 
-                            
-                                <input type="hidden" value="<%= t.testId._id %>" name="testId">                          
-                                <button class="deleteBtn" type="button" onclick="deleteTest(this)">Delete</button>
-                            
-                        </li>
-                    </article>
-                    <% }) %>
-                </ul>
+            <div class="tests_selected">
+                <% if (tests.length > 0) { %>            
+                    <ul class="cart__item-list">
+                        <% tests.forEach(t => { %>
+                         <article class="card-test-item">
+                            <li class="cart__item">
+                                <h1><%= t.testId.name %></h1>                        
+        
+                                    <input class="<%= t.testId.group %>" type="hidden" value="<%= t.testId._id %>" name="testId">                          
+                                    <button class="deleteBtn" type="button" onclick="deleteTest(this)"><i class="fas fa-times"></i></button>
+                                
+                            </li>
+                        </article>
+                        <% }) %>
+                    </ul>  
+            </div><!--End tests_selected-->         
+ 
+    
+                <div class="tubes_container">
+                    <div class="tubes_required">
+                        <div class="sample">                            
+                            <div class="tube_image"> <img draggable="true" ondragstart="drag(event)" src="/img/serum.png" alt="" id="serum"></div>
+                            <div class="tubeNo"><p id="totalSerum"></p></div>
+                        </div>
+                        <div class="sample">
+                            <div class="tube_image"><img draggable="true" ondragstart="drag(event)" src="/img/edta.png" alt="" id="EDTA"></div>
+                            <div class="tubeNo"><p id="totalEDTA"></p></div>    
+                        </div>
+                        <div class="sample">
+                            <div class="tube_image"><img draggable="true" ondragstart="drag(event)" src="/img/glucose.png" alt="" id="BLF"></div>
+                            <div class="tubeNo"><p id="totalBLF"></div>    
+                        </div>
+                        <div class="sample">
+                            <div class="tube_image"><img draggable="true" ondragstart="drag(event)" src="/img/coag.png" alt="" id="coag"></div>
+                            <div class="tubeNo"><p id="totalCoag"></div>    
+                        </div>
+                             
+
+                    </div>       
+                        
+                </div>
+            
+        </div><!--end of test wrapper-->
+
+
+
             
 
             <hr>
             <div class="centered">
                 <form action="/create-order" method="POST">
                     <input type="hidden" value="<%= patient._id %>" name="patientId"> 
-                    <button type="submit" class="btn">Order Now!</button>
+                    <button type="submit" class="orderBtn">Order Now</button>
                 </form>
             </div>
             
@@ -59,7 +99,7 @@
 
 
 <script>
-    
+    // DELETE TESTS FROM CART
     const deleteTest = (deleteBtn) => {
        const testId = deleteBtn.parentNode.querySelector('[name=testId]').value;
        const testElement = deleteBtn.closest('article');
@@ -80,7 +120,7 @@
        })
     };
 
-
+    // FUNCTION TO FADE IN IMAGES
     function fadeIn(el) {
     el.style.opacity = 0;
     var tick = function () {
@@ -93,7 +133,7 @@
 }
 
 
-
+    // GET THE GROUP OF EACH TEST USING CLASS 
    var testGroup1 = document.getElementsByClassName("1");
    var testGroup2 = document.getElementsByClassName("2"); 
    var testGroup3 = document.getElementsByClassName("3");
@@ -103,6 +143,7 @@
    var testGroup7 = document.getElementsByClassName("7");
    var testGroup8 = document.getElementsByClassName("8");
    var testGroup9 = document.getElementsByClassName("9");
+   
     
    // GET TOTAL SERUM SAMPLES REQUIRED & DISPLAY (Group 1, 2, 3 & 6)
         var totalSerum1 = 0; 
@@ -132,7 +173,9 @@
     var allSerums = totalSerum1 + totalSerum2 + totalSerum3 + totalSerum6;
        if(allSerums > 0){
             document.getElementById('totalSerum').innerHTML = allSerums;  
-       }                                 
+        } else {
+        document.getElementsByClassName('tubeNo').display="none";
+       }                                
           
 
    // GET TOTAL EDTA SAMPLES REQUIRED & DISPLAY (Group 4 & 5)
@@ -151,7 +194,9 @@
     var allEDTAs = totalEdta4 + totalEdta5;
        if(allEDTAs > 0){
             document.getElementById('totalEDTA').innerHTML = allEDTAs;  
-       } 
+       } else {
+        document.getElementsByClassName('tubeNo').display="none";
+       }
     
     // GET TOTAL GLUCOSE SAMPLES REQUIRED & DISPLAY (Group 7 & 8)
     var totalBlf7 = 0;
@@ -169,8 +214,9 @@
     var allBLFs =  totalBlf7 +  totalBlf8;
        if(allBLFs > 0){
             document.getElementById('totalBLF').innerHTML = allBLFs;  
+        } else {
+        document.getElementsByClassName('tubeNo').display="none";
        }
-    
     // GET TOTAL COAG SAMPLES REQUIRED & DISPLAY (Group 9)
     var totalCoag = 0;
     if (!(testGroup9 === undefined || testGroup9.length == 0)) {
@@ -181,64 +227,9 @@
     var allCoags =  totalCoag;
        if(allCoags > 0){
             document.getElementById('totalCoag').innerHTML = allCoags;  
+        } else {
+        document.getElementsByClassName('tubeNo').display="none";
        }
-       
-    
-          
-   
-        
-
-
-
-
-    // CHECK FOR WHICH TESTS ARE SELECTED  Check for Groups and Display Correct Sample Type
-    // var testGroup = document.getElementsByClassName("1");       
-    // if (!(testGroup === undefined || testGroup.length == 0)) {        
-    //     var group1 = document.getElementById("group1");
-    //     fadeIn(group1);
-    // }
-    // var testGroup = document.getElementsByClassName("2");       
-    //    if (!(testGroup === undefined || testGroup.length == 0)) {
-    //     var group2 = document.getElementById("group2");
-    //     fadeIn(group2);
-    //    }
-
-    // var testGroup = document.getElementsByClassName("3");       
-    //    if (!(testGroup === undefined || testGroup.length == 0)) {
-    //     var group3 = document.getElementById("group3");
-    //     fadeIn(group3);
-    //    } 
-
-    // var testGroup = document.getElementsByClassName("4");       
-    //    if (!(testGroup === undefined || testGroup.length == 0)) {
-    //     var group4 = document.getElementById("group4");
-    //     fadeIn(group4);
-    //    }
-           
-    // var testGroup = document.getElementsByClassName("5");       
-    //    if (!(testGroup === undefined || testGroup.length == 0)) {
-    //     var group5 = document.getElementById("group5");
-    //     fadeIn(group5);
-    //    } 
-
-    // var testGroup = document.getElementsByClassName("6");       
-    //    if (!(testGroup === undefined || testGroup.length == 0)) {
-    //     var group6 = document.getElementById("group6");
-    //     fadeIn(group6);
-    //    } 
-
-    // var testGroup = document.getElementsByClassName("7");       
-    //    if (!(testGroup === undefined || testGroup.length == 0)) {
-    //     var group7 = document.getElementById("group7");
-    //     fadeIn(group7);
-    //    }
-
-    // var testGroup = document.getElementsByClassName("8");       
-    //    if (!(testGroup === undefined || testGroup.length == 0)) {
-    //     var group8 = document.getElementById("group8");
-    //     fadeIn(group8);
-    //    }
-       
        
 
 </script>

@@ -13,7 +13,247 @@
     </article>
 
         <div class="tubes">
-            <img src="/img/serum2.png" alt="" id="group1"><div id="total1"></div>
+
+            <img draggable="true" ondragstart="drag(event)" src="/img/serum2.png" alt="" id="serum"><div id="totalSerum"></div>
+            <img draggable="true" ondragstart="drag(event)" src="/img/edta.png" alt="" id="EDTA"><div id="totalEDTA"></div>                           
+            <img draggable="true" ondragstart="drag(event)" src="/img/glucose.png" alt="" id="BLF"><div id="totalBLF"></div>
+            <img draggable="true" ondragstart="drag(event)" src="/img/coag.png" alt="" id="coag"><div id="totalCoag"></div>
+
+     <img src="/img/serum2.png" alt="" id="group2"><div id="totalSerum"></div>
+
+            
+            
+        </div>
+        <% if (tests.length > 0) { %>
+            
+                <ul class="cart__item-list">
+                    <% tests.forEach(t => { %>
+                        <article class="card-test-item">
+                        <li class="cart__item">
+                            <h1><%= t.testId.name %></h1>
+                            <p class="<%= t.testId.group %>" id="group"><%= t.testId.group %></p>
+
+                            
+                                <input type="hidden" value="<%= t.testId._id %>" name="testId">                          
+                                <button class="deleteBtn" type="button" onclick="deleteTest(this)">Delete</button>
+                            
+                        </li>
+                    </article>
+                    <% }) %>
+                </ul>
+            
+
+            <hr>
+            <div class="centered">
+                <form action="/create-order" method="POST">
+                    <input type="hidden" value="<%= patient._id %>" name="patientId"> 
+                    <button type="submit" class="btn">Order Now!</button>
+                </form>
+            </div>
+            
+        <% } else { %>
+            <h1>No Tests Selected</h1>
+        <% } %>
+    </main>
+    <%- include('../includes/end.ejs') %>
+
+
+<script>
+    // DELETE TESTS FROM CART
+    const deleteTest = (deleteBtn) => {
+       const testId = deleteBtn.parentNode.querySelector('[name=testId]').value;
+       const testElement = deleteBtn.closest('article');
+
+       fetch('/cart-delete-item/' + testId, {
+           method: 'DELETE'
+       })
+       .then(result => {
+           return result.json();
+       })
+       .then(data => {
+           console.log(data);
+           testElement.parentNode.removeChild(testElement);
+           
+       })
+       .catch(err => {
+           console.log(err);
+       })
+    };
+
+    // FUNCTION TO FADE IN IMAGES
+    function fadeIn(el) {
+    el.style.opacity = 0;
+    var tick = function () {
+        el.style.opacity = +el.style.opacity + 0.01;
+        if (+el.style.opacity < 1) {
+            (window.requestAnimationFrame && requestAnimationFrame(tick)) || setTimeout(tick, 16)
+        }
+    };
+    tick();
+}
+
+
+    // GET THE GROUP OF EACH TEST USING CLASS 
+   var testGroup1 = document.getElementsByClassName("1");
+   var testGroup2 = document.getElementsByClassName("2"); 
+   var testGroup3 = document.getElementsByClassName("3");
+   var testGroup4 = document.getElementsByClassName("4");
+   var testGroup5 = document.getElementsByClassName("5");
+   var testGroup6 = document.getElementsByClassName("6");
+   var testGroup7 = document.getElementsByClassName("7");
+   var testGroup8 = document.getElementsByClassName("8");
+   var testGroup9 = document.getElementsByClassName("9");
+    
+   // GET TOTAL SERUM SAMPLES REQUIRED & DISPLAY (Group 1, 2, 3 & 6)
+        var totalSerum1 = 0; 
+        var totalSerum2 = 0;
+        var totalSerum3 = 0;
+        var totalSerum6 = 0;
+    if (!(testGroup1 === undefined || testGroup1.length == 0)) {
+        var group1 = document.getElementById("serum");
+        fadeIn(group1);
+        var totalSerum1 = 1;  
+    }
+    if (!(testGroup2 === undefined || testGroup2.length == 0)) {
+        var group2 = document.getElementById("serum");
+        fadeIn(group2);
+        var totalSerum2 = 1;  
+    }
+    if (!(testGroup3 === undefined || testGroup3.length == 0)) {
+        var group3 = document.getElementById("serum");
+        fadeIn(group3);
+        var totalSerum3 = 1;  
+    }
+    if (!(testGroup6 === undefined || testGroup6.length == 0)) {
+        var group6 = document.getElementById("serum");
+        fadeIn(group6);
+        var totalSerum6 = 1;  
+    }
+    var allSerums = totalSerum1 + totalSerum2 + totalSerum3 + totalSerum6;
+       if(allSerums > 0){
+            document.getElementById('totalSerum').innerHTML = allSerums;  
+       }                                 
+          
+
+   // GET TOTAL EDTA SAMPLES REQUIRED & DISPLAY (Group 4 & 5)
+    var totalEdta4 = 0;
+    var totalEdta5 = 0;
+    if (!(testGroup4 === undefined || testGroup4.length == 0)) {
+        var group4 = document.getElementById("EDTA");
+        fadeIn(group4);
+        var totalEdta4 = 1;  
+    }
+    if (!(testGroup5 === undefined || testGroup5.length == 0)) {
+        var group5 = document.getElementById("EDTA");
+        fadeIn(group5);
+        var totalEdta5 = 1;  
+    }
+    var allEDTAs = totalEdta4 + totalEdta5;
+       if(allEDTAs > 0){
+            document.getElementById('totalEDTA').innerHTML = allEDTAs;  
+       } 
+    
+    // GET TOTAL GLUCOSE SAMPLES REQUIRED & DISPLAY (Group 7 & 8)
+    var totalBlf7 = 0;
+    var totalBlf8 = 0;
+    if (!(testGroup7 === undefined || testGroup7.length == 0)) {
+        var group7 = document.getElementById("BLF");
+        fadeIn(group7);
+        var totalBlf7 = 1;  
+    }
+    if (!(testGroup8 === undefined || testGroup8.length == 0)) {
+        var group8 = document.getElementById("BLF");
+        fadeIn(group8);
+        var totalEdta5 = 1;  
+    }
+    var allBLFs =  totalBlf7 +  totalBlf8;
+       if(allBLFs > 0){
+            document.getElementById('totalBLF').innerHTML = allBLFs;  
+       }
+    
+    // GET TOTAL COAG SAMPLES REQUIRED & DISPLAY (Group 9)
+    var totalCoag = 0;
+    if (!(testGroup9 === undefined || testGroup9.length == 0)) {
+        var group9 = document.getElementById("coag");
+        fadeIn(group9);
+        var totalCoag = 1;  
+    }
+    var allCoags =  totalCoag;
+       if(allCoags > 0){
+            document.getElementById('totalCoag').innerHTML = allCoags;  
+       }
+       
+
+       
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <%- include('../includes/head.ejs') %>
+    
+<link rel="stylesheet" href="/css/cart.css">
+    </head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <main>
+        <article class="card-test-item">
+        <p><%= patient.firstName %></p>
+        <p><%= patient.lastName %></p>
+        <p><%= patient.gender %></p>
+    </article>
+
+        <div class="tubes">
+            <img src="/img/serum2.png" alt="" id="group1"><div id="total1"></div> -->
 
             <!-- <img draggable="true" ondragstart="drag(event)" src="/img/serum2.png" alt="" id="group2"><div id="totalSerum"></div>
             <img draggable="true" ondragstart="drag(event)" src="/img/serum2.png" alt="" id="group3">
@@ -23,7 +263,7 @@
             <img draggable="true" ondragstart="drag(event)" src="/img/glucose.png" alt="" id="group7">
             <img draggable="true" ondragstart="drag(event)" src="/img/coag.png" alt="" id="group8"> -->
 
-     <img src="/img/serum2.png" alt="" id="group2"><div id="totalSerum"></div>
+     <!-- <img src="/img/serum2.png" alt="" id="group2"><div id="totalSerum"></div>
 
             
             
@@ -110,7 +350,7 @@
     }
     var allSerums = total1 + total2;
 
-    document.getElementById('totalSerum').innerHTML = allSerums;
+    document.getElementById('totalSerum').innerHTML = allSerums; -->
 
 
 

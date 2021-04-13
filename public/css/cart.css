@@ -1,4 +1,272 @@
-.cart__item-list {
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
+
+
+
+.heading{
+  text-align: center;
+  padding: 20px;
+  font-size: 30px;
+  color:#234c88
+}
+
+
+
+.patient_wrapper,
+.patient_details {  
+  margin: 0;
+  padding: 0;
+  margin: auto;
+  width: 40rem;
+  width: 900px;
+  max-width: 90%;
+ 
+}
+
+.patient_details{
+  text-align: center;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+.patient_wrapper{
+  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.26);
+  display: flex;
+}
+
+/* .patient_details {
+  margin: 0;
+  padding: 0;
+  margin: auto;
+  width: 40rem;
+  width: 900px;
+  max-width: 90%;
+  text-align: center;
+} */
+
+.patient_info {    
+  display: flex;
+  align-items: center;
+  /* justify-content: space-between; */
+  padding: 1rem;  
+  margin: 1rem;
+  font-size: 8px;
+  }
+
+.patient_info_data {
+  padding: 0 13px 0 20px;
+  text-transform: uppercase;
+  color: #4B9FE1 ;
+}
+
+.patient_info p {
+  font-size: 16px;
+  padding-top: 1px;
+  font-weight: 400;
+  color: #4B9FE1 ;
+}
+
+.patient_wrapper .modify_btn {
+  margin: 0;
+  padding: 0;
+  margin: auto;
+  border: rgb(226, 236, 240) solid 1px;
+  background-color: #234c88;
+  border-radius: 10px;
+  padding: 10px;
+  
+  
+}
+
+.patient_wrapper .modify_btn:hover {
+  background-color: rgb(243, 243, 243);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  cursor: pointer;
+  font-weight: 600;  
+}
+
+.patient_wrapper .modify_btn a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 12px;
+  color: rgb(243, 243, 243);
+}
+.patient_wrapper .modify_btn a:hover {  
+  color: #234c88;
+}
+
+.tests_wrapper_header {
+  background-color: #234c88;
+  margin: auto;
+  width: 900px;
+  max-width: 90%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  display: flex;
+  margin-top: 20px;
+  text-transform: uppercase;
+   
+}
+
+
+.tests_wrapper_header .selected {  
+  color: rgb(243, 243, 243); 
+  padding-left: 150px;
+  font-weight: 400;
+  
+}
+
+.tests_wrapper_header .required {  
+  color: rgb(243, 243, 243);
+  padding-left: 28%;
+  font-weight: 400;
+  
+}
+
+.tests_wrapper{
+  margin: 0;
+  padding: 0;
+  margin: auto;
+  width: 40rem;
+  width: 900px;
+  max-width: 90%;
+  display: flex;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+}
+
+
+.tests_wrapper .tests_selected {
+  
+  width: 50%;
+}
+
+ .tests_wrapper .cart__item-list {
+    list-style: none;
+    margin: 0;
+    padding: 20px 0 20px 0;
+    margin: auto;
+    width: 250px;
+    
+    /* margin: 0;
+    padding: 0;   
+    width: 30rem;
+    max-width: 60%; */
+  } 
+
+
+  .tests_wrapper .cart__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.5rem;
+    border-bottom: dashed 1px #99abbf;
+    margin-bottom: 0.2rem;
+    margin-left: 2rem;
+  }
+  .tests_wrapper .cart__item:hover{
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    border-radius: 10px;
+    border:none;
+  }
+
+  .tests_wrapper .cart__item h1,
+  .cart__item h2 {
+    margin-right: 1rem;
+    font-size: 1rem;
+    margin: 0;
+    color: #234c88;
+  }
+
+  .tests_wrapper .cart__item .deleteBtn{
+    border:none;
+    background-color: white;
+  }
+  .tests_wrapper .cart__item .deleteBtn i:hover{
+    color: red;    
+  }
+
+
+  .tests_wrapper .cart__item .deleteBtn i {
+    background-color: white;
+    color: #3778C2;
+  }
+  
+  .tests_wrapper .tubes_container{
+    /* background-color: salmon; */
+    width: 50%;    
+    
+  }
+
+  .tests_wrapper .tubes_container .tubes_required{
+    display: flex;
+    margin:0 auto;
+    justify-content: center;
+    padding-top: 20px;
+
+  }
+  
+
+
+  .tests_wrapper .tubes_container .tubes_required .tube_image {
+    padding: 0 20px 0 20px;
+  }
+
+  .tests_wrapper .tubes_container .tubes_required .tubeNo  {    
+    box-shadow: 0px 1px 1px #778aa9;
+    border-radius: 10px;
+    width: auto;
+    height:auto;
+    font-size: 20px;
+    text-align: center;
+    color:#234c88;
+    text-align: center;
+       
+  }
+
+  .centered .orderBtn{    
+    color:#234c88;
+    margin: 20px 38px 0;
+    border: 2px solid #234c88;
+    background-color: white;
+    font-size: 20px;
+    letter-spacing: 2px;
+    padding: 7px 7px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-block;
+    margin: 15px 30px;
+    
+  }
+
+  .centered .orderBtn:hover{
+    background-color:  #234c88;
+    color: white;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+  }
+
+  .sub-header__nav{
+  background-color: cadetblue;
+  }
+  
+
+
+ 
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* .cart__item-list {
     list-style: none;
     margin: 0;
     padding: 0;
@@ -21,7 +289,7 @@
     margin-right: 1rem;
     font-size: 1.2rem;
     margin: 0;
-  }
+  } */
 
   img {
     opacity: 0;
