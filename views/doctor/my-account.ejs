@@ -8,58 +8,140 @@
         <%- include('../includes/sub-nav.ejs') %>
 
             <main>
-                <% if (doctor.length > 0) { %>
-                    <div class="wrapper">
-                        <% for (let dr of doctor) { %>
-                            <div class="left">
-                                <div class="userIcon"><i class="flaticon-user-3"></i></div>
-                                <h4><%= dr.firstName %></h4>
-                                <p>General Practitioner</p>
-                              </div>
-                              <div class="right">
-                                <div class="info">
-                                  <h3>User Information</h3>
-                                  <div class="user_info">
-                                    <div class="data">
-                                      <h4>Name</h4>
-                                      <p><%= dr.firstName %></p>
-                                      <h4>Mobile</h4>
-                                      <p><%= dr.mobile %></p>
-                                    
-                                    </div>
-                                    <div class="data">
-                                      <h4>Email</h4>
-                                      <p><%= dr.email %></p>
-                                    </div>
+
+              <!-- Wrapper -->
+              <div class="main">
+
+                <div class="wrapper-container">
+
+                  <!-- Header -->
+                  <div class="header-title">
+                    <h1>My Account Details</h1>
+                  </div>
+                  <!-- GP & Practice Details -->
+                    <div class="gp-practice-details">
+
+                           <!-- User Account Details-->
+                          <div class="doctor-details left">                  
+                            <h2 class="title">User Details</h2>
+                            <br>
+                                <div class="user-info-group">
+                                  <h2>User</h2>
+                                  <p>Dr John Dorian</p>
+                                </div>
+                                <div class="user-info-group">
+                                  <h2>Role</h2>
+                                  <p>GP</p>
+                                </div>
+                                <div class="user-info-group">
+                                  <h2>Email</h2>
+                                  <p>jd@gmail.com</p>
+                                </div>
+                                <div class="user-info-group">
+                                  <h2>Phone</h2>
+                                  <p>087 7804955</p>
+                                </div>          
+                         </div>
+          
+                          <!-- Practice Details-->
+                          <div class="practice-details right">                  
+                            <h2 class="title">Practice Details</h2>
+                            <br>
+                                  <div class="user-info-group">
+                                    <h2>Practice</h2>
+                                    <p>Sacred Heart Medical</p>
                                   </div>
-                                </div>
-                                <div class="practice">
-                                  <h3>Practice Information</h3>
-                                  <div class="practice_info">
-                                    <div class="data">
-                                      <h4>Address</h4>
-                                      <p><%= dr.practice %></p>
-                                      <h4>Telephone</h4>
-                                      <p><%= dr.tel %></p>
-                                    </div>
-                                    <div class="data">
-                                      <h4>GP Code</h4>
-                                      <p><%= dr.code %></p>              
-                                    </div>
-                                    
+                                  <div class="user-info-group">
+                                    <h2>GP Code</h2>
+                                    <p>3006</p>
                                   </div>
-                                </div>
-                                <div class="update">
-                                  <form action="/my-account-edit">
-                                    <button class="updateBtn" type="submit">Update</button>
-                                  </form>
-                                </div>
-                              </div>
-                                    
-                             <% } %> <!-- Close loop -->
-                    </div>
-                    
-                        
-                        <% } %> <!-- Close if-->
+                                  <div class="user-info-group">
+                                    <h2>Phone</h2>
+                                    <p>01 8202992</p>
+                                  </div>
+                                  <div class="user-info-group">
+                                    <h2>Phone</h2>
+                                    <p>087 7804955</p>
+                                  </div>          
+                          </div>
+                      
+                    </div><!-- End GP & Practice Details -->
+
+                    <div class="footer">         
+                      
+                          <input type="hidden" value="" name="patientId">                     
+          
+                      <button class="btn" type="submit">Update</button>
+                  </div>
+
+                </div>
+                
+              </div>
+
+
             </main>
             <%- include('../includes/end.ejs') %>
+
+
+
+
+
+
+
+
+
+
+
+            <!-- <% if (doctor.length > 0) { %>
+              <div class="wrapper">
+                  <% for (let dr of doctor) { %>
+                      <div class="left">
+                          <div class="userIcon"><i class="flaticon-user-3"></i></div>
+                          <h4><%= dr.firstName %></h4>
+                          <p>General Practitioner</p>
+                        </div>
+                        <div class="right">
+                          <div class="info">
+                            <h3>User Information</h3>
+                            <div class="user_info">
+                              <div class="data">
+                                <h4>Name</h4>
+                                <p><%= dr.firstName %></p>
+                                <h4>Mobile</h4>
+                                <p><%= dr.mobile %></p>
+                              
+                              </div>
+                              <div class="data">
+                                <h4>Email</h4>
+                                <p><%= dr.email %></p>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="practice">
+                            <h3>Practice Information</h3>
+                            <div class="practice_info">
+                              <div class="data">
+                                <h4>Address</h4>
+                                <p><%= dr.practice %></p>
+                                <h4>Telephone</h4>
+                                <p><%= dr.tel %></p>
+                              </div>
+                              <div class="data">
+                                <h4>GP Code</h4>
+                                <p><%= dr.code %></p>              
+                              </div>
+                              
+                            </div>
+                          </div>
+                          <div class="update">
+                            <form action="/my-account-edit">
+                              <button class="updateBtn" type="submit">Update</button>
+                            </form>
+                          </div>
+                        </div> -->
+                              
+                       <% } %> <!-- Close loop -->
+              <!-- </div> -->
+              
+                  
+                  <% } %> <!-- Close if-->

@@ -1,4 +1,103 @@
-@import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap");
+
+.main{
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #80EDFF;
+}
+
+
+.wrapper-container {
+  background-color: white;
+  margin: 30px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.45);
+  width:800px;
+  height:50vh;
+}
+
+.header-title{
+  background-image: linear-gradient(to right, #28559A, #63BCE5 ) ;
+  width: 100%;
+  color: white;
+  padding:20px;
+  text-align: center;
+}
+
+.gp-practice-details{
+  display: flex;
+  text-align: center;
+}
+
+.gp-practice-details .title{
+  font-size: 25px;
+  padding-top: 30px;
+}
+
+.gp-practice-details .doctor-details {
+  background-color: thistle;
+  float: left;
+  width: 50%;
+  height:auto;  
+}
+
+
+.gp-practice-details .user-info-group {
+   padding: 25px;
+   border-bottom: 1px solid green;
+ }
+
+ .gp-practice-details .user-info-group h2{
+   float: left;
+   padding-left: 30px;
+   display: inline;
+   font-size:17px;
+ }
+
+ .user-info-group p{
+   display: inline;
+   font-size: 15px;
+   float: right;
+   padding: 2px 30px 0 0px;
+ }
+
+
+
+.practice-details {
+  background-color: teal;
+  float: right;
+  width: 50%;
+}
+
+.footer{
+  text-align: center;
+}
+
+.footer .btn{
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* @import url("https://fonts.googleapis.com/css?family=Montserrat:400,500,700&display=swap");
 
 *{
     margin: 0;
@@ -144,4 +243,4 @@
 
     .orders {
       position:inherit;
-    }
+    } */

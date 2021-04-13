@@ -103,7 +103,9 @@
     font-weight: 600;
     font-size: 13px;
     /* background-color: #3778C2; */
-    background-image: linear-gradient(to right, #28559A, #63BCE5 )
+    background-image: linear-gradient(to right, #28559A, #63BCE5 );
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
   }
 
   .table_body {
@@ -131,8 +133,15 @@
     border-radius: 20px;
     font-size: 13px;
     width: 100%;
-    background-color: rgb(223, 233, 235);
-    border: none;
+    border: #63BCE5 solid 1px;    
+    padding:5px;
+    color: #63BCE5;
+    background-color: #fff;
+  }
+
+  .info_btn:hover {
+    background-image: linear-gradient(to right, #28559A, #63BCE5 ) ;
+    color:#efefef
   }
 
   
