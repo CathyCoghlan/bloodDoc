@@ -6,7 +6,147 @@
     <%- include('../includes/navigation.ejs') %>
     <%- include('../includes/sub-nav.ejs') %>
 
-    <div class="wrapper">
+<div class="patient-register">
+    
+    <!-- form header -->
+    <div class="form-header">
+        <h1><% if (editing || hasError) { %>Update Patient<% } else { %>Create Patient<% } %></h1>
+      </div>
+    <form class="signup-form" action="<% if (editing) { %>edit-patient<% } else { %>add-patient<% } %>" method="post">
+
+
+
+  
+        <!-- form body -->
+        <div class="form-body">
+  
+          <!-- Firstname and Lastname Mobile & Gender -->
+          <div class="horizontal-group">
+            <div class="form-group left">
+              <label for="firstname" class="label-title">First Name</label>
+              <input type="text" id="firstname" name="firstName" class="<%= validationErrors.find(e => e.param === 'email')  ? 'invalid' : '' %>" placeholder="enter patient first name" required="required" value="<% if (editing || hasError ) { %><%= patient.firstName %><% } %>" />
+            </div>
+            <div class="form-group right">
+              <label for="lastName" class="label-title">Last Name</label>
+              <input type="text" name="lastName" id="lastName" id="lastName" class="form-input" placeholder="enter patient last name" value="<% if (editing || hasError) { %><%= patient.lastName %><% } %>" />
+            </div>
+          </div>
+          <div class="horizontal-group">
+              <div class="form-group left">
+                <label for="dateOfBirth" class="label-title">Birthday</label>
+                <input type="date" name="dateOfBirth" id="dateOfBirth" class="form-input" required="required" />
+              </div>
+              <div class="form-group right">
+                  <label for="age" class="label-title">Age</label>
+                  <input type="number" id="age" name="age" min="0" max="110" class="form-input" <% if (editing || hasError ) { %><%= patient.age %><% } %>>
+                </div>
+            </div>
+            <div class="horizontal-group">
+              <div class="form-group gender">
+                <label class="label-title">Gender:</label>
+                <div class="gender-center">
+                    <ul>
+                    <label class="radio_wrap">
+                        <input type="radio" name="gender" value="Male" class="input_radio">
+                        <span>Male</span>
+                    </label>
+                     </li>
+                <li>
+                    <label class="radio_wrap">
+                        <input type="radio" name="gender" value="Female" class="input_radio">
+                        <span>Female</span>
+                    </label>
+                </li>
+            </ul>
+                </div>
+                
+
+          </div>
+             
+  
+          <!-- Email -->
+          <div class="horizontal-group">
+              <div class="form-group left">
+                <label for="email" class="label-title">Email </label>
+                <input type="text" id="email" name="email" class="form-input" placeholder="enter patient email" required="required" value="<% if (editing || hasError ) { %><%= patient.email %><% } %>" />
+              </div>
+              <div class="form-group right">
+                  <label for="mobile" class="label-title">Phone</label>
+                  <input type="text" id="mobile" name="phone" class="form-input" placeholder="enter patient phone" value="<% if (editing || hasError ) { %><%= patient.phone %><% } %>" />
+                </div>
+          <!-- Address -->
+          <div class="form-group">
+            <label for="address" class="label-title">Address</label>
+            <input type="address" id="address" name="address" class="form-input" placeholder="enter patient address" required="required" value="<% if (editing || hasError ) { %><%= patient.address %><% } %>">
+          </div>
+          <div class="horizontal-group">
+              <div class="form-group left">
+                <label for="county" class="label-title">County </label>
+                <input type="text" id="county" name="county" class="form-input" placeholder="enter patient county" required="required" value="<% if (editing || hasError ) { %><%= patient.county %><% } %>" />
+              </div>
+              <div class="form-group right">
+                <label for="eircode" class="label-title">Eircode</label>
+                <input type="text" id="eircode" name="eircode" class="form-input" placeholder="enter patient eircode" value="<% if (editing || hasError ) { %><%= patient.eircode %><% } %>" />
+              </div>
+            </div>
+  
+          <!-- Height & Weight -->
+          <div class="form-group left">
+              <label for="height" class="label-title">Height (Ins)</label>
+              <input type="number" id="height" name="height" class="form-input" required="required" value="<% if (editing || hasError ) { %><%= patient.height %><% } %>" />
+            </div>
+            <div class="form-group right">
+                <label for="weight" class="label-title">Weight (kg)</label>
+                <input type="number" name="weight" min="0" max="300" class="form-input" value="<% if (editing || hasError ) { %><%= patient.weight %><% } %>">
+              </div>
+  
+          <!-- Bio -->
+          <div class="form-group left">
+            <label for="clinicalDetails" class="label-title">Clinical Details</label>
+            <textarea class="form-input" name="clinicalDetails" rows="4" cols="50" style="height:auto" ></textarea>
+          </div>
+        </div>
+        <% if (errorMessage) { %>
+            <div class="user-message user-message--error"><p><%= errorMessage %></p></div>
+        <% } %>
+
+  
+        <!-- form-footer -->
+        <div class="form-footer">          
+            <% if (editing) { %>
+                <input type="hidden" value="<%= patient._id %>" name="patientId">
+            <% } %>
+
+            <button class="btn" type="submit"><% if (editing || hasError) { %>Update Patient<% } else { %>Register<% } %></button>
+        </div>
+  
+      </form>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <!-- <div class="wrapper">
         <div class="registration_form">
             <div class="title">
                 Patient Registration Form
@@ -78,6 +218,6 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> -->
 
 <%- include('../includes/end.ejs') %>

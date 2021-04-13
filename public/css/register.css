@@ -19,11 +19,11 @@ body{
     background-size: cover;
     background: white;
     background-repeat:no-repeat;
-    background: -webkit-linear-gradient( to left top,rgb(133, 172, 187), rgb(14, 93, 104));
-    background: -moz-linear-gradient( to left top, rgb(133, 172, 187), rgb(14, 93, 104));
-    background: -ms-linear-gradient( to left top,rgb(133, 172, 187), rgb(14, 93, 104));
-    background: -o-linear-gradient( to left top, rgb(133, 172, 187), rgb(14, 93, 104));
-    background: linear-gradient( to left top, rgb(133, 172, 187), rgb(14, 93, 104));
+    background: -webkit-linear-gradient( to left top,#4B9FE1, #234c88);
+    background: -moz-linear-gradient( to left top, #4B9FE1, #234c88);
+    background: -ms-linear-gradient( to left top,#4B9FE1, #234c88);
+    background: -o-linear-gradient( to left top, #4B9FE1, #234c88);
+    background: linear-gradient( to left top, #4B9FE1, #234c88);
 }
 
 
@@ -47,7 +47,7 @@ body{
     text-align: center;
     font-size: 30px;
     font-weight: 500;
-    color:  rgb(133, 172, 187);
+    color:  #3778C2;
   }
 
 
@@ -58,12 +58,12 @@ body{
     font-size: 45px;
     color:white;
     margin-left: 22%;
-    background-color:rgb(133, 172, 187);
+    background-color:#4B9FE1;
     text-align: center;
     }
 
     .wrapper .logo .item{
-        background-color:rgb(133, 172, 187);
+        background-color:#4B9FE1;
         border-radius: 50px;
         width: 90px;
         position: relative;
@@ -89,9 +89,9 @@ body{
   
  .btn-reg{
     width: 70%;
-    color:rgb(133,172,187);
+    color:#3778C2;
     margin: 20px 38px 0;
-    border: 2px solid rgb(133,172,187);
+    border: 2px solid #3778C2;
     background-color: white;
     font-size: 20px;
     letter-spacing: 2px;
@@ -103,7 +103,7 @@ body{
   }
 
   button.btn-reg:hover{
-    background-color:  rgb(133,172,187);
+    background-color:  #3778C2;
     color: white;
     -webkit-transition: all 0.4s;
     -moz-transition: all 0.4s;
@@ -116,12 +116,12 @@ body{
     top: 10px;
     left: 10px;
     font-size: 14px;
-    color: #1d2120;
+    color: #234c88;    
   }
 
   a {
 
-      color: teal;
+      color: #3778C2;
       font-size: 12px;
       text-align:center;
 

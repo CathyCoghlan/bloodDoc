@@ -23,16 +23,16 @@
               <li>
                 <div class="item">
                   <div class="name">
-                    <span>NAME</span>
+                    <span>Name</span>
                   </div>
                   <div class="phone">
-                    <span>D.O.B</span>
+                    <span>Age</span>
                   </div>
                   <div class="phone">
-                    <span>GENDER</span>
+                    <span>Gender</span>
                   </div>
                   <div class="issue">
-                    <span>EIRCODE</span>
+                    <span>Address</span>
                   </div>
                   <div class="status">
                     <span></span>
@@ -52,7 +52,7 @@
                     <span><%= pat.firstName %> <%= pat.lastName %></span>
                   </div>
                   <div class="phone">
-                    <span><%= pat.dateOfBirth.toDateString() %></span>
+                    <span><%= pat.age %></span>
                   </div>
                   <div class="phone">
                     <span><%= pat.gender%></span>
@@ -91,19 +91,19 @@
       <script>
         var search_input = document.querySelector("#search_input");
 
-search_input.addEventListener("keyup", function(e){
-  var span_items = document.querySelectorAll(".table_body ul li .item .name span");
-  var search_item = e.target.value.toLowerCase();
- 
- span_items.forEach(function(item){
-   if(item.textContent.toLowerCase().indexOf(search_item) != -1){
-      item.closest("li").style.display = "block"
-   }
-   else{
-     item.closest("li").style.display = "none";
-   }
- })
-  
+          search_input.addEventListener("keyup", function(e){
+            var span_items = document.querySelectorAll(".table_body ul li .item .name span");
+            var search_item = e.target.value.toLowerCase();
+          
+          span_items.forEach(function(item){
+            if(item.textContent.toLowerCase().indexOf(search_item) != -1){
+                item.closest("li").style.display = "block"
+            }
+            else{
+              item.closest("li").style.display = "none";
+            }
+          })
+            
 });
 
       </script>

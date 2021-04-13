@@ -66,6 +66,8 @@ router.delete(
 
 router.post("/create-order", isAuth, patientController.postOrder);
 
-router.get("/orders/:patientId", isAuth, patientController.getOrders);
+router.get("/orders", isAuth, patientController.getOrders);
+
+router.get("/orders/:patientId", isAuth, patientController.getPatientOrders);
 
 module.exports = router;

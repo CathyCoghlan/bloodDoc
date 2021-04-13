@@ -27,11 +27,16 @@ exports.postAddPatient = (req, res, next) => {
   const firstName = req.body.firstName;
   const lastName = req.body.lastName;
   const dateOfBirth = req.body.dateOfBirth;
+  const age = req.body.age;
   const email = req.body.email;
+  const phone = req.body.phone;
   const gender = req.body.gender;
   const address = req.body.address;
   const county = req.body.county;
   const eircode = req.body.eircode;
+  const height = req.body.height;
+  const weight = req.body.weight;
+  const clinicalDetails = req.body.clinicalDetails;
   const errors = validationResult(req); // collect all the errors
 
   if (!errors.isEmpty()) {
@@ -44,11 +49,16 @@ exports.postAddPatient = (req, res, next) => {
         firstName: firstName,
         lastName: lastName,
         dateOfBirth: dateOfBirth,
+        age: age,
         email: email,
+        phone: phone,
         gender: gender,
         address: address,
         county: county,
         eircode: eircode,
+        height: height,
+        weight: weight,
+        clinicalDetails: clinicalDetails,
       },
       errorMessage: errors.array()[0].msg,
       validationErrors: errors.array(),
@@ -59,11 +69,16 @@ exports.postAddPatient = (req, res, next) => {
     firstName: firstName, // Value on right is data rec'd, left refers to keys you define in your schema
     lastName: lastName,
     dateOfBirth: dateOfBirth,
+    age: age,
     email: email,
+    phone: phone,
     gender: gender,
     address: address,
     county: county,
     eircode: eircode,
+    height: height,
+    weight: weight,
+    clinicalDetails: clinicalDetails,
     doctorId: req.doctor, // same as req.user._id
   });
   patient
@@ -79,6 +94,7 @@ exports.postAddPatient = (req, res, next) => {
 };
 
 exports.getEditPatient = (req, res, next) => {
+  const name = req.doctor.lastName;
   const editMode = req.query.edit;
   if (!editMode) {
     return res.redirect("/");
@@ -96,6 +112,7 @@ exports.getEditPatient = (req, res, next) => {
         patient: patient,
         hasError: true,
         errorMessage: null,
+        name: name,
         validationErrors: [],
       });
     })
@@ -107,13 +124,17 @@ exports.postEditPatient = (req, res, next) => {
   const patientId = req.body.patientId;
   const updatedFirstName = req.body.firstName;
   const updatedLastName = req.body.lastName;
-  const updateDateOfBirth = req.body.dateOfBirth;
+  const updatedDateOfBirth = req.body.dateOfBirth;
+  const updatedAge = req.body.age;
   const updatedEmail = req.body.email;
+  const updatedPhone = req.body.phone;
   const updatedGender = req.body.gender;
   const updatedAddress = req.body.address;
   const updatedCounty = req.body.county;
-  const updatedeEircode = req.body.eircode;
-  c;
+  const updatedEircode = req.body.eircode;
+  const updatedHeight = req.body.height;
+  const updatedWeight = req.body.weight;
+  const updatedClinicalDetails = req.body.clinicalDetails;
   const errors = validationResult(req);
 
   if (!errors.isEmpty()) {
@@ -123,14 +144,19 @@ exports.postEditPatient = (req, res, next) => {
       editing: false,
       hasError: true,
       patient: {
-        firstName: updatedFirstName,
-        lastName: updatedFirstName,
-        dateOfBirth: updateDateOfBirth,
+        firstName: updatedFirstName, // Value on right is data rec'd, left refers to keys you define in your schema
+        lastName: updatedLastName,
+        dateOfBirth: updatedDateOfBirth,
+        age: updatedAge,
         email: updatedEmail,
-        gender: updatedEmail,
+        phone: updatedPhone,
+        gender: updatedGender,
         address: updatedAddress,
         county: updatedCounty,
-        eircode: updatedeEircode,
+        eircode: updatedEircode,
+        height: updatedHeight,
+        weight: updatedWeight,
+        clinicalDetails: updatedClinicalDetails,
       },
       errorMessage: errors.array()[0].msg,
       validationErrors: errors.array(),
@@ -141,12 +167,17 @@ exports.postEditPatient = (req, res, next) => {
     .then((patient) => {
       patient.lastName = updatedLastName;
       patient.firstName = updatedFirstName;
-      patient.dateOfBirth = updateDateOfBirth;
-      patient.updatedEmail = updatedEmail;
+      patient.dateOfBirth = updatedDateOfBirth;
+      patient.age = updatedAge;
+      patient.email = updatedEmail;
+      patient.phone = updatedPhone;
       patient.gender = updatedGender;
       patient.address = updatedAddress;
       patient.updatedCounty = updatedCounty;
-      patient.eircode = updatedeEircode;
+      patient.eircode = updatedEircode;
+      patient.height = updatedHeight;
+      patient.weight = updatedWeight;
+      patient.clinicalDetails = updatedClinicalDetails;
 
       return patient.save();
     })
@@ -370,6 +401,25 @@ exports.postAddTest = (req, res, next) => {
 
 exports.getOrders = (req, res, next) => {
   const name = req.doctor.lastName;
+  Order.find({ "doctor.doctorId": req.doctor._id })
+    .sort("-time")
+    .exec()
+    .then((orders) => {
+      res.render("patient/orders", {
+        path: "/orders",
+        pageTitle: "My Orders",
+        orders: orders,
+        isAuthenticated: req.session.isLoggedIn,
+        name: name,
+      });
+    })
+    .catch((err) => {
+      res.status(500).json({ message: "failed" });
+    });
+};
+
+exports.getPatientOrders = (req, res, next) => {
+  const name = req.doctor.lastName;
   const patientId = req.params.patientId;
   console.log(patientId);
   Order.find({ "doctor.doctorId": req.doctor._id })
@@ -380,8 +430,8 @@ exports.getOrders = (req, res, next) => {
         .then((orders) => {
           //console.log(orders);
           res.render("patient/orders", {
-            path: "/orders",
-            pageTitle: "My Orders",
+            path: "/patient-orders",
+            pageTitle: "Patient Orders",
             orders: orders,
             isAuthenticated: req.session.isLoggedIn,
             name: name,
