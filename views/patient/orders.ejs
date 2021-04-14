@@ -1,28 +1,61 @@
-<%- include('../includes/head.ejs') %>
-    <link rel="stylesheet" href="/css/orders.css">
-    </head>
 
-    <body>
-        <%- include('../includes/navigation.ejs') %>
-        <%- include('../includes/sub-nav.ejs') %>
-        <main>
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/orders.css">
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <%- include('../includes/sub-nav.ejs') %>
+    <main>
+        <!--Header-->
+        <div class="wrapper">
+            <div class="header">
+                <div class="title">
+                  Blood Orders
+                </div>
+        </div>
+
+        <!-- Order Container -->
+        <div class="container">
             <% if (orders.length <= 0) { %>
                 <h1>Nothing there!</h1>
             <% } else { %>
+
                 <ul class="orders">
                     <% orders.forEach(order => { %>
+                        <!-- Order Details Header--> 
+                        <div class="order__info">
+                            <div class="info__left">
+                                <h2 class="patient"><span></span><%= order.patient.firstName %> <%= order.patient.lastName %> </h2>                                  
+                            </div>
+                            <div class="info__right">
+                                <h2 class="patient"><%= order.time.toDateString()%></h2>
+                            </div>
+
+                        </div>
+                         <!-- Tests Ordered & Link to Tests-->                       
                         <li class="orders__item">
-                            <h1>Date : <%= order.time.toDateString()%></h1>
-                            <ul class="orders__products">                                                          
-                                <h2><%= order.patient.firstName %> <%= order.patient.lastName %></h2>    
-                                <% order.tests.forEach(p => { %>                                    
-                                    <li class="orders__products-item"><%= p.test.name %> .... Sample Type: <%= p.test.specimenType %> (<%= p.test.group %>)</li>
-                                    
+
+                            <ul class="orders__tests">                                                    
+                                   <% order.tests.forEach(p => { %>                                    
+                                    <li class="orders__tests-item"><a href="/test/<%= p.test._id %>"><%= p.test.name %>
+                                        <span class="test_info">test Info</span>
+                                    </a>
+                                        
+                                    </li>
+                                                                        
                                 <% }); %>
                             </ul>
+                            <!-- View Patient Button-->
+                            <div class="patient_info">
+                                <a class="" href="/patient/<%= order.patient.patientId %>"><button class="patient_btn" type="submit">View Patient</button></a>
+                            </div>
                         </li>
                     <% }); %>
                 </ul>
-            <% } %>
-        </main>
-        <%- include('../includes/end.ejs') %>
+                
+        </div><!-- End Container-->
+
+        <% } %>
+    </main>
+    <%- include('../includes/end.ejs') %>

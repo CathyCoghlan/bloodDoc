@@ -364,6 +364,7 @@ exports.postOrder = (req, res, next) => {
               lastName: patient.lastName,
               dateOfBirth: patient.dateOfBirth,
               gender: patient.gender,
+              clinicalDetails: patient.clinicalDetails,
               time: new Date(),
             },
           });

@@ -14,6 +14,7 @@
 
  .wrapper .header {
     background: #eaeaea;
+    letter-spacing: 2px;;
   }
 
   .wrapper .title {
@@ -27,8 +28,7 @@
 
   .wrapper .search_box {
     max-width: 1000px;
-    background-color: transparent;
-    
+    background-color: transparent;    
     margin: 0 auto;
     padding: 25px 0 50px;
     border-radius: 3px;

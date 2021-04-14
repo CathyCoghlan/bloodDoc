@@ -11,9 +11,9 @@
 
               <!-- Wrapper -->
               <div class="main">
-
+                <% if (doctor.length > 0) { %>
                 <div class="wrapper-container">
-
+                  <% for (let dr of doctor) { %>
                   <!-- Header -->
                   <div class="header-title">
                     <h1>My Account Details</h1>
@@ -27,7 +27,7 @@
                             <br>
                                 <div class="user-info-group">
                                   <h2>User:</h2>
-                                  <p>Dr John Dorian</p>
+                                  <p>Dr <%= dr.firstName %> <%= dr.lastName %></p>
                                 </div>
                                 <div class="user-info-group">
                                   <h2>Role:</h2>
@@ -35,11 +35,11 @@
                                 </div>
                                 <div class="user-info-group">
                                   <h2>Email:</h2>
-                                  <p>jd@gmail.com</p>
+                                  <p><%= dr.email %></p>
                                 </div>
                                 <div class="user-info-group">
                                   <h2>Phone:</h2>
-                                  <p>087 7804955</p>
+                                  <p><%= dr.mobile %></p>
                                 </div>          
                          </div>
           
@@ -49,15 +49,15 @@
                             <br>
                                   <div class="user-info-group">
                                     <h2>Practice:</h2>
-                                    <p>Sacred Heart Medical</p>
+                                    <p><%= dr.practice %></p>
                                   </div>
                                   <div class="user-info-group">
                                     <h2>GP Code:</h2>
-                                    <p>3006</p>
+                                    <p><%= dr.code %></p>
                                   </div>
                                   <div class="user-info-group">
                                     <h2>Phone:</h2>
-                                    <p>01 8202992</p>
+                                    <p><%= dr.tel %></p>
                                   </div>
                                   <div class="user-info-group">
                                     <h2>Hospital</h2>
@@ -75,8 +75,10 @@
                   </div>
 
                 </div>
+                <% } %> <!-- Close loop -->
                 
               </div>
+              <% } %> <!-- Close if-->
 
 
             </main>

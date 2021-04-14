@@ -180,6 +180,7 @@ main {
 
 .nav__links li a:hover {
   color: #9AB7DF;
+  letter-spacing: 2px;
 
 }
 

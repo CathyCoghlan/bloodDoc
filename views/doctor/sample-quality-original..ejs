@@ -1,0 +1,106 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/bottles.css">
+
+</head>
+
+<body>
+    <%- include('../includes/navigation.ejs') %>
+    <%- include('../includes/sub-nav.ejs') %>
+    <p> Dr <%=name%></p>
+    <div class="wrapper">
+      <div class="wrapper_left">
+        <ul>
+          <li data-li="serum" class="active">
+            <p>Serum</p>
+          </li>
+          <li data-li="nodejs">
+            <p>EDTA</p>
+          </li>
+          <li data-li="reactjs">
+            <p>NaCi</p>
+          </li>
+          <li data-li="vuejs">
+            <p>Glucose</p>
+          </li>
+        </ul>
+      </div>
+      <div class="wrapper_right">
+        <div class="title">
+          Blood Bottles Guide
+        </div>
+        <div class="container">
+          <div class="item angular">
+            <div class="item_info">
+              <div class="img"></div>
+              <p>Serum</p>
+            </div>
+            <p>This tube is known in the lab as the SST (serum separating tube). It contains two agents; silica particles and a serum separating gel. The silica particles work to activate clotting and cause the blood cells to clump together. The serum separator consists of an inert polymer gel which floats as a layer between the blood cells and plasma to form a physical barrier between them. This means that the sample can be centrifuged (spun) in the lab and the separated serum easily removed.</p>
+            <p>Tips for use
+              Needs to be inverted about 5 times to mix the sample with the silica and separator. At least 1ml is ideal. You can usually get about 12 tests from one full yellow bottle. Remember that different labs may be located in different areas and technicians don’t like sharing – this means you’ll need to put your biochemistry and microbiology samples in separate yellow bottles to go to their respective laboratories.</p>
+          </div>
+          <div class="item nodejs" style="display: none;">
+            <div class="item_info">
+              <div class="img"></div>
+              <p>EDTA</p>
+            </div>
+            <p>Node.js is a platform built on Chrome's JavaScript runtime for easily building fast and scalable network applications. Node.js uses an event-driven, non-blocking I/O model that makes it lightweight and efficient, perfect for data-intensive real-time
+              applications that run across distributed devices.</p>
+            <p>Node.js is an open source, cross-platform runtime environment for developing server-side and networking applications. Node.js applications are written in JavaScript, and can be run within the Node.js runtime on OS X, Microsoft Windows, and Linux.</p>
+            <p>Node.js also provides a rich library of various JavaScript modules which simplifies the development of web applications using Node.js to a great extent.</p>
+          </div>
+          <div class="item reactjs" style="display: none;">
+            <div class="item_info">
+              <div class="img"></div>
+              <p>NaCi</p>
+            </div>
+            <p>React makes it painless to create interactive UIs. Design simple views for each state in your application, and React will efficiently update and render just the right components when your data changes.</p>
+            <p>Build encapsulated components that manage their own state, then compose them to make complex UIs.</p>
+            <p>Since component logic is written in JavaScript instead of templates, you can easily pass rich data through your app and keep state out of the DOM.</p>
+          </div>
+          <div class="item vuejs" style="display: none;">
+            <div class="item_info">
+              <div class="img"></div>
+              <p>Glucose</p>
+            </div>
+            <p>Vue is a progressive framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable. The core library is focused on the view layer only, and is easy to pick up and integrate
+              with other libraries or existing projects. On the other hand, Vue is also perfectly capable of powering sophisticated Single-Page Applications when used in combination with modern tooling and supporting libraries.</p>
+            <p>If you’d like to learn more about Vue before diving in, we created a video walking through the core principles and a sample project.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+        
+        <script>
+var li_elements = document.querySelectorAll(".wrapper_left ul li");
+var item_elements = document.querySelectorAll(".item");
+
+for (var i = 0; i < li_elements.length; i++) {
+  li_elements[i].addEventListener("click", function() {
+    li_elements.forEach(function(li) {
+      li.classList.remove("active");
+    });
+    this.classList.add("active");
+    var li_value = this.getAttribute("data-li");
+    item_elements.forEach(function(item) {
+      item.style.display = "none";
+    });
+    
+    if (li_value == "angular") {
+      document.querySelector("." + li_value).style.display = "block";
+    } else if (li_value == "nodejs") {
+      document.querySelector("." + li_value).style.display = "block";
+    } else if (li_value == "reactjs") {
+      document.querySelector("." + li_value).style.display = "block";
+    } else if (li_value == "vuejs") {
+      document.querySelector("." + li_value).style.display = "block";
+    } else {
+      console.log("");
+    }
+  });
+}
+
+        </script>
+    </body>
+    </html>
+
+  <%- include('../includes/end.ejs') %>

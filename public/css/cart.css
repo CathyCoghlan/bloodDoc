@@ -210,8 +210,8 @@
   }
 
   .tests_wrapper .tubes_container .tubes_required .tubeNo  {    
-    box-shadow: 0px 1px 1px #778aa9;
-    border-radius: 10px;
+    /* box-shadow: 0px 1px 1px #778aa9;
+    border-radius: 10px; */
     width: auto;
     height:auto;
     font-size: 20px;

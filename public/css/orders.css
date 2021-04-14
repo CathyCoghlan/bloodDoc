@@ -1,30 +1,163 @@
-.orders {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-  
-  .orders__item h1 {
-      margin: 0;
-      font-size: 1rem;
-  }
-  
-  .orders__item {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-  
-  .orders__products {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-  }
-  
-  .orders__products-item {
-      margin: 0.5rem 0;
-      padding: 0.5rem;
-      border: 1px solid #00695c;
-      color: #00695c;
-  }
-  
+  /*---------------------------------------*/
+  /* Header */
+  /*---------------------------------------*/
+    
+    .wrapper .header {
+        background: #eaeaea;
+        letter-spacing: 2px;;
+    }
+
+    .wrapper .title {
+        padding: 40px 0;
+        text-align: center;
+        font-weight: 700;
+        font-size: 32px;
+        color:#28559A;
+        text-transform: uppercase;
+    }
+
+
+    .container{        
+        width:100%;
+        display: flex;
+        justify-content: center;
+        margin-top: 20px;
+        background: #eaeaea;
+        padding-bottom: 20px;
+        
+
+    }
+    .orders {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 800px;
+        background-color: #eaeaea;
+        
+        
+    }
+
+    .order__info {
+        margin-top:40px;
+        background-image: linear-gradient(to right, #28559A, #63BCE5 );
+        padding:10px;
+        display: flex; 
+        font-size: 11px;         
+        border-bottom: 1px solid #28559A;  
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;  
+        
+    }
+
+    .order__info .info__left{        
+        color: white;
+        padding: 10px 0 10px 15px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+    }
+
+    .order__info .info__right{
+        padding-left:200px;
+        color: white;
+        padding: 10px 0 10px 450px;
+    }
+
+    
+    .orders__item h1 {
+        margin: 0;
+        font-size: 1rem;
+    }
+    
+    .orders__item {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+        padding: 2rem;
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #28559A;
+        background-color: #eaeaea;  
+
+
+    }
+    
+    .orders__tests {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .orders__tests-item {
+        margin: 0.5rem 0;
+        padding: 6px 0 6px 15px;
+        border: 1px solid #28559A;
+        color: #28559A;
+        background-color: white;
+        font-size: 15px;
+    }
+
+    .patient_info {
+        text-align: right;
+    }
+
+    .orders__tests-item span{
+        float: right;
+        padding-right: 14px;
+    }
+
+    .orders__tests-item span:hover{
+        font-weight: 600;
+        letter-spacing: 2px;
+        -webkit-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        transition: all 0.4s;
+    }
+
+    
+
+
+      .orders__tests-item a,
+      .orders__tests-item a:link,
+      .orders__tests-item a:visited,
+      .orders__tests-item a:hover {
+        text-decoration: none;
+        color:#28559A;
+      }
+
+
+
+    .orders__tests-item:hover {
+               
+        font-weight: 500;
+        -webkit-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        transition: all 0.4s;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+        color: #28559A;
+        cursor: pointer;
+      }
+ 
+
+
+
+
+      .patient_info .patient_btn{
+        color:#4B9FE1;
+        margin: 20px 38px 0;
+        border: 2px solid #4B9FE1;
+        background-color: white;
+        font-size: 15px;
+        letter-spacing: 2px;
+        padding: 7px 7px;        
+        cursor: pointer;
+        display: inline-block;
+        margin: 15px 30px;
+
+      }
+
+    
+      .patient_info .patient_btn:hover{
+        background-color:  #4B9FE1;
+        color: white;        
+        letter-spacing: 4px;
+        -webkit-transition: all 0.4s;
+        -moz-transition: all 0.4s;
+        transition: all 0.4s;
+      }

@@ -56,20 +56,24 @@
                 <div class="tubes_container">
                     <div class="tubes_required">
                         <div class="sample">                            
-                            <div class="tube_image"> <img draggable="true" ondragstart="drag(event)" src="/img/serum.png" alt="" id="serum"></div>
+                            <div class="tube_image"> <img draggable="true" ondragstart="drag(event)" src="/img/serum/serum_64px.png" alt="" id="serum"></div>
                             <div class="tubeNo"><p id="totalSerum"></p></div>
+                            <div class="tubeNo"><p id="typeSerum">Serum</p></div>
                         </div>
                         <div class="sample">
-                            <div class="tube_image"><img draggable="true" ondragstart="drag(event)" src="/img/edta.png" alt="" id="EDTA"></div>
-                            <div class="tubeNo"><p id="totalEDTA"></p></div>    
+                            <div class="tube_image"><img draggable="true" ondragstart="drag(event)" src="/img/edta/edta_64px.png" alt="" id="EDTA"></div>
+                            <div class="tubeNo"><p id="totalEDTA"></p></div>
+                            <div class="tubeNo"><p id="typeEDTA">EDTA</p></div>    
                         </div>
                         <div class="sample">
-                            <div class="tube_image"><img draggable="true" ondragstart="drag(event)" src="/img/glucose.png" alt="" id="BLF"></div>
-                            <div class="tubeNo"><p id="totalBLF"></div>    
+                            <div class="tube_image"><img draggable="true" ondragstart="drag(event)" src="/img/glucose/glucose_64px_blue.png" alt="" id="BLF"></div>
+                            <div class="tubeNo"><p id="totalBLF"></div>
+                                <div class="tubeNo"><p id="typeBLF">BLF</p></div>    
                         </div>
                         <div class="sample">
-                            <div class="tube_image"><img draggable="true" ondragstart="drag(event)" src="/img/coag.png" alt="" id="coag"></div>
-                            <div class="tubeNo"><p id="totalCoag"></div>    
+                            <div class="tube_image"><img draggable="true" ondragstart="drag(event)" src="/img/coag/coag_64px.png" alt="" id="coag"></div>
+                            <div class="tubeNo"><p id="totalCoag"></div>
+                            <div class="tubeNo"><p id="typeCoag">Coag</p></div>    
                         </div>
                              
 
@@ -175,6 +179,7 @@
             document.getElementById('totalSerum').innerHTML = allSerums;  
         } else {
         document.getElementsByClassName('tubeNo').display="none";
+        document.getElementById('typeSerum').style.display="none";
        }                                
           
 
@@ -196,6 +201,7 @@
             document.getElementById('totalEDTA').innerHTML = allEDTAs;  
        } else {
         document.getElementsByClassName('tubeNo').display="none";
+        document.getElementById('typeEDTA').style.display="none";
        }
     
     // GET TOTAL GLUCOSE SAMPLES REQUIRED & DISPLAY (Group 7 & 8)
@@ -216,6 +222,7 @@
             document.getElementById('totalBLF').innerHTML = allBLFs;  
         } else {
         document.getElementsByClassName('tubeNo').display="none";
+        document.getElementById('typeBLF').style.display="none";
        }
     // GET TOTAL COAG SAMPLES REQUIRED & DISPLAY (Group 9)
     var totalCoag = 0;
@@ -229,6 +236,7 @@
             document.getElementById('totalCoag').innerHTML = allCoags;  
         } else {
         document.getElementsByClassName('tubeNo').display="none";
+        document.getElementById('typeCoag').style.display="none";
        }
        
 
