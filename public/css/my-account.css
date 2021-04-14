@@ -1,10 +1,10 @@
 
 .main{
-  height: 80vh;
+  height: 75vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #80EDFF;
+  
 }
 
 
@@ -14,6 +14,10 @@
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.45);
   width:800px;
   height:50vh;
+  letter-spacing: 1px;
+  border-left:1px solid #28559A ;
+
+  
 }
 
 .header-title{
@@ -22,29 +26,37 @@
   color: white;
   padding:20px;
   text-align: center;
+  font-size: 15px;
+  font-weight: 100;
 }
 
 .gp-practice-details{
   display: flex;
   text-align: center;
+  background-color: white;
+  
 }
 
 .gp-practice-details .title{
   font-size: 25px;
   padding-top: 30px;
+  color:#28559A;
+  
 }
 
 .gp-practice-details .doctor-details {
-  background-color: thistle;
+  /* border-right: 1px solid #28559A; */
   float: left;
   width: 50%;
-  height:auto;  
+  height:auto;
+  padding-bottom: 25px; 
+  
+
 }
 
 
 .gp-practice-details .user-info-group {
-   padding: 25px;
-   border-bottom: 1px solid green;
+   padding: 25px;  
  }
 
  .gp-practice-details .user-info-group h2{
@@ -52,6 +64,7 @@
    padding-left: 30px;
    display: inline;
    font-size:17px;
+   color:#28559A;
  }
 
  .user-info-group p{
@@ -59,23 +72,50 @@
    font-size: 15px;
    float: right;
    padding: 2px 30px 0 0px;
+   color:#28559A;
  }
 
 
 
 .practice-details {
-  background-color: teal;
+  
   float: right;
   width: 50%;
+  border-right: 1px solid #63BCE5;
+  /* border-bottom: 1px solid #63BCE5;
+  border-top:1px solid #63BCE5 ; */
 }
 
 .footer{
   text-align: center;
 }
 
-.footer .btn{
-  
+.footer .btn{  	  
+  display:inline-block;
+  padding:10px 20px;
+  background-color: white;
+  font-size:17px;
+  border:none;
+  border-radius:5px;
+  color:#3778C2;
+  cursor:pointer;
+  border: 1px solid #3778C2;
+  margin-top: 30px;
+  width: 50%;
+  letter-spacing: 1px;
 }
+
+.btn:hover {
+	background-color: #3778C2;
+	color:white;
+	border: 1px solid #3778C2;
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.45);
+  -webkit-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+  
+
+  
+  }
 
 
 

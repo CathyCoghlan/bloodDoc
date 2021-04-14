@@ -70,8 +70,9 @@ align-items: start;
     overflow: hidden;
     position: relative;
     color: #fff;
-    font-weight: 550;
+    font-weight: 500;
     font-size: 15px;
+    letter-spacing: 1px;
     background-color: #234c88
     ;
     padding: 17px 30px;

@@ -14,6 +14,7 @@
 body {
   padding: 0;
   margin: 0;
+  background: #eaeaea;
 
   
   
@@ -86,6 +87,7 @@ main {
   border: none;
   text-decoration: none;
   color: white;
+  letter-spacing: 1px;
   cursor: pointer;
 }
 
@@ -138,6 +140,7 @@ main {
   font-weight: 500;
   color: #edf0f1;
   text-decoration: none;
+  letter-spacing: 1px;
 }
 
 .nav__links {
