@@ -6,13 +6,68 @@
     <body>
         <%- include('../includes/navigation.ejs') %>
         <%- include('../includes/sub-nav.ejs') %>
-        <p> Dr <%=name%></p>
-        <div class="wrapper">
-                <div class="top">
+
+
+
+        <div class="title"><span><%= test.name %></span></div>
+
+        <div class="main">
+            <div class="container">
+                <!--Image Container Left-->
+                <div class="image-container">
+                    <div class="imag"><img class="bottle"src="<%= test.image %>" alt=""></div>
+                    <h2 class="sample-type"><%= test.specimenType %></h2>
+                </div>
+
+                <!--Text Container Right-->
+               <div class="text-container">                              
+                            
+                
+                        <div class="test-info">
+                            <div class="data">
+                                <h4>Department</h4>
+                                <p><%= test.department %></p>
+                            </div>
+
+                            <div class="data">
+                                <h4>Turn Around Time</h4>
+                                <p><%= test.turnAroundTime %></p>
+                            </div>
+                            <div class="data">
+                                <h4>Specimen Type</h4>
+                                <p><%= test.specimenType %></p>
+                            </div>
+                            <div class="data">
+                                <h4>Details</h4>
+                                <p><%= test.details %></p>
+                            </div>
+                        </div>
+
+                  
+
+                </div>
+
+               
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+
+
+        
+        <!-- <div class="wrapper">
+                <div class="top"> -->
 
                     <!-- <i class="flaticon-tube"></i> -->
                     
-                        <h4><%= test.name %></h4>
+                        <!-- <h4><%= test.name %></h4>
                         <div class="bottle_wrap">
                             <img class="bottle"src="<%= test.image %>" alt="">
                         </div>
@@ -44,5 +99,5 @@
 
                     </div>
 
-        </div>
+        </div> -->
         <%- include('../includes/end.ejs') %>

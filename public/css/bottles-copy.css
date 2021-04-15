@@ -1,5 +1,15 @@
+.title{
+  padding: 40px 0;
+  text-align: center;
+  font-weight: 700;
+  font-size: 32px;
+  color:#28559A;
+  text-transform: uppercase;
+  letter-spacing: 2px;;
+}
+
 .main{
-  height: 75vh;
+  height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -11,29 +21,36 @@
   width: auto;
   position: relative;
   display: flex;
-  justify-content: space-between;
-  background-color: yellow;
+  /* justify-content: space-between; */
+  background-color: #eaeaea;
+  border-radius: 20px;
+  
 }
 
 .container .card{
   position: relative;
   cursor: pointer;
+  
+  
 }
 
 .container .card .face{
   width: 400px;
   height: 200px;
   transition: 0.5s;
+  
 }
 
 .container .card .face.face1{
   position: relative;
-  background: #333;
+  background: #eaeaea
+  ;
   display: flex;
   justify-content: center;
   align-items: center;
   z-index: 1;
   transform: translateY(100px);
+  border: 1px solid white;
 }
 
 .container .card:hover .face.face1{
@@ -57,7 +74,7 @@
 .container .card .face.face1 .content h3{
   margin: 10px 0 0;
   padding: 0;
-  color: #fff;
+  color: red;
   text-align: center;
   font-size: 1.5em;
 }
