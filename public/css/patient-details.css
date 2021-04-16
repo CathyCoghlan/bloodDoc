@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap');
+
+body {
+    overflow-x: hidden;
+}
+
+.container {
+    background-color: white;
+    width: 600px;
+    height: 500px;
+    margin: 0 auto;
+    position: relative;
+    margin-top:8%;
+    box-shadow: 2px 5px 20px rgba(119, 119, 199, .5);
+    
+}
+
+.leftbox{
+    float: left;
+    top: -5%;
+    left: 5%;
+    position: absolute;
+    width: 15%;
+    height: 110%;
+    background: linear-gradient(to bottom, #28559A, #4B9FE1 );
+    box-shadow: 3px 3px 10px rgba(119, 119, 199, .5);
+    border: .1em solid #fff;
+
+}
+
+nav .tab a,
+nav .tab i {
+    list-style: none;
+    padding: 20px 20px 50px 25px;
+    color: white;
+    font-size: 4rem;
+    display: block;
+    transition: all .3s ease-in-out;
+}
+
+nav .tab a:hover,
+nav .tab i:hover{
+    color: #7ED5EA;
+    cursor: pointer;
+    transform: scale(1.2);
+}
+
+nav .tab a:first-child,
+nav .tab i:first-child{
+    margin-top: 7px;
+}
+
+nav .tab a:active,
+nav .tab i:active{
+    color: #7ED5EA;
+}
+
+.rightbox {
+    width: 60%;
+    margin-left: 27%;
+    margin-top: 5px;
+}
+
+.tabShow {
+    transition: all .5s ease-in;
+    width:80%
+}
+
+.rightbox h1 {
+    font-family: "Montserrat", sans-serif;
+    color: #28559A;
+    font-size: 2rem;
+    margin-top: 40px;
+    margin-bottom: 35px;
+    padding-top:15px;
+    letter-spacing: 2px;
+    
+}
+
+.rightbox h2 {
+    color: #777;
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    font-size: 10px;
+    letter-spacing: 1px;
+    margin-left: 2px;
+    margin-top: 7px;
+
+}
+
+.input, p {
+    border: 0;
+    border-bottom: 1px solid #aec5e6;
+    width: 80%;
+    font-family: "montserrat", sans-serif;
+    padding: 5px 0;
+    font-size:15px;
+    color: #224f82;
+    outline: none;
+}
+
+.button{
+    margin-top: 10px;
+    /* text-align: center; */
+}
+
+.btn {
+    font-family: "Roboto", sans-serif;
+    text-transform: uppercase;
+    font-size: 15px;
+    border: 0;
+    color: #fff;
+    background-color: #4B9FE1 ;
+    padding: 8px 15px;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .2);
+    cursor: pointer;
+    margin-top:15px;
+    letter-spacing: 1px;;
+    
+}
+
+.btn:hover{
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s; 
+    transform: scale(1.2);
+    background-color: white;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, .2);
+    color: #4B9FE1 ;
+    border:solid 1px #4B9FE1 ;
+
+}
+
+.tabShow{
+    display: none;
+}
+
+
+.orders{
+    list-style: none;
+}
+
+.orders h3 {
+    letter-spacing: 2px;
+    font-size: 15px;
+    border-bottom:solid 1px #4B9FE1 ; 
+    padding: 10px;
+    color: #224f82;
+}
+
+.orders .order_title{
+    padding: 10px;
+}
+
+.orders__tests {    
+    margin: 0;
+    padding: 10px;
+    font-size: 13px;
+}

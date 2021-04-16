@@ -1,78 +1,115 @@
 <%- include('../includes/head.ejs') %>
     
-<link rel="stylesheet" href="/css/my-account.css">
+<link rel="stylesheet" href="/css/patient-details.css">
     </head>
 
     <body>
         <%- include('../includes/navigation.ejs') %>
         <%- include('../includes/sub-nav.ejs') %>
 
-        <div class="wrapper">
-                <div class="left">
-                    <div class="userIcon"><i class="flaticon-user-3"></i></div>
-                    <h4><%= patient.firstName %> <%= patient.firstName %></h4>
-                    <p>Patient Information</p>
-                  </div>
-                  <div class="right">
-                    <div class="info">
-                      <h3>Patient Information</h3>
-                      <div class="user_info">
-                        <div class="data">
-                          <h4>Name</h4>
-                          <p><%= patient.firstName %> <%= patient.firstName %></p>
-                          <h4>D.O.B</h4>
-                          <p><%= patient.dateOfBirth %></p>
-                        
-                        </div>
-                        <div class="data">
-                          <h4>Gender</h4>
-                          <p><%= patient.gender %></p>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="practice">
-                      <h3>Clinical Information</h3>
-                      <div class="practice_info">
-                        <div class="data">
-                          <h4>Height</h4>
-                          <p><%= patient.address %></p>
-                          <h4>Weight</h4>
-                          <p><%= patient.county %></p>
-                        </div>
-                        <div class="data">
-                          <h4>Last Bloods</h4>
-                          <p><%= patient.eircode %></p>              
-                        </div>
-                        
-                      </div>
-                    </div>
-                    <div class="update">
-                      <form action="/my-account-edit">
-                        <button class="updateBtn" type="submit">Update</button>
-                      </form>
-                    </div>
-                  </div>
 
-                  
+
+
+
+
+      <div class="container">
+        <div class="leftbox"> 
+          <nav>
+            <a onclick="tabs(0) "class="tab active">
+              <i class="fa fa-user"></i>
+            </a>
+            <a onclick="tabs(1) "class="tab">
+              <i class="fas fa-stethoscope"></i></i>
+            </a>
+            <a onclick="tabs(2) "class="tab">
+              <i class="fas fa-notes-medical"></i>
+            </a>
+          </nav>
+
         </div>
-        <div class="orders">
-          <% if (orders.length <= 0) { %>
-            <h1>Nothing there!</h1>
-        <% } else { %>
-            <ul class="orders">
-                <% orders.forEach(order => { %>
-                    <li class="orders__item">
-                      <h1>Patient - <%= order.patient.createdAt %></h1>
-                        <ul class="orders__products">
-                            <% order.tests.forEach(p => { %>
-                                <li class="orders__products-item"><%= p.test.name %> .... (<%= p.test.specimenType %>)</li>
-                            <% }); %>
-                        </ul>
-                    </li>
-                <% }); %>
-            </ul>
-        <% } %>
+
+        <div class="rightbox">
+            <div class="profile tabShow">
+              <h1>Patient Info</h1>
+              <h2>Full Name</h2>
+              <input type="text" class="input" value="<%= patient.firstName %>  <%=patient.lastName %>">
+              <h2>Birthday</h2>
+              <input type="text" class="input" value="<%= patient.dateOfBirth.toDateString() %>">
+              <h2>Age</h2>           
+              <input type="text" class="input" value="<%= patient.age %>">
+              <h2>Gender</h2>
+              <input type="text" class="input" value="<%= patient.gender %>">
+              <h2>Address</h2>
+              <input type="text" class="input" value="<%= patient.address %>">
+              <h2>Phone</h2>
+              <input type="text" class="input" value="<%= patient.phone %>">
+              <h2>Email</h2>
+              <input type="text" class="input" value="<%= patient.email %>">
+              <div class="button">
+                <a class="modify_patient" href="/edit-patient/<%= patient._id %>?edit=true">
+                  <button class="btn">Update</button> 
+             </a>   
+            </div>
+              
+                    
+            </div>
+
+            <div class="clinicalDetails tabShow">
+              <h1>Patient Clinical Details</h1>
+              <h2>Full Name</h2>
+              <input type="text" class="input" value="<%= patient.firstName %>  <%=patient.lastName %> ">
+              <h2>Weight</h2>
+              <input type="text" class="input" value="<%= patient.weight %> kgs">
+              <h2>Height</h2>           
+              <input type="text" class="input" value="<%= patient.height %> inches">
+              <h2>Clinical Details</h2>
+              <input type="text" class="input" value="<%= patient.clinicalDetails %>">
+
+              <div class="button">
+                <a class="modify_patient" href="/edit-patient/<%= patient._id %>?edit=true">
+                  <button class="btn">Update</button> 
+             </a>   
+              </div>
+
+            </div>
+            <div class="orders tabShow">
+              
+              <% if (orders.length <= 0) { %>
+                <h1>Nothing there!</h1>
+            <% } else { %>
+                <ul class="orders">
+                  <h1>Last Blood Orders</h1>
+                    <% orders.forEach(order => { %>
+                        <li class="orders__item">
+                          <h3>Date: <%= order.time.toDateString() %></h3>
+                            <ul class="orders__tests">
+                                <% order.tests.forEach(p => { %>
+                                    <li class="orders__tests-item"><%= p.test.name %></li>
+                                <% }); %>
+                            </ul>
+                        </li>
+                    <% }); %>
+                </ul>
+            <% } %>
+
+              <div class="button">
+                <a href="/orders/<%= patient._id %>"><button class="btn">View All Orders</button> </a>                  
+                
+                <a href="/order-entry/<%= patient._id %>"><button class="btn">Create Order</button>  </a>   
+              </div>
+
+            </div>
+
         </div>
+      </div>
+
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="/js/details.js"></script>
+
+
+
 
         
          <%- include('../includes/end.ejs') %>

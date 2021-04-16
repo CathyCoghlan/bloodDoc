@@ -9,26 +9,28 @@
 
 
 .box1{
-    background-color: rgb(166, 197, 209);
+    background-image: linear-gradient(to right, #28559A, #63BCE5 );
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
 }
 
 .box2{
-    background-color: rgb(166, 197, 209);
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+    
 }
 
 .box3{
-    background-color:rgb(166, 197, 209);
-    height:200px;
+    background-color: transparent;
+    
+    height:500px;
+    
 
 }
-.box4{
-    background-color:orange;
 
-}
 .wrapper{
     position: absolute;
     top: 20%;
-    left: 18%; 
+    left: 14%;    
+    margin-top: 50px;
     /* margin-top: -50px;
     margin-left: -50px; */
     
@@ -37,7 +39,7 @@
 .grid-container{
     height: 100vh;
     display: grid;
-    grid-template-columns: 250px 550px 250px ;
+    grid-template-columns: 280px 590px 300px ;
     grid-template-rows: 500px 1fr 1fr;
     grid-gap: 40px;
     grid-template-areas: 
@@ -47,18 +49,20 @@
 }
 
 .box1 .header{
-    background-color: rgb(58,105,124);
+    background-image: linear-gradient(to right, #28559A, #63BCE5 );
     height: 70px;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+    display: flex;
+    
 }
 
 .box1 .header h3{
-    /* text-align: center; */
-    padding: 10px;
+    text-align: center;    
     font-size: 20px;
-
     color: white;
+    padding: 23px 0 0 10px;
+    letter-spacing: 2px;
 }
 
 
@@ -76,6 +80,7 @@
 .box3{
     grid-area:box3;
     border-radius: 20px;
+    
 }
 
 .box4{
@@ -87,6 +92,7 @@
     align-items: center;
     display: block;
     padding:0px;
+    text-align: center;
    
 }
 
@@ -94,8 +100,13 @@
     display: flex;
     align-items: center;
     padding: 15px;
-    border: 1px solid white;
-    overflow: auto;
+    border-bottom: 1px dashed #28559A;
+    background-color: white;
+    overflow:  break-word;
+    ;
+    /* overflow:  auto; */
+
+
 }
 /* 
 .grid-container .box1 .inner .info .title{
@@ -106,8 +117,9 @@
     
 } */
 
+
 .grid-container .box1 .inner .info h2{
-    color: rgb(16, 82, 82);
+    color: #28559A;
     font-size: 13px;
     text-transform: uppercase;
     
@@ -115,9 +127,9 @@
 }
 
 .grid-container .box1 .inner .info p{
-    font-size: 13px;
+    font-size: 15px;
     padding: 15px;
-    color: rgb(255, 255, 255);
+    color: rgb(133, 133, 133);
     font-weight: 500;
 }
 
@@ -126,14 +138,15 @@
     background-color: transparent;
     padding: 20px;
     align-items:center;
+    
 }
 
 .grid-container .box1 .inner .btnBox .editBtn{
     width: 70%;
-    color:rgb(133,172,187);
+    color:white;
     margin: 20px 38px 0;
-    border: 2px solid rgb(133,172,187);
-    background-color: white;
+    border: 2px solid white;
+    background-color: transparent;
     font-size: 15px;
     letter-spacing: 2px;
     padding: 7px 7px;
@@ -144,18 +157,20 @@
   }
 
   .grid-container .box1 .inner .btnBox .editBtn:hover{
-    background-color:  rgb(133,172,187);
-    color: white;
+    background-color:  white;
+    color: #28559A;
     -webkit-transition: all 0.4s;
     -moz-transition: all 0.4s;
     transition: all 0.4s;
-    
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+    letter-spacing: 3px;
+    font-weight: 500;
     
   }
 
 .grid-container .box1 .inner .btnBox a{
     text-decoration: none;
-    color:rgb(16, 82, 82);
+    color:white;
 
         
 }
@@ -164,17 +179,15 @@
 /* Style the buttons that are used in the tab content*/
 
 .tab {
-    overflow: hidden;
-    padding: 0;
-	border-bottom: 1px solid #ccc;
+    overflow: hidden;    	
     display: flex;
 	align-items: stretch;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
     
   }
-.tab button {
-    background: rgb(86, 141, 158);
+.tab .tablinks {
+    background: #3778C2;
     border: 1px solid #ccc;
     outline: none;
     cursor: pointer;
@@ -188,31 +201,42 @@
     text-transform: uppercase;
     transition: all 0.3s;
     height: 70px;
+    letter-spacing: 1px;
+    
 	
     
   }
 
 /* Change background color of buttons on hover */
-.tab button:hover {
-    border-top-color: rgb(255, 254, 254);
+.tab .tablinks:hover {    
 	color: rgb(255, 254, 254);
+    letter-spacing: 2px;
+    background-color: #28559A;
+    box-shadow: 0px 18px 18px 18px rgba(0, 0, 0, 0.45);
+    
   }
 
   /* Create an active/current tablink class */
-.tab button:active, button:focus {
+.tab .tablinks:active, .tablinks:focus {
     border-bottom-color: rgb(36, 107, 148);
-	border-top-color: #B721FF;
-	background:rgb(46, 91, 109);
+	background:#28559A;
 	color: rgb(255, 254, 254);
+    letter-spacing: 2px;
+    box-shadow: 0px 18px 18px 18px rgba(0, 0, 0, 0.45);
+    
+
+    
   }
 
   /* Style the tab content */
 .tabcontent {
     /* display: none; */
-    padding: 6px 12px;
+    padding: 0 0 0 25px;
     border-top: none;
-    /* position:relative;
-    animation:animatebottom 0.4s */
+    position:relative;
+    animation:animatebottom 0.4s;
+    
+    
   }
 
   .tabcontent .test {
@@ -227,137 +251,148 @@
       margin:10px;
   }
 
-  .tabcontent .radio-toolbar input[type="radio"] {
-    opacity: 0;
-    position: fixed;
-    width: 0;
-  }
-
-  .tabcontent .radio-toolbar label {
-    display: inline-block;
-    background-color: #ddd;
-    font-size: 13px;
-    border: 2px solid #444;
-    margin: 10px;
-    border: none;
-    padding: 9px;
-    margin: 10px;
-    width: 130px;
-    border-radius: 10px;
-}
-
-.tabcontent .radio-toolbar label:hover {
-  background-color: #dfd;
-}
-
-.tabcontent .radio-toolbar input[type="radio"]:focus + label {
-    border: 2px dashed #444;
-}
-
-.tabcontent .radio-toolbar input[type="radio"]:checked + label {
-    background-color: #bfb;
-    border-color: #4c4;
-}
- 
-
-
-
 
 
   /* .tabcontent .test:focus, .test:active, .test:visited {
     background-color: rgb(43, 156, 184);
     color:white;
 } */
+
 .testBtn{
     border-radius: 20px;
     width: 180px;
     margin:10px;
     padding: 3px;
     border: none;
-    box-shadow: 0 1px 20px 0 rgba(69,90,100,.08);
+    box-shadow: 0.8px 1px 1px 0px  #28559A;
     font-weight: 500;
     margin-left: 40px;
+    background-color: white;
+    color: #28559A;
 }
 
 
 
   .testBtn:hover {
-    background-color: rgba(92, 177, 180, 0.6);
+    background-color: #8bbde2
+    ;
+    letter-spacing: 1px;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    font-weight: 600;
+    color: white;
   }
   
   .testBtn:focus {
-    background-color: rgba(92, 177, 180, 0.6);
-    border: none;
+    background-color: #8bbde2;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: white;
   } 
   
   .testBtn:active, .testBtn:visited {
-    background-color: rgba(92, 177, 180, 0.6);
+    background-color: #8bbde2;
     border: none;
+    color: white;
   }
   
   .activeBtn {
-    background: rgba(92, 177, 180, 0.6); 
+    background: #8bbde2; 
+    border: none;
+    color: white;
   }
 
-  .box3 .samples-header{
-      text-align: center;
-      text-transform: uppercase;
-      margin-top: 10px;
-      padding-top: 10px;
-      font-size: 15px;
-      color: white;
+  .box3 .samples-header{     
+      background-image: linear-gradient(to right, #28559A, #63BCE5 );
+      height: 70px;
+      border-top-left-radius: 20px;
+      border-top-right-radius: 20px;
+      display: flex;
+      align-items: center;
+      width: 100%;
       
   }
+  .box3 .samples-header h3{       
+    text-align: center;    
+    font-size: 18px;
+    color: white;
+    padding-left: 25px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
 
 
-  .box3 .samples {
-      background-color: white;
-      height: 200px;
-      margin-top: 10%;
-      border-radius: 30px;
-      border: dashed rgba(92, 177, 180, 0.6);
+  .box3 .samples {     
+     border-bottom-right-radius: 30px;
+     border-bottom-left-radius: 30px;
+     background-image: linear-gradient(to right, #28559A, #63BCE5 );
+    padding-bottom: 10px;;
+     box-shadow: 0 2px 16px rgba(0, 0, 0, 0.45)
+         
       
   }
 
   .box3 .samples .tubes {
       margin-left: 20px;
       margin-top: 30px;
+      display: inline-block;
   }
 
 
 
-  .box3 .cartBtn {
-    font: bold 11px Arial;
-  text-decoration: none;
-  background-color: #EEEEEE;
-  color: #333333;
-  padding: 2px 6px 2px 6px;
-  border-top: 1px solid #CCCCCC;
-  border-right: 1px solid #333333;
-  border-bottom: 1px solid #333333;
-  border-left: 1px solid #CCCCCC;
+  .box3 .cartBtnBx {
+    text-align: center;
+    padding-top: 30px;
+  }
+
+  .box3 .cartBtn{
+    width: 70%;
+    background-image: linear-gradient(to right, #28559A, #63BCE5 );
+    margin: 20px 38px 0;
+    border: 2px solid white;
+    background-color: transparent;
+    font-size: 15px;
+    letter-spacing: 2px;
+    padding: 12px 7px;
+    text-transform: uppercase;
+    cursor: pointer;
+    display: inline-block;
+    margin: 15px 30px;
+    color:white
   }
   
-  .box3 .cartBtn a:hover {
-    text-decoration: underline;
+  .box3 .cartBtn:hover {
+    background-color: white;
+    color: #28559A;
+    -webkit-transition: all 0.4s;
+    -moz-transition: all 0.4s;
+    transition: all 0.4s;
+    box-shadow: 0 2px 16px rgba(0, 0, 0, 0.45);
+    letter-spacing: 3px;
+    font-weight: 500;
   }
   
-  .box3 .cartBtn a:active {
+  .box3 .cartBtn:active {
     color: black;
   }
   
-  .box3 .cartBtn a:visited {
+  .box3 .cartBtn:visited {
     color: purple;
   }
 
   .hidden{display:none;}
-  .show{display:block;}
+  .show{display:block}
 
   img {
     opacity: 0;
     filter: alpha(opacity=40);
+    
+  } 
+  .img-tube{
+   
+   height: 80px;
   }
-  
     
 
 

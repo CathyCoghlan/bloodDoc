@@ -211,17 +211,21 @@ exports.getPatient = (req, res, next) => {
   const patientId = req.params.patientId;
   Patient.findById(patientId)
     .then((patient) => {
-      Order.find({ "patient.patientId": patient._id }).then((orders) => {
-        console.log(patient);
-        res.render("patient/patient", {
-          patient: patient,
-          orders: orders,
-          pageTitle: "Patient Details",
-          path: "/patient",
-          isAuthenticated: req.session.isLoggedIn,
-          name: name,
+      Order.find({ "patient.patientId": patient._id })
+        .sort("-time")
+        .limit(1)
+        .exec()
+        .then((orders) => {
+          console.log(patient);
+          res.render("patient/patient", {
+            patient: patient,
+            orders: orders,
+            pageTitle: "Patient Details",
+            path: "/patient",
+            isAuthenticated: req.session.isLoggedIn,
+            name: name,
+          });
         });
-      });
     })
     .catch((err) => {
       console.log(err);
@@ -260,7 +264,9 @@ exports.getOrderEntry = (req, res, next) => {
       console.log(err);
     } else {
       Test.find(
-        { $or: [{ group: "1" }, { group: "7" }] },
+        {
+          $or: [{ group: "1" }, { group: "5" }, { group: "7" }, { group: "8" }],
+        },
         function (err, biot) {
           if (err) {
             console.log(err);

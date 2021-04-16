@@ -6,118 +6,143 @@
   text-align: center;
   padding: 20px;
   font-size: 30px;
-  color:#234c88
+  color:#234c88;
+  margin-bottom: 40px;
 }
 
-
-
 .patient_wrapper,
-.patient_details {  
+.patient_details_container {  
   margin: 0;
-  padding: 0;
+  padding-top: 0;
   margin: auto;
   width: 40rem;
   width: 900px;
   max-width: 90%;
- 
+  ;
+  
+
 }
+
+
+.patient_details_container{    
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-bottom: 1px solid white;
+  background-color: white;
+}
+
+
 
 .patient_details{
   text-align: center;
   padding: 10px;
   text-transform: uppercase;
+  background-color: transparent;
+  color: #c23b37 ;
+  letter-spacing: 2px;;
+  background-color: white;
+  
+  
+  
 }
 
 .patient_wrapper{
-  box-shadow: 0 1px 0px rgba(0, 0, 0, 0.26);
+  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 20px;
   display: flex;
+  border: 1px solid #234c88;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+  
+
 }
 
-/* .patient_details {
-  margin: 0;
-  padding: 0;
-  margin: auto;
-  width: 40rem;
-  width: 900px;
-  max-width: 90%;
-  text-align: center;
-} */
 
 .patient_info {    
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
   padding: 1rem;  
   margin: 1rem;
   font-size: 8px;
+  
+  
   }
 
 .patient_info_data {
   padding: 0 13px 0 20px;
   text-transform: uppercase;
-  color: #4B9FE1 ;
+  color: #234c88;
 }
+
+
 
 .patient_info p {
   font-size: 16px;
   padding-top: 1px;
   font-weight: 400;
-  color: #4B9FE1 ;
+  color: #234c88;
+}
+
+.patient_wrapper .modify_btn_box{  
+  padding-left: 100px;
 }
 
 .patient_wrapper .modify_btn {
-  margin: 0;
-  padding: 0;
+  margin: 0;  
   margin: auto;
-  border: rgb(226, 236, 240) solid 1px;
-  background-color: #234c88;
+  border: #63BCE5 solid 1px;
+  background-color: transparent;
   border-radius: 10px;
   padding: 10px;
+  
+  letter-spacing: 1px;
+  color: #63BCE5;
   
   
 }
 
 .patient_wrapper .modify_btn:hover {
-  background-color: rgb(243, 243, 243);
+  background-color: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
   cursor: pointer;
-  font-weight: 600;  
+  font-weight: 500; 
+  -webkit-transition: all 0.4s;
+  -moz-transition: all 0.4s;
+  transition: all 0.4s; 
+  color: #63BCE5;
+  letter-spacing: 2px;
 }
 
-.patient_wrapper .modify_btn a {
-  text-decoration: none;
-  text-transform: uppercase;
-  font-size: 12px;
-  color: rgb(243, 243, 243);
-}
-.patient_wrapper .modify_btn a:hover {  
-  color: #234c88;
-}
 
 .tests_wrapper_header {
-  background-color: #234c88;
+  background-image: linear-gradient(to right, #28559A, #63BCE5 );;
   margin: auto;
   width: 900px;
   max-width: 90%;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  /* box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26); */
   display: flex;
-  margin-top: 20px;
+  margin-top: 30px;
   text-transform: uppercase;
-   
+  height: 70px;   
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  
 }
 
 
+
+
 .tests_wrapper_header .selected {  
-  color: rgb(243, 243, 243); 
-  padding-left: 150px;
-  font-weight: 400;
+  color: white; 
+  padding: 23px 0 0 150px;
+  font-weight: 600;
   
 }
 
 .tests_wrapper_header .required {  
-  color: rgb(243, 243, 243);
+  color: white;;
   padding-left: 28%;
-  font-weight: 400;
+  font-weight: 600;
+  padding-top:23px
   
 }
 
@@ -157,13 +182,15 @@
     align-items: center;
     justify-content: space-between;
     padding: 0.5rem;
-    border-bottom: dashed 1px #99abbf;
+    /* border-bottom: dashed 1px #99abbf; */
     margin-bottom: 0.2rem;
     margin-left: 2rem;
+    background-image: linear-gradient(to right, #eaeaea, white );
+    border-radius: 10px;
   }
   .tests_wrapper .cart__item:hover{
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
-    border-radius: 10px;
+    
     border:none;
   }
 
@@ -177,7 +204,7 @@
 
   .tests_wrapper .cart__item .deleteBtn{
     border:none;
-    background-color: white;
+    background-color: transparent
   }
   .tests_wrapper .cart__item .deleteBtn i:hover{
     color: red;    
@@ -185,8 +212,8 @@
 
 
   .tests_wrapper .cart__item .deleteBtn i {
-    background-color: white;
-    color: #3778C2;
+    
+    color: #c23b37;
   }
   
   .tests_wrapper .tubes_container{
@@ -203,8 +230,6 @@
 
   }
   
-
-
   .tests_wrapper .tubes_container .tubes_required .tube_image {
     padding: 0 20px 0 20px;
   }
@@ -222,32 +247,31 @@
   }
 
   .centered .orderBtn{    
-    color:#234c88;
+    color:#c23b37;
     margin: 20px 38px 0;
-    border: 2px solid #234c88;
+    border: 2px solid #c23b37;
     background-color: white;
     font-size: 20px;
-    letter-spacing: 2px;
-    padding: 7px 7px;
+    letter-spacing: 1px;
+    padding: 10px 10px;
     text-transform: uppercase;
     cursor: pointer;
     display: inline-block;
     margin: 15px 30px;
+    border-radius: 10px;;
     
   }
 
   .centered .orderBtn:hover{
-    background-color:  #234c88;
+    background-color:  #c23b37;
     color: white;
     -webkit-transition: all 0.4s;
     -moz-transition: all 0.4s;
     transition: all 0.4s;
+    letter-spacing: 2px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
   }
 
-  .sub-header__nav{
-  background-color: cadetblue;
-  }
-  
 
 
  
@@ -266,30 +290,7 @@
 
 
 
-/* .cart__item-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    margin: auto;
-    width: 40rem;
-    max-width: 90%;
-  }
-  
-  .cart__item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1rem;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
-    margin-bottom: 1rem;
-  }
-  
-  .cart__item h1,
-  .cart__item h2 {
-    margin-right: 1rem;
-    font-size: 1.2rem;
-    margin: 0;
-  } */
+
 
   img {
     opacity: 0;

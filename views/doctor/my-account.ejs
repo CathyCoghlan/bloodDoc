@@ -1,87 +1,83 @@
 <%- include('../includes/head.ejs') %>
     
-<link rel="stylesheet" href="/css/my-account.css">
+<link rel="stylesheet" href="/css/patient-details.css">
     </head>
 
     <body>
         <%- include('../includes/navigation.ejs') %>
         <%- include('../includes/sub-nav.ejs') %>
 
-            <main>
 
-              <!-- Wrapper -->
-              <div class="main">
-                <% if (doctor.length > 0) { %>
-                <div class="wrapper-container">
-                  <% for (let dr of doctor) { %>
-                  <!-- Header -->
-                  <div class="header-title">
-                    <h1>My Account Details</h1>
-                  </div>
-                  <!-- GP & Practice Details -->
-                    <div class="gp-practice-details">
+        <div class="container">
+          <div class="leftbox"> 
+            <nav>
+              <a onclick="tabs(0) "class="tab active">
+                <i class="fas fa-user-md"></i>
+              </a>
+              <a onclick="tabs(1) "class="tab">
+                <i class="fas fa-clinic-medical"></i>
+              </a>
 
-                           <!-- User Account Details-->
-                          <div class="doctor-details left">                                        
-                            <h2 class="title">User Details</h2>
-                            <br>
-                                <div class="user-info-group">
-                                  <h2>User:</h2>
-                                  <p>Dr <%= dr.firstName %> <%= dr.lastName %></p>
-                                </div>
-                                <div class="user-info-group">
-                                  <h2>Role:</h2>
-                                  <p>GP</p>
-                                </div>
-                                <div class="user-info-group">
-                                  <h2>Email:</h2>
-                                  <p><%= dr.email %></p>
-                                </div>
-                                <div class="user-info-group">
-                                  <h2>Phone:</h2>
-                                  <p><%= dr.mobile %></p>
-                                </div>          
-                         </div>
-          
-                          <!-- Practice Details-->
-                          <div class="practice-details right">                  
-                            <h2 class="title">Practice Details</h2>
-                            <br>
-                                  <div class="user-info-group">
-                                    <h2>Practice:</h2>
-                                    <p><%= dr.practice %></p>
-                                  </div>
-                                  <div class="user-info-group">
-                                    <h2>GP Code:</h2>
-                                    <p><%= dr.code %></p>
-                                  </div>
-                                  <div class="user-info-group">
-                                    <h2>Phone:</h2>
-                                    <p><%= dr.tel %></p>
-                                  </div>
-                                  <div class="user-info-group">
-                                    <h2>Hospital</h2>
-                                    <p>St James Hospital</p>
-                                  </div>          
-                          </div>
-                      
-                    </div><!-- End GP & Practice Details -->
-
-                    <div class="footer">         
-                      
-                          <input type="hidden" value="" name="patientId">                     
-          
-                      <button class="btn" type="submit">Update Details</button>
-                  </div>
-
-                </div>
-                <% } %> <!-- Close loop -->
+            </nav>
+  
+          </div><!--Left Obx End-->
+  
+          <div class="rightbox">
+             <% if (doctor.length > 0) { %>
+              <% for (let dr of doctor) { %>
+              <div class="profile tabShow">
+                <h1>User Information </h1>
+                <h2>Name</h2>
+                <input type="text" class="input" value="<%= dr.firstName %> <%= dr.lastName %>">
+                <h2>Role</h2>
+                <input type="text" class="input" value="GP">
+                <h2>Mobile</h2>           
+                <input type="text" class="input" value="<%= dr.mobile %>">
+                <h2>Email</h2>
+                <input type="text" class="input" value="<%= dr.email %>">
                 
-              </div>
-              <% } %> <!-- Close if-->
+             
+                    <div class="button">
+                      <a class="modify_patient" href="/edit-patient/?edit=true">
+                        <button class="btn">Update</button> 
+                  </a>   
+                  </div>
+      
+                      
+              </div><!--profile tab end-->
+  
+              <div class="practiceDetails tabShow">
+                <h1>Practice Details</h1>
+                <h2>Practice</h2>
+                <input type="text" class="input" value="<%= dr.practice %>">
+                <h2>Phone</h2>
+                <input type="text" class="input" value="<%= dr.code %>">
+                <h2>GP Code</h2>
+                <input type="text" class="input" value="<%= dr.tel %>">
+                <h2>Hospital</h2>
+                <input type="text" class="input" value="St James Hospital">
+  
+                <div class="button">
+                  <a class="modify_patient" href="/edit-patient/?edit=true">
+                    <button class="btn">Update</button> 
+               </a>   
+                </div>
+  
+              </div><!-- Practice details end-->
+              <% } %> 
+              <% } %> 
+            
+  
+          </div>
+        </div>
+  
+  
 
 
-            </main>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+            <script src="/js/details.js"></script>
+        
+        
             <%- include('../includes/end.ejs') %>
 
 

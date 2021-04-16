@@ -12,42 +12,48 @@
             <div class="grid-container">
                 <div class="box1">
                     <div class="header">
-                        <h3><%= patient.lastName %>, <%= patient.firstName %></h3> 
+                        <h3 class="name"><%= patient.lastName %>, <%= patient.firstName %> </h3> 
+                      
                          
                     </div>
                     <div class="inner">
+
                         <div class="info">
                             <h2 class="title">First Name : </h2>
-                            <p><%= patient.firstName %></p>
+                            <p class="data"><%= patient.firstName %></p>
                         </div>
                         <div class="info">
                             <h2 class="title">Last Name: </h2>
-                            <p><%= patient.lastName %></p>
+                            <p class="data"><%= patient.lastName %></p>
                         </div>
                         <div class="info">
                             <h2 class="title">Address: </h2>
-                            <p><%= patient.address %></p>
+                            <p class="data"><%= patient.address %></p>
                         </div>
                         <div class="info">
-                            <h2 class="title">D. O. B     : </h2>
-                            <p><%= patient.dateOfBirth.toDateString() %></p>
+                            <h2 class="title">Gender     : </h2>
+                            <p class="data"><%= patient.gender %></p>
+                            <h2 class="title">Age : </h2>
+                            <p class="data"><%= patient.age%></p>
                         </div>
                         <div class="info">
-                            <h2 class="title">Email    : </h2>
-                            <p><%= patient.email %></p>
+                            <h2 class="title">Weight    : </h2>
+                            <p class="data"><%= patient.weight %></p>
+                            <h2 class="title">Height : </h2>
+                            <p class="data"><%= patient.height %></p>
                         </div>
-                        <div class="info">
-                            <h2 class="title">Gender  : </h2>
-                            <p><%= patient.gender %></p>
-                        </div>
-                        <div class="btnBox">
-                            <button class="editBtn"> 
-                                <a href="/edit-patient/<%= patient._id %>?edit=true">Update Details</a>
-                            </button>
+                
+  
+                    <div class="btnBox">
+                           
+                                <a href="/edit-patient/<%= patient._id %>?edit=true"> 
+                                    <button class="editBtn"> Update Details </button>
+                                </a>
+                           
                             
-                        </div>
+                        </div> 
 
-                    </div>
+                    </div><!--End Inner-->
         
                 </div>
                 
@@ -112,29 +118,35 @@
                     </div>
                 </div>
                 <div class="box3">
-                    <h2 class="samples-header">Samples Required</h2>
-                    <div class="samples">
-                        
-                        <div class="tubes">
-                            <img ondragstart="drag(event)" src="/img/serum-128px.png"  alt="" id="group1">
-                            <img ondragstart="drag(event)" src="/img/serum2.png" alt="" id="group2">
-                            <img ondragstart="drag(event)" src="/img/serum2.png" alt="" id="group3">
-                            <img ondragstart="drag(event)" src="/img/serum2.png" alt="" id="group6">
-                            <img ondragstart="drag(event)" src="/img/edta.png" alt="" id="group4">
-                            <img ondragstart="drag(event)" src="/img/edta.png" alt="" id="group5">                            
-                            <img ondragstart="drag(event)" src="/img/glucose.png" alt="" id="group7">
-                            <img ondragstart="drag(event)" src="/img/glucose.png" alt="" id="group8">
-                            <img ondragstart="drag(event)" src="/img/coag/coag_128px.png" alt="" id="group9">
-                        </div>
-
+                    <div class="samples-header">
+                        <h3 class="samples-header">Samples Required</h3>
                     </div>
-                    <div class="cartBtn">
-                        <a href="/cart/<%= patient._id %>" class="toCart">Order</a>
+
+                    <div class="samples">  
+                        
+                     <div class="tubes">
+                            <img class="img-tube" ondragstart="drag(event)" src="/img/serum/serum4_64px.png"  alt="" id="group1">
+                            <img class="img-tube" ondragstart="drag(event)" src="/img/serum/serum4_64px.png" alt="" id="group2">
+                            <img class="img-tube" ondragstart="drag(event)" src="/img/serum/serum4_64px.png" alt="" id="group3">
+                            <img class="img-tube" ondragstart="drag(event)" src="/img/serum/serum4_64px.png" alt="" id="group6">
+                            <img class="img-tube" ondragstart="drag(event)" src="/img/edta/edta4_64px.png" alt="" id="group4">
+                            <img class="img-tube" ondragstart="drag(event)" src="/img/coag/coag4_64px.png" alt="" id="group9">
+                            <img class="img-tube" ondragstart="drag(event)" src="/img/glucose/glucose4_64px.png" alt="" id="group7">
+                            <img class="img-tube" ondragstart="drag(event)" src="/img/edta/edta4_64px.png" alt="" id="group5">                     
+                            <img class="img-tube" ondragstart="drag(event)" src="/img/glucose/glucose4_64px.png" alt="" id="group8">
+ 
+                        </div> 
+
+                    </div>  
+               
+                    <div class="cartBtnBx">
+                        <a href="/cart/<%= patient._id %>" class="toCart">
+                            <button class="cartBtn" >Order</button>
+                        </a>
                     </div>
                 </div>
-                <!-- <div class="box4">
-                    <h2>Box4</h2>
-                </div> -->
+
+                
             </div>
 
         </div>
@@ -197,3 +209,6 @@
 
         <%- include('../includes/end.ejs') %>
         <script src="/js/add-test.js"></script>
+
+
+

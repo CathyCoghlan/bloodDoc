@@ -10,23 +10,8 @@
     <main>
         <h2 class="heading">BLOOD ORDER</h2>
 
-        <div class="patient_details"><h1 class="patient_details">Patient Details</h1></div>
-        <div class="patient_wrapper">
 
-            <div class="patient_info">
-                <h1 class="patient_info_data">Name:</h1> 
-                    <p><%= patient.lastName %> , <%= patient.firstName %></p>
-                <h1 class="patient_info_data">Gender:</h1>
-                    <p><%= patient.gender %></p>
-                    <h1 class="patient_info_data">DOB:</h1>
-                    <p><%= patient.dateOfBirth.toDateString() %></p>                   
-            </div>
 
-               <div class="modify_btn">
-                        <a class="modify_patient" href="/edit-patient/<%= patient._id %>?edit=true">Modify Details</a>
-               </div>
-
-        </div>
         
         <div class="tests_wrapper_header">
             <h1 class="selected">Tests Selected</h1>
@@ -56,37 +41,61 @@
                 <div class="tubes_container">
                     <div class="tubes_required">
                         <div class="sample">                            
-                            <div class="tube_image"> <img draggable="true" ondragstart="drag(event)" src="/img/serum/serum_64px.png" alt="" id="serum"></div>
+                            <div class="tube_image"> <img draggable="true" ondragstart="drag(event)" src="/img/serum/serum4_64px.png" alt="" id="serum"></div>
                             <div class="tubeNo"><p id="totalSerum"></p></div>
                             <div class="tubeNo"><p id="typeSerum">Serum</p></div>
                         </div>
                         <div class="sample">
-                            <div class="tube_image"><img draggable="true" ondragstart="drag(event)" src="/img/edta/edta_64px.png" alt="" id="EDTA"></div>
+                            <div class="tube_image"><img draggable="true" ondragstart="drag(event)" src="/img/edta/edta4_64px.png" alt="" id="EDTA"></div>
                             <div class="tubeNo"><p id="totalEDTA"></p></div>
                             <div class="tubeNo"><p id="typeEDTA">EDTA</p></div>    
                         </div>
                         <div class="sample">
-                            <div class="tube_image"><img draggable="true" ondragstart="drag(event)" src="/img/glucose/glucose_64px_blue.png" alt="" id="BLF"></div>
+                            <div class="tube_image"><img draggable="true" ondragstart="drag(event)" src="/img/glucose/glucose4_64px.png" alt="" id="BLF"></div>
                             <div class="tubeNo"><p id="totalBLF"></div>
                                 <div class="tubeNo"><p id="typeBLF">BLF</p></div>    
                         </div>
                         <div class="sample">
-                            <div class="tube_image"><img draggable="true" ondragstart="drag(event)" src="/img/coag/coag_64px.png" alt="" id="coag"></div>
+                            <div class="tube_image"><img draggable="true" ondragstart="drag(event)" src="/img/coag/coag4_64px.png" alt="" id="coag"></div>
                             <div class="tubeNo"><p id="totalCoag"></div>
                             <div class="tubeNo"><p id="typeCoag">Coag</p></div>    
                         </div>
                              
-
                     </div>       
                         
                 </div>
             
         </div><!--end of test wrapper-->
 
-
-
+                <!-- Header Patient Details-->
+                <!-- <div class="patient_details_container">
+                    <h1 class="patient_details">Patient Details</h1>        
+                </div> -->
+                <div class="patient_wrapper">
+        
+                    <div class="patient_info">
+                        <h1 class="patient_info_data">Name:</h1> 
+                            <p><%= patient.firstName %></p>
+                        <h1 class="patient_info_data">Surname:</h1>
+                            <p><%= patient.lastName %></p>
+                        <h1 class="patient_info_data">Gender:</h1>
+                            <p><%= patient.gender %></p>
+                        <h1 class="patient_info_data">Age:</h1>
+                            <p><%= patient.age %></p>
+                            <!-- <p><%= patient.dateOfBirth.toDateString() %></p>  
+                                                -->
+        
+                        <div class="modify_btn_box">
+                            <a class="modify_patient" href="/edit-patient/<%= patient._id %>?edit=true">
+                                 <button class="modify_btn">Modify Details</button> 
+                            </a>
+                         </div>                            
+                    </div>
+        
+        
+        
+                </div>
             
-
             <hr>
             <div class="centered">
                 <form action="/create-order" method="POST">
@@ -107,7 +116,6 @@
     const deleteTest = (deleteBtn) => {
        const testId = deleteBtn.parentNode.querySelector('[name=testId]').value;
        const testElement = deleteBtn.closest('article');
-
        fetch('/cart-delete-item/' + testId, {
            method: 'DELETE'
        })
@@ -123,7 +131,6 @@
            console.log(err);
        })
     };
-
     // FUNCTION TO FADE IN IMAGES
     function fadeIn(el) {
     el.style.opacity = 0;
@@ -135,8 +142,6 @@
     };
     tick();
 }
-
-
     // GET THE GROUP OF EACH TEST USING CLASS 
    var testGroup1 = document.getElementsByClassName("1");
    var testGroup2 = document.getElementsByClassName("2"); 
@@ -182,7 +187,6 @@
         document.getElementById('typeSerum').style.display="none";
        }                                
           
-
    // GET TOTAL EDTA SAMPLES REQUIRED & DISPLAY (Group 4 & 5)
     var totalEdta4 = 0;
     var totalEdta5 = 0;
@@ -239,5 +243,4 @@
         document.getElementById('typeCoag').style.display="none";
        }
        
-
 </script>
