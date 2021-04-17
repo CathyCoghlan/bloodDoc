@@ -21,26 +21,34 @@
             </nav>
   
           </div><!--Left Obx End-->
-  
+
+          
           <div class="rightbox">
+
+            <form action="edit-my-account" method="POST">
              <% if (doctor.length > 0) { %>
               <% for (let dr of doctor) { %>
               <div class="profile tabShow">
                 <h1>User Information </h1>
-                <h2>Name</h2>
-                <input type="text" class="input" value="<%= dr.firstName %> <%= dr.lastName %>">
+                <h2>First Name</h2>
+                <input type="text" class="input" name="firstName" value="<%= dr.firstName %>">
+                <h2>Surname</h2>
+                <input type="text" class="input" name="lastName" value="<%= dr.lastName %>">
                 <h2>Role</h2>
                 <input type="text" class="input" value="GP">
                 <h2>Mobile</h2>           
-                <input type="text" class="input" value="<%= dr.mobile %>">
+                <input type="text" class="input" name="mobile" value="<%= dr.mobile %>">
                 <h2>Email</h2>
-                <input type="text" class="input" value="<%= dr.email %>">
+                <input type="text" class="input" name="email" value="<%= dr.email %>">
+
+                <% if (successMessage) { %>
+                  <div class="success-message"><i class="fas fa-check"></i> <%= successMessage %></div>
+                <% } %>
                 
              
                     <div class="button">
-                      <a class="modify_patient" href="/edit-patient/?edit=true">
-                        <button class="btn">Update</button> 
-                  </a>   
+                      <input type="hidden" value="<%=dr._id %>" name="doctorId" >                      
+                        <button class="btn" type="submit">Update</button>                     
                   </div>
       
                       
@@ -49,28 +57,36 @@
               <div class="practiceDetails tabShow">
                 <h1>Practice Details</h1>
                 <h2>Practice</h2>
-                <input type="text" class="input" value="<%= dr.practice %>">
+                <input type="text" class="input" name="practice" value="<%= dr.practice %>">
                 <h2>Phone</h2>
-                <input type="text" class="input" value="<%= dr.code %>">
+                <input type="text" class="input" name="code" value="<%= dr.code %>">
                 <h2>GP Code</h2>
-                <input type="text" class="input" value="<%= dr.tel %>">
+                <input type="text" class="input" name="tel" value="<%= dr.tel %>">
                 <h2>Hospital</h2>
                 <input type="text" class="input" value="St James Hospital">
+
+
+                <% if (successMessage) { %>
+                  <div class="success-message"><i class="fas fa-check"></i> <%= successMessage %></div>
+                <% } %>
+                  
+                
   
                 <div class="button">
-                  <a class="modify_patient" href="/edit-patient/?edit=true">
-                    <button class="btn">Update</button> 
-               </a>   
+                  <div class="button">
+                    <input type="hidden" value="<%=dr._id %>" name="doctorId" >                      
+                      <button class="btn" type="submit">Update</button>                     
                 </div>
-  
+                </div>
+              </form>
               </div><!-- Practice details end-->
               <% } %> 
               <% } %> 
+            </form>
             
-  
           </div>
         </div>
-  
+      </form>
   
 
 

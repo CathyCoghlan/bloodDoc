@@ -32,7 +32,7 @@ router.get(
 );
 
 router.post(
-  "/edit-patient",
+  "/edit-patient-details",
   [
     body("firstName").isLength({ min: 1 }).trim(),
     body("lastName").isLength({ min: 1 }).trim(),

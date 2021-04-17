@@ -17,6 +17,12 @@ exports.getIndex = (req, res, next) => {
 exports.getDoctor = (req, res, next) => {
   const name = req.doctor.lastName;
   const email = req.doctor.email;
+  let message = req.flash("success");
+  if (message.length > 0) {
+    message = message[0];
+  } else {
+    message = null;
+  }
   Doctor.find({ email: email })
     .then((doctor) => {
       res.render("doctor/my-account", {
@@ -24,11 +30,41 @@ exports.getDoctor = (req, res, next) => {
         pageTitle: "My Account",
         path: "/my-account",
         name: name,
+        successMessage: message,
       });
     })
     .catch((err) => {
       console.log(err);
     });
+};
+
+exports.postDoctorEdit = (req, res, next) => {
+  const doctorId = req.body.doctorId;
+  const updatedFirstName = req.body.firstName;
+  const updatedLastName = req.body.lastName;
+  const updatedMobile = req.body.mobile;
+  const updatedEmail = req.body.email;
+  const updatedPractice = req.body.practice;
+  const updatedCode = req.body.code;
+  const updatedTel = req.body.tel;
+
+  Doctor.findById(doctorId)
+    .then((doctor) => {
+      doctor.firstName = updatedFirstName;
+      doctor.lastName = updatedLastName;
+      doctor.mobile = updatedMobile;
+      doctor.email = updatedEmail;
+      doctor.practice = updatedPractice;
+      doctor.code = updatedCode;
+      doctor.tel = updatedTel;
+      return doctor.save();
+    })
+    .then((result) => {
+      console.log("Updated Doctor");
+      req.flash("success", "Account Updated");
+      res.redirect("/my-account");
+    })
+    .catch((err) => console.log(err));
 };
 
 exports.getSampleQuality = (req, res, next) => {
@@ -86,6 +122,7 @@ exports.getAddTest = (req, res, next) => {
 };
 
 exports.postAddTest = (req, res, next) => {
+  console.log("add");
   const name = req.body.name;
   const department = req.body.department;
   const turnAroundTime = req.body.turnAroundTime;

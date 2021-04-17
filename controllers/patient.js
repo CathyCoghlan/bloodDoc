@@ -135,33 +135,6 @@ exports.postEditPatient = (req, res, next) => {
   const updatedHeight = req.body.height;
   const updatedWeight = req.body.weight;
   const updatedClinicalDetails = req.body.clinicalDetails;
-  const errors = validationResult(req);
-
-  if (!errors.isEmpty()) {
-    return res.status(422).render("patient/edit-patient", {
-      pageTitle: "Add patient",
-      path: "/admin/edit-patient",
-      editing: false,
-      hasError: true,
-      patient: {
-        firstName: updatedFirstName, // Value on right is data rec'd, left refers to keys you define in your schema
-        lastName: updatedLastName,
-        dateOfBirth: updatedDateOfBirth,
-        age: updatedAge,
-        email: updatedEmail,
-        phone: updatedPhone,
-        gender: updatedGender,
-        address: updatedAddress,
-        county: updatedCounty,
-        eircode: updatedEircode,
-        height: updatedHeight,
-        weight: updatedWeight,
-        clinicalDetails: updatedClinicalDetails,
-      },
-      errorMessage: errors.array()[0].msg,
-      validationErrors: errors.array(),
-    });
-  }
 
   Patient.findById(patientId)
     .then((patient) => {
@@ -181,12 +154,84 @@ exports.postEditPatient = (req, res, next) => {
 
       return patient.save();
     })
-    .then((result) => {
+    .then((patient) => {
+      const patientId = patient._id;
+      console.log(patient._id);
       console.log("UPDATED Patient!");
-      res.redirect("/patients");
+      req.flash("success", "Patient Updated");
+      res.redirect("/patient/" + patientId);
     })
     .catch((err) => console.log(err));
 };
+
+// exports.postEditPatient = (req, res, next) => {
+//   console.log("worked");
+//   const patientId = req.body.patientId;
+//   const updatedFirstName = req.body.firstName;
+//   const updatedLastName = req.body.lastName;
+//   const updatedDateOfBirth = req.body.dateOfBirth;
+//   const updatedAge = req.body.age;
+//   const updatedEmail = req.body.email;
+//   const updatedPhone = req.body.phone;
+//   const updatedGender = req.body.gender;
+//   const updatedAddress = req.body.address;
+//   const updatedCounty = req.body.county;
+//   const updatedEircode = req.body.eircode;
+//   const updatedHeight = req.body.height;
+//   const updatedWeight = req.body.weight;
+//   const updatedClinicalDetails = req.body.clinicalDetails;
+//   const errors = validationResult(req);
+
+//   if (!errors.isEmpty()) {
+//     return res.status(422).render("patient/edit-patient", {
+//       pageTitle: "Add patient",
+//       path: "/admin/edit-patient",
+//       editing: false,
+//       hasError: true,
+//       patient: {
+//         firstName: updatedFirstName, // Value on right is data rec'd, left refers to keys you define in your schema
+//         lastName: updatedLastName,
+//         dateOfBirth: updatedDateOfBirth,
+//         age: updatedAge,
+//         email: updatedEmail,
+//         phone: updatedPhone,
+//         gender: updatedGender,
+//         address: updatedAddress,
+//         county: updatedCounty,
+//         eircode: updatedEircode,
+//         height: updatedHeight,
+//         weight: updatedWeight,
+//         clinicalDetails: updatedClinicalDetails,
+//       },
+//       errorMessage: errors.array()[0].msg,
+//       validationErrors: errors.array(),
+//     });
+//   }
+
+//   Patient.findById(patientId)
+//     .then((patient) => {
+//       patient.lastName = updatedLastName;
+//       patient.firstName = updatedFirstName;
+//       patient.dateOfBirth = updatedDateOfBirth;
+//       patient.age = updatedAge;
+//       patient.email = updatedEmail;
+//       patient.phone = updatedPhone;
+//       patient.gender = updatedGender;
+//       patient.address = updatedAddress;
+//       patient.updatedCounty = updatedCounty;
+//       patient.eircode = updatedEircode;
+//       patient.height = updatedHeight;
+//       patient.weight = updatedWeight;
+//       patient.clinicalDetails = updatedClinicalDetails;
+
+//       return patient.save();
+//     })
+//     .then((result) => {
+//       console.log("UPDATED Patient!");
+//       res.redirect("/patients");
+//     })
+//     .catch((err) => console.log(err));
+// };
 
 exports.getPatients = (req, res, next) => {
   const name = req.doctor.lastName;
@@ -209,6 +254,12 @@ exports.getPatients = (req, res, next) => {
 exports.getPatient = (req, res, next) => {
   const name = req.doctor.lastName;
   const patientId = req.params.patientId;
+  let message = req.flash("success");
+  if (message.length > 0) {
+    message = message[0];
+  } else {
+    message = null;
+  }
   Patient.findById(patientId)
     .then((patient) => {
       Order.find({ "patient.patientId": patient._id })
@@ -222,8 +273,8 @@ exports.getPatient = (req, res, next) => {
             orders: orders,
             pageTitle: "Patient Details",
             path: "/patient",
-            isAuthenticated: req.session.isLoggedIn,
             name: name,
+            successMessage: message,
           });
         });
     })

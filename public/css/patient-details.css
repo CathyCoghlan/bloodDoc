@@ -158,3 +158,19 @@ nav .tab i:active{
     padding: 10px;
     font-size: 13px;
 }
+
+
+.success-message {
+    margin-top: 20px;
+    font-size: 15px;
+    background-color: rgb(236, 255, 216);
+    color: green;
+}
+
+.patient-success{
+    margin-top: 8px;
+    font-size: 11px;
+    background-color: rgb(236, 255, 216);
+    color: green;
+    margin-bottom: 0;
+}

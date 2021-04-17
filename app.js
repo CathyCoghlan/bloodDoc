@@ -21,6 +21,7 @@ const store = new MongoDBStore({
   collections: "sessions",
 });
 
+//INITIALIZE FLASH FOR SUCCES & ERROR MESSAGES
 app.use(flash());
 
 // set view engine

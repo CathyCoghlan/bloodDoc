@@ -19,9 +19,12 @@
               <i class="fa fa-user"></i>
             </a>
             <a onclick="tabs(1) "class="tab">
-              <i class="fas fa-stethoscope"></i></i>
+              <i class="fas fa-home"></i></i>
             </a>
             <a onclick="tabs(2) "class="tab">
+              <i class="fas fa-stethoscope"></i></i>
+            </a>
+            <a onclick="tabs(3) "class="tab">
               <i class="fas fa-notes-medical"></i>
             </a>
           </nav>
@@ -29,54 +32,84 @@
         </div>
 
         <div class="rightbox">
+
+          <form action="/edit-patient-details" method="POST">
             <div class="profile tabShow">
               <h1>Patient Info</h1>
-              <h2>Full Name</h2>
-              <input type="text" class="input" value="<%= patient.firstName %>  <%=patient.lastName %>">
+
+              <h2>First Name</h2>
+              <input type="text" class="input" name="firstName" value="<%= patient.firstName %>">
+              <h2>Last Name</h2>
+              <input type="text" class="input" name="lastName" value="<%=patient.lastName %>" >
               <h2>Birthday</h2>
-              <input type="text" class="input" value="<%= patient.dateOfBirth.toDateString() %>">
+              <input type="text" class="input" name="dateOfBirth" value="<%= patient.dateOfBirth.toDateString() %>">
               <h2>Age</h2>           
-              <input type="text" class="input" value="<%= patient.age %>">
+              <input type="text" class="input" name="age" value="<%= patient.age %>">
               <h2>Gender</h2>
-              <input type="text" class="input" value="<%= patient.gender %>">
-              <h2>Address</h2>
-              <input type="text" class="input" value="<%= patient.address %>">
+              <input type="text" class="input" name="gender" value="<%= patient.gender %>">
               <h2>Phone</h2>
-              <input type="text" class="input" value="<%= patient.phone %>">
-              <h2>Email</h2>
-              <input type="text" class="input" value="<%= patient.email %>">
+              <input type="text" class="input" name="phone" value="<%= patient.phone %>">
+              <% if (successMessage) { %>
+                <div class="patient-success"><i class="fas fa-check"></i> <%= successMessage %></div>
+              <% } %>
+
+
               <div class="button">
-                <a class="modify_patient" href="/edit-patient/<%= patient._id %>?edit=true">
-                  <button class="btn">Update</button> 
-             </a>   
+                <input type="hidden" value="<%=patient._id %>" name="patientId" >                      
+                  <button class="btn" type="submit">Update</button>                     
             </div>
+
               
                     
             </div>
 
             <div class="clinicalDetails tabShow">
-              <h1>Patient Clinical Details</h1>
-              <h2>Full Name</h2>
-              <input type="text" class="input" value="<%= patient.firstName %>  <%=patient.lastName %> ">
-              <h2>Weight</h2>
-              <input type="text" class="input" value="<%= patient.weight %> kgs">
-              <h2>Height</h2>           
-              <input type="text" class="input" value="<%= patient.height %> inches">
-              <h2>Clinical Details</h2>
-              <input type="text" class="input" value="<%= patient.clinicalDetails %>">
+              <h1>Patient Address Details</h1>
+
+              <h2>Address</h2>
+              <input type="text" class="input" name="address" value="<%= patient.address %> ">
+              <h2>County</h2>
+              <input type="text" class="input" name="county" value="<%= patient.county %>">
+              <h2>Eircode</h2>           
+              <input type="text" class="input" name="eircode" value="<%= patient.eircode %>">
+              <h2>Email</h2>
+              <input type="text" class="input" name="email" value="<%= patient.email %>">
+              <% if (successMessage) { %>
+                <div class="patient-success"><i class="fas fa-check"></i> <%= successMessage %></div>
+              <% } %>
 
               <div class="button">
-                <a class="modify_patient" href="/edit-patient/<%= patient._id %>?edit=true">
-                  <button class="btn">Update</button> 
-             </a>   
-              </div>
+                <input type="hidden" value="<%=patient._id %>" name="patientId" >                      
+                  <button class="btn" type="submit">Update</button>                     
+            </div>
 
             </div>
+
+            <div class="clinicalDetails tabShow">
+              <h1>Patient Clinical Details</h1>
+              <h2>Weight (kg)</h2>
+              <input type="text" class="input" name="weight" value="<%= patient.weight %>">
+              <h2>Height (inches)</h2>           
+              <input type="text" class="input" name="height" value="<%= patient.height %>">
+              <h2>Clinical Details</h2>
+              <input type="text" class="input" name="clinicalDetails" value="<%= patient.clinicalDetails %>">
+              <% if (successMessage) { %>
+                <div class="patient-success"><i class="fas fa-check"></i> <%= successMessage %></div>
+              <% } %>
+
+              <div class="button">
+                <input type="hidden" value="<%=patient._id %>" name="patientId" >                      
+                  <button class="btn" type="submit">Update</button>                     
+            </div>
+
+            </div>
+          </form>
+          
             <div class="orders tabShow">
               
               <% if (orders.length <= 0) { %>
                 <h1>Nothing there!</h1>
-            <% } else { %>
+              <% } else { %>
                 <ul class="orders">
                   <h1>Last Blood Orders</h1>
                     <% orders.forEach(order => { %>
@@ -90,7 +123,8 @@
                         </li>
                     <% }); %>
                 </ul>
-            <% } %>
+              <% } %>
+
 
               <div class="button">
                 <a href="/orders/<%= patient._id %>"><button class="btn">View All Orders</button> </a>                  
@@ -102,6 +136,7 @@
 
         </div>
       </div>
+
 
 
 

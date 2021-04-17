@@ -29,6 +29,7 @@ function fadeIn(el) {
 // ADDING TEST TO CART & DISPLAYING IMAGES
 function addTest($this) {
   var val = $this.previousElementSibling.value;
+  console.log(val);
   var group = $this.previousElementSibling.id;
   if (group == "1") {
     var group1 = document.getElementById("group1");
